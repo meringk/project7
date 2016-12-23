@@ -1,0 +1,22 @@
+#left-side {
+
+  position: fixed;
+  top: 0; left: 0; bottom: 0; padding: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #e88686;
+  border-right: 1px solid #ddd;
+  cursor: default;
+
+}
+
+#right-side {
+
+  position: fixed;
+  top: 0; left: 50%; bottom: 0; padding: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #dedede;
+  cursor: default;
+
+}

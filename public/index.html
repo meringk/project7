@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+  <title>Node Demo</title>
+  <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="stylesheets/style.css" />
+  <script type="text/javascript" src="javascripts/member.js" /></script>
+</head>
+
+<body>
+  <form id="dataForm">
+    <div id="left-side">
+      <h1>내 홈페이지에 온걸 환영한다.</h1>
+      <div>
+        아이디 : <input name="id"></input>
+      </div>
+      <div> 
+        비번 : <input name="password"></input>
+      </div>
+      <div> <a href="javascript:login();">로그인</a> <div>
+    </div>
+
+    <div id="right-side">
+      <p>가입하시겠습니까 ?</p>
+      <a href="javascript:join();"> 웅.가입하기 </a> 
+    </div>
+  </form>
+  <div id="resDiv"></div>
+</body>
+
+</html>
