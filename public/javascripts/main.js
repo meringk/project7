@@ -46,24 +46,24 @@ $(document).ready(function () {
 				event.preventDefault();
 				
 				// Get some values from elements on the page:
-				var $form   = $( this ),
+				var $form = $( this ),
 					message = $form.find( "input[name='guestContent']" ).val(),
-					ip      = "";
+					ip="";
 					//url = $form.attr( "action" );
+					
+					/*var date = new Date();
+					console.log(new Date());
 
-				date    = new Date(),
-					d       = date.getDate(),
-					m       = date.getMonth(),						
-					y       = date.getFullYear();
-					//url = $form.attr( "action" );
+					var d = date.getDate(),
+						m =  date.getMonth(),						
+						y = date.getFullYear();
+					m += 1;
 
-				m += 1;
+					if(m.toString().length==1) m = "0" + m;
+					if(d.toString().length==1) d = "0" + d;
 
-				if(m.toString().length==1) m = "0" + m;
-				if(d.toString().length==1) d = "0" + d;
-
-				var fullDay = y+""+m+""+d;
-
+					var fullDay = y+""+m+""+d;*/
+					console.log($form.serialize())
 				if(message == ""){
 					alert("한마디를 쓰라규!");
 				}else{
@@ -73,9 +73,10 @@ $(document).ready(function () {
 							url: '/guestSubmit',
 							type: 'post',
 							dataType: 'json',
-							data: $form.serialize(),   
+							data: {ip:ip, message:message},   
 							success: function (data) {
-								$('.guestResDiv').append('<div>  <span class="icon fa-paw "/>   ' + message + ' <span style=\'font-size:10px\'> -' + '' + '</span><div>');
+								console.log(data);
+								$('.guestResDiv').append('<div>  <span class="icon fa-paw "/>   ' + message + ' <span style=\'font-size:10px\'> -' + ip + '</span><div>');
 								$form.find( "input[name='guestContent']" ).val("");
 							}
 						});
