@@ -1,4 +1,4 @@
-var db = require('../lib/pgDb.js');
+var db = require('../../lib/pgDb.js');
 var memberService = {
     insertGuestSubmit: insertGuestSubmit
 }

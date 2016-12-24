@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var db = require('../lib/pgDb.js');
+var db = require('../../lib/pgDb.js');
 var mainService = require('../service/main_service.js');
 
 
