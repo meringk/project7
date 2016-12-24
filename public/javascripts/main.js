@@ -9,7 +9,8 @@ $(document).ready(function () {
 		console.log(data);
 		$('.guestResDiv').innerHTML = "";
 		for (var i = 0; i < data.length; i++) {
-			 $('.guestResDiv').append('<div> <span class="icon fa-child "/> ' + data[i].g_content + ' <span style=\'font-size:10px\'> -' + data[i].g_userip + '</span><div>');
+			// $('.guestResDiv').append('<div> <span class="icon fa-child "/> ' + data[i].g_content + ' <span style=\'font-size:10px\'> -' + data[i].g_userip + '</span><div>');
+			 $('.guestResDiv').append('<div> <span class="icon fa-child "/> ' + data[i].g_content  );
 		}
 	});
 });
@@ -76,7 +77,8 @@ $(document).ready(function () {
 							data: {ip:ip, message:message},   
 							success: function (data) {
 								console.log(data);
-								$('.guestResDiv').append('<div>  <span class="icon fa-paw "/>   ' + message + ' <span style=\'font-size:10px\'> -' + ip + '</span><div>');
+								//$('.guestResDiv').append('<div>  <span class="icon fa-paw "/>   ' + message + ' <span style=\'font-size:10px\'> -' + ip + '</span><div>');
+								$('.guestResDiv').append('<div>  <span class="icon fa-paw "/>   ' + message + ' </div>');
 								$form.find( "input[name='guestContent']" ).val("");
 							}
 						});
