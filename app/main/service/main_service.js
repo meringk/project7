@@ -21,7 +21,7 @@ function selectGuestBookList() {
 //방명록등록
 function insertGuestSubmit(param) {
     return new Promise(function (resolve, reject) {
-        var query = 'insert into tb_guest values($1, $2)';
+        var query = 'insert into tb_guest values($1, $2,  now())';
         
         db.query(query, [param.ip, param.message])
             .then(function () {

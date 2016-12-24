@@ -9,7 +9,7 @@ $(document).ready(function () {
 		console.log(data);
 		$('.guestResDiv').innerHTML = "";
 		for (var i = 0; i < data.length; i++) {
-			 $('.guestResDiv').append('<div> <span class="icon fa-child "/> ' + data[i].g_content + ' <span style=\'font-size:10px\'> -' + data[i].g_userip + '</span><div>');
+			 $('.guestResDiv').append('<div> <span class="icon fa-child "/> ' + data[i].g_content + ' <span style=\'font-size:10px\'> -' + data[i].g_date + '</span><div>');
 		}
 	});
 });
@@ -46,15 +46,26 @@ $(document).ready(function () {
 				event.preventDefault();
 				
 				// Get some values from elements on the page:
-				var $form = $( this ),
+				var $form   = $( this ),
 					message = $form.find( "input[name='guestContent']" ).val(),
-					ip="",
-					url = $form.attr( "action" );
+					ip      = "";
+					//url = $form.attr( "action" );
+
+				date    = new Date(),
+					d       = date.getDate(),
+					m       = date.getMonth(),						
+					y       = date.getFullYear();
+					//url = $form.attr( "action" );
+
+				m += 1;
+
+				if(m.toString().length==1) m = "0" + m;
+				if(d.toString().length==1) d = "0" + d;
+
+				var fullDay = y+""+m+""+d;
 
 				if(message == ""){
-					
 					alert("한마디를 쓰라규!");
-
 				}else{
 					$.get('http://jsonip.com/', function(r){
 						ip = r.ip
@@ -62,14 +73,14 @@ $(document).ready(function () {
 							url: '/guestSubmit',
 							type: 'post',
 							dataType: 'json',
-							data: {ip:ip , message: message},    
+							data: $form.serialize(),   
 							success: function (data) {
-								$('.guestResDiv').append('<div>  <span class="icon fa-paw "/>   ' + message + ' <span style=\'font-size:10px\'> -' + ip + '</span><div>');
+								$('.guestResDiv').append('<div>  <span class="icon fa-paw "/>   ' + message + ' <span style=\'font-size:10px\'> -' + fullDay + '</span><div>');
 								$form.find( "input[name='guestContent']" ).val("");
 							}
 						});
 					});
-				}
+				};
 
 			
 				/* Put the results in a div
