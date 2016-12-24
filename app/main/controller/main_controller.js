@@ -20,3 +20,7 @@ router.post('/guestSubmit', function(req, res){
     });
 
 });
+
+
+
+module.exports = router;
