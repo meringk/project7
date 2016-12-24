@@ -9,6 +9,6 @@ module.exports = function(app){
 
     function init(){
         app.use('/member', member);
-        app.use('/', main);
+        app.use('/main', main);
     }
 }
