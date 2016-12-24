@@ -28,6 +28,40 @@
 				}, 0);
 			});
 
+
+			$( "#guestSubmit" ).submit(function( event ) {
+				// Stop form from submitting normally
+				event.preventDefault();
+				
+				// Get some values from elements on the page:
+				var $form = $( this ),
+					message = $form.find( "input[name='guestContent']" ).val(),
+					ip="",
+					url = $form.attr( "action" );
+
+				$.get('http://jsonip.com/', function(r){ console.log(r.ip); ip = r.ip});
+
+				$.ajax({
+					url: '/guestSubmit',
+					type: 'post',
+					dataType: 'json',
+					data: {ip:ip , message: message},    
+					success: function (data) {
+						console.log(data);
+						//$('#resDiv')[0].innerHTML = data.m_username + "님 안뇽하세요 ?";
+					}
+				});
+
+
+				/* Put the results in a div
+				posting.done(function( data ) {
+					console.log(data)
+					var content = $( data ).find( "#" );
+					$( "#result" ).empty().append( content );
+			});*/
+
+			});
+
 		// Touch mode.
 			if (skel.vars.mobile)
 				$body.addClass('is-touch');
@@ -159,7 +193,7 @@
 
 			}
 
-		// Spotlights.
+			// Spotlights.
 			var $spotlights = $('.spotlight');
 
 			$spotlights
