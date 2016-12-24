@@ -85,6 +85,12 @@
 		width: 70em;
 	}
 
+/*  guestResDiv */
+
+	.container {
+		text-align: left;
+	}
+   
 	@media screen and (max-width: 1680px) {
 
 		.container.\31 25\25 {

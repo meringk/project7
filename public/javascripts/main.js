@@ -4,6 +4,17 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+$(document).ready(function () {
+	$.get('/guestList', function(data){
+		console.log(data);
+		$('.guestResDiv').innerHTML = "";
+		for (var i = 0; i < data.length; i++) {
+			 $('.guestResDiv').append('<div> <span class="icon fa-child "/> ' + data[i].g_content + ' <span style=\'font-size:10px\'> -' + data[i].g_userip + '</span><div>');
+		}
+	});
+});
+
+
 (function($) {
 
 	skel.breakpoints({
@@ -29,6 +40,7 @@
 			});
 
 
+
 			$( "#guestSubmit" ).submit(function( event ) {
 				// Stop form from submitting normally
 				event.preventDefault();
@@ -39,19 +51,19 @@
 					ip="",
 					url = $form.attr( "action" );
 
-				$.get('http://jsonip.com/', function(r){ console.log(r.ip); ip = r.ip});
-
-				$.ajax({
-					url: '/guestSubmit',
-					type: 'post',
-					dataType: 'json',
-					data: {ip:ip , message: message},    
-					success: function (data) {
-						console.log(data);
-						//$('#resDiv')[0].innerHTML = data.m_username + "님 안뇽하세요 ?";
-					}
+				$.get('http://jsonip.com/', function(r){
+					ip = r.ip
+					$.ajax({
+						url: '/guestSubmit',
+						type: 'post',
+						dataType: 'json',
+						data: {ip:ip , message: message},    
+						success: function (data) {
+							$('.guestResDiv').append('<div>  <span class="icon fa-paw "/>   ' + message + ' <span style=\'font-size:10px\'> -' + ip + '</span><div>');
+							$form.find( "input[name='guestContent']" ).val("");
+						}
+					});
 				});
-
 
 				/* Put the results in a div
 				posting.done(function( data ) {

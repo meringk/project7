@@ -1,6 +1,5 @@
 
 $(document).ready(function () {
-
     $('#execute').click(function () {
         console.log($('#dataForm').serialize());
         $.ajax({
@@ -19,7 +18,6 @@ $(document).ready(function () {
             }
         });
     });
-
 });
 
 function join() {
