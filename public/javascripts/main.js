@@ -51,20 +51,27 @@ $(document).ready(function () {
 					ip="",
 					url = $form.attr( "action" );
 
-				$.get('http://jsonip.com/', function(r){
-					ip = r.ip
-					$.ajax({
-						url: '/guestSubmit',
-						type: 'post',
-						dataType: 'json',
-						data: {ip:ip , message: message},    
-						success: function (data) {
-							$('.guestResDiv').append('<div>  <span class="icon fa-paw "/>   ' + message + ' <span style=\'font-size:10px\'> -' + ip + '</span><div>');
-							$form.find( "input[name='guestContent']" ).val("");
-						}
-					});
-				});
+				if(message == ""){
+					
+					alert("한마디를 쓰라규!");
 
+				}else{
+					$.get('http://jsonip.com/', function(r){
+						ip = r.ip
+						$.ajax({
+							url: '/guestSubmit',
+							type: 'post',
+							dataType: 'json',
+							data: {ip:ip , message: message},    
+							success: function (data) {
+								$('.guestResDiv').append('<div>  <span class="icon fa-paw "/>   ' + message + ' <span style=\'font-size:10px\'> -' + ip + '</span><div>');
+								$form.find( "input[name='guestContent']" ).val("");
+							}
+						});
+					});
+				}
+
+			
 				/* Put the results in a div
 				posting.done(function( data ) {
 					console.log(data)
