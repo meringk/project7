@@ -9,7 +9,7 @@ $(document).ready(function () {
 		console.log(data);
 		$('.guestResDiv').innerHTML = "";
 		for (var i = 0; i < data.length; i++) {
-			 $('.guestResDiv').append('<div> <span class="icon fa-child "/> ' + data[i].g_content + ' <span style=\'font-size:10px\'> -' + data[i].g_date + '</span><div>');
+			 $('.guestResDiv').append('<div> <span class="icon fa-child "/> ' + data[i].g_content + ' <span style=\'font-size:10px\'> -' + data[i].g_userip + '</span><div>');
 		}
 	});
 });
@@ -75,7 +75,7 @@ $(document).ready(function () {
 							dataType: 'json',
 							data: $form.serialize(),   
 							success: function (data) {
-								$('.guestResDiv').append('<div>  <span class="icon fa-paw "/>   ' + message + ' <span style=\'font-size:10px\'> -' + fullDay + '</span><div>');
+								$('.guestResDiv').append('<div>  <span class="icon fa-paw "/>   ' + message + ' <span style=\'font-size:10px\'> -' + '' + '</span><div>');
 								$form.find( "input[name='guestContent']" ).val("");
 							}
 						});
