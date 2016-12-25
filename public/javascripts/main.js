@@ -7,13 +7,85 @@
 $(document).ready(function () {
 	$.get('/guestList', function(data){
 		console.log(data);
+		
 		$('.guestResDiv').innerHTML = "";
 		for (var i = 0; i < data.length; i++) {
-			// $('.guestResDiv').append('<div> <span class="icon fa-child "/> ' + data[i].g_content + ' <span style=\'font-size:10px\'> -' + data[i].g_userip + '</span><div>');
-			 $('.guestResDiv').append('<div> <span class="icon fa-child "/> ' + data[i].g_content  );
+			var date = (data[i].g_date).split('T')[0]
+				, time =  (data[i].g_date).split('T')[1]
+				, time_H = (time.split(':')[0])*1 +9
+				, calTime = calTimeFnc(time_H);
+
+			$('.guestResDiv').append('<div> <span class="icon fa-child "/> ' + data[i].g_content  + '  '
+								 + '<span style=\'font-size:12px\'>   -' +  date 
+								 + ' ' + calTime.moon+ ' ' + calTime.time_H +  '시</span></div>');
 		}
 	});
+
+	
+
+	$( "#guestSubmit" ).submit(function( event ) {
+		// Stop form from submitting normally
+		event.preventDefault();
+		
+		// Get some values from elements on the page:
+		var $form = $( this ),
+			message = $form.find( "input[name='guestContent']" ).val(),
+			ip="";
+			var date = new Date();
+			var d = date.getDate(),
+				m =  date.getMonth(),						
+				y = date.getFullYear();
+				h = date.getHours();
+			m += 1;
+
+			if(m.toString().length==1) m = "0" + m;
+			if(d.toString().length==1) d = "0" + d;
+			var fullDay = y+"-"+m+"-"+d;
+			calTime = calTimeFnc(h);
+
+		if(message == ""){
+			alert("한마디 적어주세여");
+		}else{
+			$.get('http://jsonip.com/', function(r){
+				ip = r.ip
+				$.ajax({
+					url: '/guestSubmit',
+					type: 'post',
+					dataType: 'json',
+					data: {ip:ip, message:message},   
+					success: function (data) {
+						console.log(data);
+						$('.guestResDiv').append('<div>  <span class="icon fa-paw "/>   ' + message 
+												+ ' <span style=\'font-size:12px\'> -' + fullDay +' ' 
+												+ calTime.moon +' '+ calTime.time_H +'시</span></div>');
+						$form.find( "input[name='guestContent']" ).val("");
+					}
+				});
+			});
+		};
+	});
+
 });
+
+function calTimeFnc(time_H){
+
+	console.log(time_H)
+	var moon = ""
+		, time = {}
+		, moonArr = ['오전','오후']
+		, timeArr = ['한', '두', '세', '네', '다섯','여섯','일곱','여덟','아홉','열','열한','열두'];
+
+	moon = moonArr[0];
+
+	if(time_H.toString().length == 2) moon = moonArr[1];
+	if(time_H == 10 || time_H ==11 )  moon = moonArr[0];
+
+	time_H == 0 ? time_H = timeArr[11] : timeArr[time_H-1];
+
+	time.time_H = time_H;
+	time.moon = moon;
+	return time;
+}
 
 
 (function($) {
@@ -38,61 +110,6 @@ $(document).ready(function () {
 				window.setTimeout(function() {
 					$body.removeClass('is-loading');
 				}, 0);
-			});
-
-
-
-			$( "#guestSubmit" ).submit(function( event ) {
-				// Stop form from submitting normally
-				event.preventDefault();
-				
-				// Get some values from elements on the page:
-				var $form = $( this ),
-					message = $form.find( "input[name='guestContent']" ).val(),
-					ip="";
-					//url = $form.attr( "action" );
-					
-					/*var date = new Date();
-					console.log(new Date());
-
-					var d = date.getDate(),
-						m =  date.getMonth(),						
-						y = date.getFullYear();
-					m += 1;
-
-					if(m.toString().length==1) m = "0" + m;
-					if(d.toString().length==1) d = "0" + d;
-
-					var fullDay = y+""+m+""+d;*/
-					console.log($form.serialize())
-				if(message == ""){
-					alert("한마디를 쓰라규!");
-				}else{
-					$.get('http://jsonip.com/', function(r){
-						ip = r.ip
-						$.ajax({
-							url: '/guestSubmit',
-							type: 'post',
-							dataType: 'json',
-							data: {ip:ip, message:message},   
-							success: function (data) {
-								console.log(data);
-								//$('.guestResDiv').append('<div>  <span class="icon fa-paw "/>   ' + message + ' <span style=\'font-size:10px\'> -' + ip + '</span><div>');
-								$('.guestResDiv').append('<div>  <span class="icon fa-paw "/>   ' + message + ' </div>');
-								$form.find( "input[name='guestContent']" ).val("");
-							}
-						});
-					});
-				};
-
-			
-				/* Put the results in a div
-				posting.done(function( data ) {
-					console.log(data)
-					var content = $( data ).find( "#" );
-					$( "#result" ).empty().append( content );
-			});*/
-
 			});
 
 		// Touch mode.
