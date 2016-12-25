@@ -5,6 +5,10 @@
 */
 
 $(document).ready(function () {
+
+	var g_idx = "";
+
+
 	$.get('/guestList', function(data){
 		console.log(data);
 		
@@ -14,6 +18,7 @@ $(document).ready(function () {
 				, time =  (data[i].g_date).split('T')[1]
 				, time_H = (time.split(':')[0])*1 +9
 				, calTime = calTimeFnc(time_H);
+			g_idx = data[i].g_idx;
 
 			$('.guestResDiv').append('<div> <span class="icon fa-child "/> ' + data[i].g_content  + '  '
 								 + '<span style=\'font-size:12px\'>   -' +  date 
@@ -55,7 +60,7 @@ $(document).ready(function () {
 					data: {ip:ip, message:message},   
 					success: function (data) {
 						console.log(data);
-						$('.guestResDiv').append('<div>  <span class="icon fa-paw "/>   ' + message 
+						$('.guestResDiv').prepend('<div>  <span class="icon fa-paw "/>   ' + message 
 												+ ' <span style=\'font-size:12px\'> -' + fullDay +' ' 
 												+ calTime.moon +' '+ calTime.time_H +'시</span></div>');
 						$form.find( "input[name='guestContent']" ).val("");
@@ -64,6 +69,28 @@ $(document).ready(function () {
 			});
 		};
 	});
+
+	
+	guestMore = function(){
+		
+		$.get('/guestListMore?g_idx='+g_idx, function(data){
+			console.log(data);
+			for (var i = 0; i < data.length; i++) {
+				var date = (data[i].g_date).split('T')[0]
+					, time =  (data[i].g_date).split('T')[1]
+					, time_H = (time.split(':')[0])*1 +9
+					, calTime = calTimeFnc(time_H);
+					
+				$('.guestResDiv').append('<div  class="new-link" style="display:none"> <span class="icon fa-child "/> ' + data[i].g_content  + '  '
+										+ '<span style=\'font-size:12px\'>   -' +  date 
+										+ ' ' + calTime.moon+ ' ' + calTime.time_H +  '시</span></div>');
+				$('.guestResDiv').find(".new-link:last").slideDown("fast");
+				g_idx = data[i].g_idx;
+
+				if(g_idx == 3) $( '#guestMore' )[0].style.display="none"
+			}
+		});
+	};
 
 });
 

@@ -3,9 +3,28 @@ var router = express.Router();
 var db = require('../../lib/pgDb.js');
 var mainService = require('../service/main_service.js');
 
+var g_idx = 0;
 //방명록리스트
 router.get('/guestList', function(req, res){
      mainService.selectGuestBookList()
+        .then(function (data){
+            //console.log(data);
+            //console.log(Object.keys(data).length);
+            //console.log(data[Object.keys(data).length-1].g_idx);
+            g_idx = data[Object.keys(data).length-1].g_idx;
+            console.log(g_idx);
+            res.json(data);
+            //data.length();
+        })
+        .catch(function (err){
+            res.json(err);
+        });
+});
+
+//방명록리스트더보기
+router.get('/guestListMore', function(req, res){
+     g_idx = (req.url).split('=')[1];
+     mainService.selectGuestBookListMore(g_idx)
         .then(function (data){
             console.log(data);
             res.json(data);
