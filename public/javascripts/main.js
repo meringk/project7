@@ -107,7 +107,9 @@ function calTimeFnc(time_H){
 	if(time_H.toString().length == 2) moon = moonArr[1];
 	if(time_H == 10 || time_H ==11 )  moon = moonArr[0];
 
-	time_H == 0 ? time_H = timeArr[11] : timeArr[time_H-1];
+	if(time_H > 12) time_H = 1;
+
+	time_H == 0 ? time_H = timeArr[11] : time_H = timeArr[time_H-1];
 
 	time.time_H = time_H;
 	time.moon = moon;
