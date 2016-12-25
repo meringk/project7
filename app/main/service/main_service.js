@@ -37,7 +37,6 @@ function selectGuestBookListMore(g_idx) {
 function insertGuestSubmit(param) {
     return new Promise(function (resolve, reject) {
         var query = 'insert into tb_guest values($1, $2, now())';
-        console.log(query);
         db.query(query, [param.ip, param.message])
             .then(function () {
                 var query2 = 'select * from tb_guest';

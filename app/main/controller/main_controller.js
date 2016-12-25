@@ -12,7 +12,7 @@ router.get('/guestList', function(req, res){
             //console.log(Object.keys(data).length);
             //console.log(data[Object.keys(data).length-1].g_idx);
             g_idx = data[Object.keys(data).length-1].g_idx;
-            console.log(g_idx);
+            //console.log(g_idx);
             res.json(data);
             //data.length();
         })
@@ -26,7 +26,6 @@ router.get('/guestListMore', function(req, res){
      g_idx = (req.url).split('=')[1];
      mainService.selectGuestBookListMore(g_idx)
         .then(function (data){
-            console.log(data);
             res.json(data);
         })
         .catch(function (err){
@@ -36,13 +35,11 @@ router.get('/guestListMore', function(req, res){
 
 //게스트북
 router.post('/guestSubmit', function(req, res){
-    console.log("게스트등록");
+    //console.log("게스트등록");
   var member = req.body;
-  console.log(member);
 
   mainService.insertGuestSubmit(member)
     .then(function(data){
-        console.log("data를받아옴");
         res.json(data);
     })
     .catch(function(error){
