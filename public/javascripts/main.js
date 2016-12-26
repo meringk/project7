@@ -8,11 +8,13 @@ $(document).ready(function () {
 
 	var g_idx = "";
 	$.get('/guestList', function (data) {
+
+		console.log(data)
 		$('.guestResDiv').innerHTML = "";
 		for (var i = 0; i < data.length; i++) {
 			var date = (data[i].g_date).split('T')[0]
 				, time = (data[i].g_date).split('T')[1]
-				, time_H = (time.split(':')[0]) * 1 + 9
+				, time_H = (time.split(':')[0]) * 1 
 				, calTime = calTimeFnc(time_H);
 			g_idx = data[i].g_idx;
 
@@ -360,25 +362,6 @@ $(document).ready(function () {
 			._parallax();
 
 
-		// Touch mode.
-		if (skel.vars.mobile)
-			$body.addClass('is-touch');
-
-		// Fix: Placeholder polyfill.
-		$('form').placeholder();
-
-		// Prioritize "important" elements on medium.
-		skel.on('+medium -medium', function () {
-			$.prioritize(
-				'.important\\28 medium\\29',
-				skel.breakpoint('medium').active
-			);
-		});
-
-		// Scrolly links.
-		$('.scrolly').scrolly({
-			speed: 2000
-		});
 
 
 	});

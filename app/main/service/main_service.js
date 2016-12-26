@@ -8,7 +8,7 @@ var mainService = {
 //방명록조회
 function selectGuestBookList() {
     return new Promise(function (resolve, reject) {
-        var query = 'select * from tb_guest order by g_idx desc limit 5';
+        var query = "select  g_userip, g_content, g_date + interval '9 hours' as g_date, g_idx from tb_guest order by g_idx desc limit 5";
         db.query(query)
             .then(function (data) {
                 resolve(data);

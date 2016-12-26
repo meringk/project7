@@ -8,7 +8,7 @@ var g_idx = 0;
 router.get('/guestList', function(req, res){
      mainService.selectGuestBookList()
         .then(function (data){
-            //console.log(data);
+            console.log(data);
             //console.log(Object.keys(data).length);
             //console.log(data[Object.keys(data).length-1].g_idx);
             g_idx = data[Object.keys(data).length-1].g_idx;

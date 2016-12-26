@@ -70,15 +70,26 @@
 					visibleClass: 'navPanel-visible'
 				});
 
+			// Dropdowns.
+			$('#nav > ul').dropotron({
+				alignment: 'right',
+				hideDelay: 350
+			});
+
+
+			
 			// Fix: Remove navPanel transitions on WP<10 (poor/buggy performance).
 			if (skel.vars.os == 'wp' && skel.vars.osVersion < 10)
 				$('#titleBar, #navPanel, #page-wrapper')
 					.css('transition', 'none');
 
-			// Dropdowns.
-			$('#nav > ul').dropotron({
-				alignment: 'right',
-				hideDelay: 350
+
+			// Prioritize "important" elements on medium.
+			skel.on('+medium -medium', function () {
+				$.prioritize(
+					'.important\\28 medium\\29',
+					skel.breakpoint('medium').active
+				);
 			});
 
 
