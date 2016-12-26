@@ -84,25 +84,6 @@
 
 		});
 
-		// Touch mode.
-		if (skel.vars.mobile)
-			$body.addClass('is-touch');
-
-		// Fix: Placeholder polyfill.
-		$('form').placeholder();
-
-		// Prioritize "important" elements on medium.
-		skel.on('+medium -medium', function () {
-			$.prioritize(
-				'.important\\28 medium\\29',
-				skel.breakpoint('medium').active
-			);
-		});
-
-		// Scrolly links.
-		$('.scrolly').scrolly({
-			speed: 2000
-		});
 
 	});
 
