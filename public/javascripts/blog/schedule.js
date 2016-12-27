@@ -61,7 +61,7 @@
     //     { eventName: 'Interview - Jr. Web Developer', calendar: 'Work', color: 'green', date: '2016-1-2' },
     //     { eventName: 'Demo New App to the Board', calendar: 'Work', color: 'yellow', date: '2016-1-3' },
     //  ];
-  $('#footer')[0].innerHTML="";
+  //$('#footer')[0].innerHTML="";
 
     this.events.forEach(function(ev) {
   //    console.log(ev);
@@ -69,7 +69,7 @@
   //    console.log(self.current.clone().date(10));
       var ev_date = moment(ev.date);
       ev.date = ev_date;
-       $('#footer')[0].append(ev_date.month() + "/"+ev_date.date()+" || ");
+     //  $('#footer')[0].append(ev_date.month() + "/"+ev_date.date()+" || ");
     });
     
     
