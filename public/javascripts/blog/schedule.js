@@ -338,10 +338,9 @@
         { eventName: '크리스마스다아앙', calendar: 'Work', color: 'orange', date: '2016-12-25' },
         { eventName: '아산병원', calendar: 'Work', color: 'blue', date: '2016-12-29' },
         { eventName: '회사 월조회', calendar: 'Work', color: 'green', date: '2016-12-29' },
-
-        { eventName: '신정', calendar: 'Work', color: 'blue' , date: '2017-1-1'},
-        { eventName: '여행적금3만원', calendar: 'Work', color: 'green', date: '2017-1-4' },
-        { eventName: '프라임무비팩해지하기', calendar: 'Work', color: 'yellow', date: '2017-1-19' },
+        { eventName: '신정', calendar: 'Work', color: 'blue' , date: '2017-01-1'},
+        { eventName: '여행적금3만원', calendar: 'Work', color: 'green', date: '2017-01-4' },
+        { eventName: '프라임무비팩해지하기', calendar: 'Work', color: 'yellow', date: '2017-01-19' },
 
     /*{ eventName: 'Dinner w/ Marketing', calendar: 'Work', color: 'orange' },
 
