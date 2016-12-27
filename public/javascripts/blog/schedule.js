@@ -53,7 +53,7 @@
     var self = this;
     console.log(self.current.month()+1)
 
-  //  $('.header')[0].append(this.events)
+    $('.inner')[0].innerHTML="";
 
     //월을 다시 새로 그릴때 그 월에 해당하는 DB를 불러온다.
     // var new_data = [
@@ -69,7 +69,7 @@
   //    console.log(self.current.clone().date(10));
       var ev_date = moment(ev.date);
       ev.date = ev_date;
-     //  $('#footer')[0].append(ev_date.month() + "/"+ev_date.date()+" || ");
+       $('.inner').append(ev_date.month() + "/"+ev_date.date()+" || ");
     });
     
     
