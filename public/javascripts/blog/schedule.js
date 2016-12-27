@@ -51,7 +51,6 @@
 
   Calendar.prototype.drawMonth = function() {
     var self = this;
-    console.log(self.current.month()+1)
 
  //   $('.inner')[0].innerHTML="";
 
@@ -63,12 +62,16 @@
     //  ];
   //$('#footer')[0].innerHTML="";
 
+console.log("##################");
+console.log(this.events);
     this.events.forEach(function(ev) {
-  //    console.log(ev);
+
+
+    console.log(ev);
   //    console.log(Math.random() * (29 - 1) + 1)
   //    console.log(self.current.clone().date(10));
-      var ev_date = moment(ev.date);
-      ev.date = ev_date;
+      var ev_date = moment(ev.sc_date);
+      ev.sc_date = ev_date;
     //   $('.inner').append(ev_date.month() + "/"+ev_date.date()+" || ");
     });
     
@@ -177,7 +180,7 @@
     if(day.month() === this.current.month()) {
       var todaysEvents = this.events.reduce(function(memo, ev) {
 
-        if(ev.date.isSame(day, 'day') && ev.date.isSame(day, 'month')) {
+        if(ev.sc_date.isSame(day, 'day') && ev.sc_date.isSame(day, 'month')) {
           console.log("DAYSAME")
           memo.push(ev);
         }
@@ -185,7 +188,8 @@
       }, []);
 
       todaysEvents.forEach(function(ev) {
-        var evSpan = createElement('span', ev.color);
+        if(ev.sc_gb == "001") var s_color = "orange";
+        var evSpan = createElement('span', s_color);
         element.appendChild(evSpan);
       });
     }
@@ -244,7 +248,7 @@
     }
 
     var todaysEvents = this.events.reduce(function(memo, ev) {
-      if(ev.date.isSame(day, 'day') && ev.date.isSame(day, 'month') ) {
+      if(ev.sc_date.isSame(day, 'day') && ev.sc_date.isSame(day, 'month') ) {
         memo.push(ev);
       }
       return memo;
@@ -261,11 +265,11 @@
     var wrapper = createElement('div', 'events in' + (currentWrapper ? ' new' : ''));
 
     events.forEach(function(ev) {
-
+      if(ev.sc_gb == "001") var s_color = "orange";
      // console.log(ev);
       var div = createElement('div', 'event');
-      var square = createElement('div', 'event-category ' + ev.color);
-      var span = createElement('span', '', ev.eventName);
+      var square = createElement('div', 'event-category ' + s_color);
+      var span = createElement('span', '', ev.sc_event_name);
 
       div.appendChild(square);
       div.appendChild(span);
@@ -333,6 +337,15 @@
 !function() {
 
   //맨처음에는 현재 월에 해당하는 데이터만 싹 불러온다.
+  var current_month = moment().month();
+  var data;
+  current_month = current_month + 1;
+  $.get('/schedule/selectSchedule?month=' + current_month, function (db_data) {
+    console.log(db_data);
+    data = db_data;
+     var calendar = new Calendar('#calendar', data);
+	});
+  /*
   var data = [
         { eventName: '홈페이지만든날', calendar: 'Work', color: 'yellow' , date: '2016-12-24'},
         { eventName: '크리스마스다아앙', calendar: 'Work', color: 'orange', date: '2016-12-25' },
@@ -342,7 +355,7 @@
         { eventName: '여행적금3만원', calendar: 'Work', color: 'green', date: '2017-01-04' },
         { eventName: '프라임무비팩해지하기', calendar: 'Work', color: 'yellow', date: '2017-01-19' },
 
-    /*{ eventName: 'Dinner w/ Marketing', calendar: 'Work', color: 'orange' },
+    { eventName: 'Dinner w/ Marketing', calendar: 'Work', color: 'orange' },
 
     { eventName: 'Game vs Portalnd', calendar: 'Sports', color: 'blue' },
     { eventName: 'Game vs Houston', calendar: 'Sports', color: 'blue' },
@@ -357,16 +370,14 @@
     { eventName: 'Free Tamale Night', calendar: 'Other', color: 'green' },
     { eventName: 'Bowling Team', calendar: 'Other', color: 'green' },
     { eventName: 'Teach Kids to Code', calendar: 'Other', color: 'green' },
-    { eventName: 'Startup Weekend', calendar: 'Other', color: 'green'}*/
+    { eventName: 'Startup Weekend', calendar: 'Other', color: 'green'}
   ];
-
+*/
   
 
   function addDate(ev) {
-    console.log("Dd");
-    console.log(ev);
   }
 
-  var calendar = new Calendar('#calendar', data);
+ 
 
 }();

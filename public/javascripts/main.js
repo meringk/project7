@@ -8,13 +8,11 @@ $(document).ready(function () {
 
 	var g_idx = "";
 	$.get('/guestList', function (data) {
-
-		console.log(data)
 		$('.guestResDiv').innerHTML = "";
 		for (var i = 0; i < data.length; i++) {
 			var date = (data[i].g_date).split('T')[0]
 				, time = (data[i].g_date).split('T')[1]
-				, time_H = (time.split(':')[0]) * 1 
+				, time_H = (time.split(':')[0]) * 1
 				, calTime = calTimeFnc(time_H);
 			g_idx = data[i].g_idx;
 
@@ -74,7 +72,7 @@ $(document).ready(function () {
 			for (var i = 0; i < data.length; i++) {
 				var date = (data[i].g_date).split('T')[0]
 					, time = (data[i].g_date).split('T')[1]
-					, time_H = (time.split(':')[0]) * 1 + 9
+					, time_H = (time.split(':')[0]) * 1 
 					, calTime = calTimeFnc(time_H);
 
 				$('.guestResDiv').append('<div  class="new-link" style="display:none"> <span class="icon fa-child "/> ' + data[i].g_content + '  '
@@ -97,11 +95,11 @@ $(document).ready(function () {
 			, timeArr = ['한', '두', '세', '네', '다섯', '여섯', '일곱', '여덟', '아홉', '열', '열한', '열두'];
 
 		moon = moonArr[0];
-
 		if (time_H.toString().length == 2) moon = moonArr[1];
 		if (time_H == 10 || time_H == 11) moon = moonArr[0];
 
-		if (time_H > 12) time_H = 1;
+		if(time_H>24) time_H = time_H -24;
+		if (time_H > 12) time_H = time_H - 12;
 
 		time_H == 0 ? time_H = timeArr[11] : time_H = timeArr[time_H - 1];
 
