@@ -65,6 +65,7 @@
 console.log("##################");
 console.log(this.events);
     this.events.forEach(function(ev) {
+      
 
 
     console.log(ev);
@@ -188,7 +189,8 @@ console.log(this.events);
       }, []);
 
       todaysEvents.forEach(function(ev) {
-        if(ev.sc_gb == "001") var s_color = "orange";
+      //  if(ev.sc_gb == "001") var s_color = "orange";
+         s_color = colorMatch(ev.sc_gb);
         var evSpan = createElement('span', s_color);
         element.appendChild(evSpan);
       });
@@ -265,7 +267,8 @@ console.log(this.events);
     var wrapper = createElement('div', 'events in' + (currentWrapper ? ' new' : ''));
 
     events.forEach(function(ev) {
-      if(ev.sc_gb == "001") var s_color = "orange";
+     // if(ev.sc_gb == "001") var s_color = "orange";
+      s_color = colorMatch(ev.sc_gb);
      // console.log(ev);
       var div = createElement('div', 'event');
       var square = createElement('div', 'event-category ' + s_color);
@@ -308,6 +311,15 @@ console.log(this.events);
   }
 
 
+  function colorMatch(gb){
+    //001,002,003,004
+    var idx = gb.substring(2,3);
+    console.log(idx);
+    var colorArr = ['yellow', 'green', 'orange', 'blue'];
+    return colorArr[(idx-1)*1];
+  };
+
+
   Calendar.prototype.nextMonth = function() {
     this.current.add('months', 1);
     this.next = true;
@@ -341,8 +353,10 @@ console.log(this.events);
   var data;
   current_month = current_month + 1;
   $.get('/schedule/selectSchedule?month=' + current_month, function (db_data) {
-    console.log(db_data);
-    data = db_data;
+     console.log(db_data);
+     data = db_data;
+     
+
      var calendar = new Calendar('#calendar', data);
 	});
   /*
