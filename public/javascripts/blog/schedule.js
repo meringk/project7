@@ -51,14 +51,25 @@
 
   Calendar.prototype.drawMonth = function() {
     var self = this;
-    console.log(self.current.month()+1);
+    console.log(self.current.month()+1)
+
+  //  $('.header')[0].append(this.events)
+
     //월을 다시 새로 그릴때 그 월에 해당하는 DB를 불러온다.
+    // var new_data = [
+    //     { eventName: 'CHRISTMAS', calendar: 'Work', color: 'orange' , date: '2016-1-1'},
+    //     { eventName: 'Interview - Jr. Web Developer', calendar: 'Work', color: 'green', date: '2016-1-2' },
+    //     { eventName: 'Demo New App to the Board', calendar: 'Work', color: 'yellow', date: '2016-1-3' },
+    //  ];
+  $('#footer')[0].innerHTML="";
 
     this.events.forEach(function(ev) {
+  //    console.log(ev);
   //    console.log(Math.random() * (29 - 1) + 1)
   //    console.log(self.current.clone().date(10));
-        var ev_date = moment(ev.date);
-        ev.date = ev_date;
+      var ev_date = moment(ev.date);
+      ev.date = ev_date;
+       $('#footer')[0].append(ev_date.month() + "/"+ev_date.date()+" || ");
     });
     
     
@@ -166,7 +177,8 @@
     if(day.month() === this.current.month()) {
       var todaysEvents = this.events.reduce(function(memo, ev) {
 
-        if(ev.date.isSame(day, 'day')) {
+        if(ev.date.isSame(day, 'day') && ev.date.isSame(day, 'month')) {
+          console.log("DAYSAME")
           memo.push(ev);
         }
         return memo;
@@ -183,7 +195,7 @@
     classes = ['day'];
     if(day.month() !== this.current.month()) {
       classes.push('other');
-    } else if (today.isSame(day, 'day')) {
+    } else if (today.isSame(day, 'day')  && today.isSame(day, 'month')) {
       classes.push('today');
     }
     return classes.join(' ');
@@ -232,7 +244,7 @@
     }
 
     var todaysEvents = this.events.reduce(function(memo, ev) {
-      if(ev.date.isSame(day, 'day') ) {
+      if(ev.date.isSame(day, 'day') && ev.date.isSame(day, 'month') ) {
         memo.push(ev);
       }
       return memo;
@@ -329,14 +341,31 @@
 
         { eventName: '신정', calendar: 'Work', color: 'blue' , date: '2017-1-1'},
         { eventName: '여행적금3만원', calendar: 'Work', color: 'green', date: '2017-1-4' },
-        { eventName: '프라임무비팩해지하기', calendar: 'Work', color: 'yellow', date: '2017-1-19' }
+        { eventName: '프라임무비팩해지하기', calendar: 'Work', color: 'yellow', date: '2017-1-19' },
+
+    /*{ eventName: 'Dinner w/ Marketing', calendar: 'Work', color: 'orange' },
+
+    { eventName: 'Game vs Portalnd', calendar: 'Sports', color: 'blue' },
+    { eventName: 'Game vs Houston', calendar: 'Sports', color: 'blue' },
+    { eventName: 'Game vs Denver', calendar: 'Sports', color: 'blue' },
+    { eventName: 'Game vs San Degio', calendar: 'Sports', color: 'blue' },
+
+    { eventName: 'School Play', calendar: 'Kids', color: 'yellow' },
+    { eventName: 'Parent/Teacher Conference', calendar: 'Kids', color: 'yellow' },
+    { eventName: 'Pick up from Soccer Practice', calendar: 'Kids', color: 'yellow' },
+    { eventName: 'Ice Cream Night', calendar: 'Kids', color: 'yellow' },
+
+    { eventName: 'Free Tamale Night', calendar: 'Other', color: 'green' },
+    { eventName: 'Bowling Team', calendar: 'Other', color: 'green' },
+    { eventName: 'Teach Kids to Code', calendar: 'Other', color: 'green' },
+    { eventName: 'Startup Weekend', calendar: 'Other', color: 'green'}*/
   ];
 
   
 
   function addDate(ev) {
-   // console.log("Dd");
-   // console.log(ev);
+    console.log("Dd");
+    console.log(ev);
   }
 
   var calendar = new Calendar('#calendar', data);
