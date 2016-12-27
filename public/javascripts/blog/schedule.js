@@ -256,7 +256,7 @@ console.log(this.events);
 
     this.renderEvents(todaysEvents, details);
 
-    arrow.style.left = el.offsetLeft - el.parentNode.offsetLeft + 27 + 'px';
+    arrow.style.left = el.offsetLeft - el.parentNode.offsetLeft + 11 + 'px';
   }
 
   Calendar.prototype.renderEvents = function(events, ele) {
