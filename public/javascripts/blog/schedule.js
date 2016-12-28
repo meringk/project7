@@ -251,7 +251,7 @@ console.log(this.events);
      
     
       plusIcon.day = day
-      plusIcon.onclick = insertSchedule;
+      plusIcon.onclick = showBigBox;
 
       //Create the event wrapper
       details.appendChild(arrow);
@@ -355,40 +355,17 @@ console.log(this.events);
     return colorArr[(idx-1)*1];
   };
 
-  function insertSchedule(e){
 
-     var pX = e.pageX,
-         pY = e.pageY,
-         oX = parseInt($(this).offset().left),
-         oY = parseInt($(this).offset().top);
-
-
-    console.log(oX, oY);
-
-    $('.overBox').css("left", oX-300);
-    $('.overBox').css("top", oY-900);
-
-
-
+  function showBigBox(){
     var dateFm = this.day;
-    console.dir(this);
     this.parentNode.className = this.parentNode.className + " active";
     console.dir(this.parentNode);
-    ///$('.overBox').addClass('active');
+    $('.overBox').addClass('active');
+  }
 
-
-      $('.overBox').addClass('active').animate({
-        "width": "70%",
-        "height": "70%"
-      });
-
-
-    //this.addClass('active');
-
- //   $('.overBox').css('display', 'block');
-    
-
-
+  cancel = function(){
+    var dateFm = this.day;
+    console.dir(dateFm);
     /*  $.get('http://jsonip.com/', function (r) {
 				ip = r.ip
 				$.ajax({
@@ -406,11 +383,15 @@ console.log(this.events);
 			});*/
   }
 
+  $('.overBox .close').click(function(){
+    $('.overBox').removeClass("active");
+  });
 
 
 }();
 
 !function() {
+  
 
   //맨처음에는 현재 월에 해당하는 데이터만 싹 불러온다.
   var current_month = moment().month();
