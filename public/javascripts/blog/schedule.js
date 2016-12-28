@@ -363,10 +363,10 @@ console.log(this.events);
     $('.overBox').addClass('active');
   }
 
-  cancel = function(){
+  /*cancel = function(){
     var dateFm = this.day;
     console.dir(dateFm);
-    /*  $.get('http://jsonip.com/', function (r) {
+      $.get('http://jsonip.com/', function (r) {
 				ip = r.ip
 				$.ajax({
 					url: '/guestSubmit',
@@ -380,8 +380,8 @@ console.log(this.events);
 						$form.find("input[name='guestContent']").val("");
 					}
 				});
-			});*/
-  }
+			});
+  }*/
 
   $('.overBox .close').click(function(){
     $('.overBox').removeClass("active");
