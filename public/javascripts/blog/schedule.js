@@ -169,10 +169,12 @@ console.log(this.events);
     var events = createElement('div', 'day-events');
     this.drawEvents(day, events);
 
-    outer.appendChild(name);
     outer.appendChild(number);
     outer.appendChild(events);
     this.week.appendChild(outer);
+    if(this.week.previousElementSibling == null ){
+      outer.prepend(name);
+    }
   }
 
 
@@ -243,10 +245,19 @@ console.log(this.events);
       //Create the arrow
       var arrow = createElement('div', 'arrow');
 
-      //Create the event wrapper
+      //Create the arrow
+      var plusBtn = createElement('div', 'plus');
+      var plusIcon = createElement('span', 'icon fa-calendar-plus-o' );
+     
+    
+      plusIcon.day = day
+      plusIcon.onclick = insertSchedule;
 
+      //Create the event wrapper
       details.appendChild(arrow);
+      details.appendChild(plusBtn);
       el.parentNode.appendChild(details);
+      plusBtn.appendChild(plusIcon);
     }
 
     var todaysEvents = this.events.reduce(function(memo, ev) {
@@ -310,16 +321,6 @@ console.log(this.events);
     }
   }
 
-
-  function colorMatch(gb){
-    //001,002,003,004
-    var idx = gb.substring(2,3);
-    console.log(idx);
-    var colorArr = ['yellow', 'green', 'orange', 'blue'];
-    return colorArr[(idx-1)*1];
-  };
-
-
   Calendar.prototype.nextMonth = function() {
     this.current.add('months', 1);
     this.next = true;
@@ -344,6 +345,62 @@ console.log(this.events);
     }
     return ele;
   }
+
+  // DB의 GB값에 맞게 색상을 정한다.
+  function colorMatch(gb){
+    //001,002,003,004
+    var idx = gb.substring(2,3);
+    console.log(idx);
+    var colorArr = ['yellow', 'green', 'orange', 'blue'];
+    return colorArr[(idx-1)*1];
+  };
+
+  function insertSchedule(e){
+
+     var pX = e.pageX,
+         pY = e.pageY,
+         oX = parseInt($(this).offset().left),
+         oY = parseInt($(this).offset().top);
+
+
+    var dateFm = this.day;
+    console.dir(this);
+    this.parentNode.className = this.parentNode.className + " active";
+    console.dir(this.parentNode);
+    ///$('.overBox').addClass('active');
+
+
+      $('.overBox').addClass('active').animate({
+        "width": "70%",
+        "height": "70%"
+      });
+
+
+    //this.addClass('active');
+
+ //   $('.overBox').css('display', 'block');
+    
+
+
+    /*  $.get('http://jsonip.com/', function (r) {
+				ip = r.ip
+				$.ajax({
+					url: '/guestSubmit',
+					type: 'post',
+					dataType: 'json',
+					data: { ip: ip, message: message },
+					success: function (data) {
+						$('.guestResDiv').prepend('<div>  <span class="icon fa-paw "/>   ' + message
+							+ ' <span style=\'font-size:12px\'> -' + fullDay + ' '
+							+ calTime.moon + ' ' + calTime.time_H + '시</span></div>');
+						$form.find("input[name='guestContent']").val("");
+					}
+				});
+			});*/
+  }
+
+
+
 }();
 
 !function() {
