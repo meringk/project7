@@ -71,7 +71,7 @@
   //    console.log(self.current.clone().date(10));
       var ev_date = moment(ev.sc_date);
       ev.sc_date = ev_date;
-       $('.inner').append(ev_date.month() + "/"+ev_date.date()+" || ");
+       //$('.inner').append(ev_date.month() + "/"+ev_date.date()+" || ");
     });
     
     
@@ -148,6 +148,7 @@
     var self = this;
     this.getWeek(day);
 
+
     //Outer Day
     var outer = createElement('div', this.getDayClass(day));
 
@@ -170,7 +171,9 @@
     outer.appendChild(number);
     outer.appendChild(events);
     this.week.appendChild(outer);
+    
     if(this.week.previousElementSibling == null ){
+      $('.inner').append("previous");
       outer.prepend(name);
     }
   }
