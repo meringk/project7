@@ -185,7 +185,6 @@
 
         if(ev.sc_date.isSame(day, 'day') && ev.sc_date.isSame(day, 'month')) {
           console.log("DAYSAME")
-           $('.inner').append("DAYSAME");
           memo.push(ev);
         }
         return memo;
@@ -349,6 +348,7 @@
 
   // DB의 GB값에 맞게 색상을 정한다.
   function colorMatch(gb){
+      alert("colorMatch")
     //001,002,003,004
     var idx = gb.substring(2,3);
     console.log(idx);
@@ -358,12 +358,11 @@
 
 
   function showBigBox(){
-    $('.inner').append("SHOWBIGBOX");
+    alert("ㄴshowBigBox")
     var dateFm = this.day;
     this.parentNode.className = this.parentNode.className + " active";
     console.dir(this.parentNode);
     $('.overBox').addClass('active');
-     $('.inner').append("overBox");
   }
 
   /*cancel = function(){
