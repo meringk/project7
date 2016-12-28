@@ -76,6 +76,7 @@
     
     
     if(this.month) {
+      alert("this.month")
       this.oldMonth = this.month;
       this.oldMonth.className = 'month out ' + (self.next ? 'next' : 'prev');
       this.oldMonth.addEventListener('webkitAnimationEnd', function() {
