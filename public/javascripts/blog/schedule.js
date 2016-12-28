@@ -173,7 +173,6 @@
     this.week.appendChild(outer);
     
     if(this.week.previousElementSibling == null ){
-      $('.inner').append("previous");
       outer.prepend(name);
     }
   }
@@ -186,6 +185,7 @@
 
         if(ev.sc_date.isSame(day, 'day') && ev.sc_date.isSame(day, 'month')) {
           console.log("DAYSAME")
+           $('.inner').append("DAYSAME");
           memo.push(ev);
         }
         return memo;
@@ -358,10 +358,12 @@
 
 
   function showBigBox(){
+    $('.inner').append("SHOWBIGBOX");
     var dateFm = this.day;
     this.parentNode.className = this.parentNode.className + " active";
     console.dir(this.parentNode);
     $('.overBox').addClass('active');
+     $('.inner').append("overBox");
   }
 
   /*cancel = function(){
