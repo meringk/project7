@@ -363,6 +363,13 @@ console.log(this.events);
          oY = parseInt($(this).offset().top);
 
 
+    console.log(oX, oY);
+
+    $('.overBox').css("left", oX-300);
+    $('.overBox').css("top", oY-900);
+
+
+
     var dateFm = this.day;
     console.dir(this);
     this.parentNode.className = this.parentNode.className + " active";
