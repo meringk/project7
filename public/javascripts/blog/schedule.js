@@ -401,6 +401,10 @@
     $('.back').removeClass("on");
   });
 
+  $('.overBox .cancel').click(function () {
+    $('.overBox').removeClass("active");
+    $('.back').removeClass("on");
+  });
 
 } ();
 
