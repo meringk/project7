@@ -373,27 +373,32 @@
     //해당월
     var month = dateFm.format('MM');
 
-    $.ajax({
-      url: '/schedule/insertSchedule',
-      type: 'post',
-      dataType: 'json',
-      data: { eventNm: eventNm, eventDate: eventDate, eventRegId: eventRegId, eventNm: eventNm, month: month },
-      success: function (data1) {
-        var data;
-        $.get('/schedule/selectSchedule?month=' + month, function (db_data) {
-          $('#sc_name').val("");
-          $('#sc_content').val("");
-          $('.overBox').removeClass("active");
-          $('.back').removeClass("on");
+    if(eventRegId == "" || eventNm == ""){
+      alert("빈칸을 입력하시오.");
+    }else{
+      $.ajax({
+        url: '/schedule/insertSchedule',
+        type: 'post',
+        dataType: 'json',
+        data: { eventNm: eventNm, eventDate: eventDate, eventRegId: eventRegId, eventNm: eventNm, month: month },
+        success: function (data1) {
+          var data;
+          $.get('/schedule/selectSchedule?month=' + month, function (db_data) {
+            $('#sc_name').val("");
+            $('#sc_content').val("");
+            $('.overBox').removeClass("active");
+            $('.back').removeClass("on");
 
-          console.log(dateFm)
-          data = db_data;
-          l.current =   moment(dateFm.format('YYYY-MM-01'));
-          l.events = data
-          l.draw();
-        });
-      }
-    });
+            console.log(dateFm)
+            data = db_data;
+            l.current =   moment(dateFm.format('YYYY-MM-01'));
+            l.events = data
+            l.draw();
+          });
+        }
+      });
+    }
+    
   };
 
   $('.overBox .close').click(function () {

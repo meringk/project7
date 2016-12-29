@@ -181,6 +181,10 @@ body {
   right:5%;
 }
 
+.scTitle{
+  font-weight: bold;
+}
+
 .day {
   /*padding:10px;*/
   display: inline-block;
