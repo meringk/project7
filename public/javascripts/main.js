@@ -30,8 +30,7 @@ $(document).ready(function () {
 
 		// Get some values from elements on the page:
 		var $form = $(this),
-			message = $form.find("input[name='guestContent']").val(),
-			ip = "";
+			message = $form.find("input[name='guestContent']").val();
 		var date = new Date();
 		var d = date.getDate(),
 			m = date.getMonth(),
@@ -47,21 +46,20 @@ $(document).ready(function () {
 		if (message == "") {
 			alert("한마디 적어주세여");
 		} else {
-			$.get('http://jsonip.com/', function (r) {
-				ip = r.ip
-				$.ajax({
-					url: '/guestSubmit',
-					type: 'post',
-					dataType: 'json',
-					data: { ip: ip, message: message },
-					success: function (data) {
-						$('.guestResDiv').prepend('<div>  <span class="icon fa-paw "/>   ' + message
-							+ ' <span style=\'font-size:12px\'> -' + fullDay + ' '
-							+ calTime.moon + ' ' + calTime.time_H + '시</span></div>');
-						$form.find("input[name='guestContent']").val("");
-					}
-				});
+			
+			$.ajax({
+				url: '/guestSubmit',
+				type: 'post',
+				dataType: 'json',
+				data: { ip: '', message: message },
+				success: function (data) {
+					$('.guestResDiv').prepend('<div>  <span class="icon fa-paw "/>   ' + message
+						+ ' <span style=\'font-size:12px\'> -' + fullDay + ' '
+						+ calTime.moon + ' ' + calTime.time_H + '시</span></div>');
+					$form.find("input[name='guestContent']").val("");
+				}
 			});
+		
 		};
 	});
 
