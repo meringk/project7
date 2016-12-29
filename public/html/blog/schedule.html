@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="../../stylesheets/schedule.css">
 	</head>
 	<body class="landing">
+		
 		<div id="page-wrapper">
 
 			<div id="headContent"></div>
@@ -23,15 +24,13 @@
 				</div>
 				<div id="blogHead"></div>
 			</header>
-			
-
 		</div>
 		<div style="height:50px">
 
 
 		</div>
 		<div id="calendar">
-			
+			<div class="back"></div>
 			<div class="overBox">
 				<div class="close"></div>
 				<div class="scTitle">ADD SCHEDULE</div>
@@ -41,8 +40,8 @@
 				</div>
 				<div>
 					<ul class="actions fit" style="margin-top:20px">
-						<li><a class="button special">준비중</a></li>
-						<li><a class="button cancel">준비중</a></li>
+						<li><a class="button special" href="javascript:scInsert();">저장</a></li>
+						<li><a class="button cancel" id="scClose">취소</a></li>
 					</ul>
 				</div>
 			</div>

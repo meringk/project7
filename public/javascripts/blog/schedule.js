@@ -1,22 +1,24 @@
-!function() {
+!function () {
 
   var today = moment();
 
+  var l = "";
   function Calendar(selector, events) {
+    l = this;
     this.el = document.querySelector(selector);
     this.events = events;
     this.current = moment().date(1);
     this.draw();
     var current = document.querySelector('.today');
-    if(current) {
+    if (current) {
       var self = this;
-      window.setTimeout(function() {
+      window.setTimeout(function () {
         self.openDay(current);
       }, 500);
     }
   }
 
-  Calendar.prototype.draw = function() {
+  Calendar.prototype.draw = function () {
     //Create Header
     this.drawHeader();
 
@@ -24,9 +26,9 @@
     this.drawMonth();
   }
 
-  Calendar.prototype.drawHeader = function() {
+  Calendar.prototype.drawHeader = function () {
     var self = this;
-    if(!this.header) {
+    if (!this.header) {
       //Create the header elements
       this.header = createElement('div', 'header');
       this.header.className = 'header';
@@ -34,13 +36,13 @@
       this.title = createElement('h1');
 
       var right = createElement('div', 'right');
-      right.addEventListener('click', function() { self.nextMonth(); });
+      right.addEventListener('click', function () { self.nextMonth(); });
 
       var left = createElement('div', 'left');
-      left.addEventListener('click', function() { self.prevMonth(); });
+      left.addEventListener('click', function () { self.prevMonth(); });
 
       //Append the Elements
-      this.header.appendChild(this.title); 
+      this.header.appendChild(this.title);
       this.header.appendChild(right);
       this.header.appendChild(left);
       this.el.appendChild(this.header);
@@ -49,102 +51,98 @@
     this.title.innerHTML = this.current.format('MMM YYYY');
   }
 
-  Calendar.prototype.drawMonth = function() {
+  Calendar.prototype.drawMonth = function () {
     var self = this;
 
- //   $('.inner')[0].innerHTML="";
-
-    //월을 다시 새로 그릴때 그 월에 해당하는 DB를 불러온다.
-    // var new_data = [
-    //     { eventName: 'CHRISTMAS', calendar: 'Work', color: 'orange' , date: '2016-1-1'},
-    //     { eventName: 'Interview - Jr. Web Developer', calendar: 'Work', color: 'green', date: '2016-1-2' },
-    //     { eventName: 'Demo New App to the Board', calendar: 'Work', color: 'yellow', date: '2016-1-3' },
-    //  ];
-  //$('#footer')[0].innerHTML="";
-
-    this.events.forEach(function(ev) {
-      
-
-
-      console.log(ev);
-  //    console.log(Math.random() * (29 - 1) + 1)
-  //    console.log(self.current.clone().date(10));
-      var ev_date = moment(ev.sc_date);
-      ev.sc_date = ev_date;
-       //$('.inner').append(ev_date.month() + "/"+ev_date.date()+" || ");
-    });
-    
-    
-    if(this.month) {
-      this.oldMonth = this.month;
-      this.oldMonth.className = 'month out ' + (self.next ? 'next' : 'prev');
-      this.oldMonth.addEventListener('webkitAnimationEnd', function() {
-        self.oldMonth.parentNode.removeChild(self.oldMonth);
-        self.month = createElement('div', 'month');
-        self.backFill();
-        self.currentMonth();
-        self.fowardFill();
-        self.el.appendChild(self.month);
-        window.setTimeout(function() {
-          self.month.className = 'month in ' + (self.next ? 'next' : 'prev');
-        }, 16);
+    if (this.month) {
+      var month = this.current.month() + 1 ;
+      month = month + "";
+      if(month.length==1){
+        month = "0" + month;
+      }
+      $.get('/schedule/selectSchedule?month=' + month +'' , function (db_data) {
+        l.events = db_data;
+        l.events.forEach(function (ev) {
+          var ev_date = moment(ev.sc_date);
+          ev.sc_date = ev_date;
+        });
+        l.oldMonth = l.month;
+        l.oldMonth.className = 'month out ' + (self.next ? 'next' : 'prev');
+        l.oldMonth.addEventListener('webkitAnimationEnd', function () {
+          self.oldMonth.parentNode.removeChild(self.oldMonth);
+          self.month = createElement('div', 'month');
+          self.backFill();
+          self.currentMonth();
+          self.fowardFill();
+          self.el.appendChild(self.month);
+          window.setTimeout(function () {
+            self.month.className = 'month in ' + (self.next ? 'next' : 'prev');
+          }, 16);
+        });
       });
+
     } else {
-        this.month = createElement('div', 'month');
-        this.el.appendChild(this.month);
-        this.backFill();
-        this.currentMonth();
-        this.fowardFill();
-        this.month.className = 'month new';
+
+      this.events.forEach(function (ev) {
+        var ev_date = moment(ev.sc_date);
+        ev.sc_date = ev_date;
+      });
+
+      this.month = createElement('div', 'month');
+      this.el.appendChild(this.month);
+      this.backFill();
+      this.currentMonth();
+      this.fowardFill();
+      this.month.className = 'month new';
     }
   }
 
   //달력의 앞부분 빈공간
-  Calendar.prototype.backFill = function() {
+  Calendar.prototype.backFill = function () {
     var clone = this.current.clone();
     var dayOfWeek = clone.day();
 
-    if(!dayOfWeek) { return; }
+    if (!dayOfWeek) { return; }
 
-    clone.subtract('days', dayOfWeek+1);
+    clone.subtract('days', dayOfWeek + 1);
 
-    for(var i = dayOfWeek; i > 0 ; i--) {
+    for (var i = dayOfWeek; i > 0; i--) {
       this.drawDay(clone.add('days', 1));
     }
   }
   //달력의 뒷부분 빈공간
-  Calendar.prototype.fowardFill = function() {
+  Calendar.prototype.fowardFill = function () {
     var clone = this.current.clone().add('months', 1).subtract('days', 1);
     var dayOfWeek = clone.day();
 
-    if(dayOfWeek === 6) { return; }
+    if (dayOfWeek === 6) { return; }
 
-    for(var i = dayOfWeek; i < 6 ; i++) {
+    for (var i = dayOfWeek; i < 6; i++) {
       this.drawDay(clone.add('days', 1));
     }
   }
 
   //현재 해당월에 해당하는 달력그리다.
-  Calendar.prototype.currentMonth = function() {
+  Calendar.prototype.currentMonth = function () {
     var clone = this.current.clone();
-    
 
-    while(clone.month() === this.current.month()) {
+
+    while (clone.month() === this.current.month()) {
       this.drawDay(clone);
       clone.add('days', 1);
     }
   }
 
   // ' 주 ' 단위 달력 그리기
-  Calendar.prototype.getWeek = function(day) {
-    if(!this.week || day.day() === 0) {
+  Calendar.prototype.getWeek = function (day) {
+    if (!this.week || day.day() === 0) {
       this.week = createElement('div', 'week');
       this.month.appendChild(this.week);
     }
   }
 
   // ' 일 ' 단위 달력 그리기
-  Calendar.prototype.drawDay = function(day) {
+  Calendar.prototype.drawDay = function (day) {
     var self = this;
     this.getWeek(day);
 
@@ -153,7 +151,7 @@
     var outer = createElement('div', this.getDayClass(day));
 
     //이벤트여는창
-    outer.addEventListener('click', function() {
+    outer.addEventListener('click', function () {
       self.openDay(this);
     });
 
@@ -163,7 +161,6 @@
     //Day Number (일)
     var number = createElement('div', 'day-number', day.format('DD'));
 
-
     //Events (이벤트)
     var events = createElement('div', 'day-events');
     this.drawEvents(day, events);
@@ -171,45 +168,44 @@
     outer.appendChild(number);
     outer.appendChild(events);
     this.week.appendChild(outer);
-    
-    if(this.week.previousElementSibling == null ){
+
+    if (this.week.previousElementSibling == null) {
       $(outer).prepend(name);
     }
   }
 
 
   //실제로 이벤트를 적는 함수
-  Calendar.prototype.drawEvents = function(day, element) {
-    if(day.month() === this.current.month()) {
-      var todaysEvents = this.events.reduce(function(memo, ev) {
+  Calendar.prototype.drawEvents = function (day, element) {
+    if (day.month() === this.current.month()) {
+      var todaysEvents = this.events.reduce(function (memo, ev) {
 
-        if(ev.sc_date.isSame(day, 'day') && ev.sc_date.isSame(day, 'month')) {
-          console.log("DAYSAME")
+        if (ev.sc_date.isSame(day, 'day') && ev.sc_date.isSame(day, 'month')) {
           memo.push(ev);
         }
         return memo;
       }, []);
 
-      todaysEvents.forEach(function(ev) {
-      //  if(ev.sc_gb == "001") var s_color = "orange";
-         s_color = colorMatch(ev.sc_gb);
+      todaysEvents.forEach(function (ev) {
+        //  if(ev.sc_gb == "001") var s_color = "orange";
+        s_color = colorMatch(ev.sc_gb);
         var evSpan = createElement('span', s_color);
         element.appendChild(evSpan);
       });
     }
   }
 
-  Calendar.prototype.getDayClass = function(day) {
+  Calendar.prototype.getDayClass = function (day) {
     classes = ['day'];
-    if(day.month() !== this.current.month()) {
+    if (day.month() !== this.current.month()) {
       classes.push('other');
-    } else if (today.isSame(day, 'day')  && today.isSame(day, 'month')) {
+    } else if (today.isSame(day, 'day') && today.isSame(day, 'month')) {
       classes.push('today');
     }
     return classes.join(' ');
   }
 
-  Calendar.prototype.openDay = function(el) {
+  Calendar.prototype.openDay = function (el) {
     var details, arrow;
     var dayNumber = +el.querySelectorAll('.day-number')[0].innerText || +el.querySelectorAll('.day-number')[0].textContent;
     var day = this.current.clone().date(dayNumber);
@@ -217,25 +213,30 @@
     var currentOpened = document.querySelector('.details');
 
     //Check to see if there is an open detais box on the current row
-    if(currentOpened && currentOpened.parentNode === el.parentNode) {
+    if (currentOpened && currentOpened.parentNode === el.parentNode) {
       details = currentOpened;
       arrow = document.querySelector('.arrow');
     } else {
       //Close the open events on differnt week row
       //currentOpened && currentOpened.parentNode.removeChild(currentOpened);
-      if(currentOpened) {
-        currentOpened.addEventListener('webkitAnimationEnd', function() {
+      if (currentOpened) {
+
+        //currentOpened.removeChild(currentOpened.childNodes[1]);
+
+        currentOpened.addEventListener('webkitAnimationEnd', function () {
           currentOpened.parentNode.removeChild(currentOpened);
         });
-        currentOpened.addEventListener('oanimationend', function() {
+        currentOpened.addEventListener('oanimationend', function () {
           currentOpened.parentNode.removeChild(currentOpened);
         });
-        currentOpened.addEventListener('msAnimationEnd', function() {
+        currentOpened.addEventListener('msAnimationEnd', function () {
           currentOpened.parentNode.removeChild(currentOpened);
         });
-        currentOpened.addEventListener('animationend', function() {
+        currentOpened.addEventListener('animationend', function () {
           currentOpened.parentNode.removeChild(currentOpened);
         });
+
+
         currentOpened.className = 'details out';
       }
 
@@ -247,9 +248,9 @@
 
       //Create the arrow
       var plusBtn = createElement('div', 'plus');
-      var plusIcon = createElement('span', 'icon fa-calendar-plus-o' );
-     
-    
+      var plusIcon = createElement('span', 'icon fa-calendar-plus-o');
+
+
       plusIcon.day = day
       plusIcon.onclick = showBigBox;
 
@@ -260,8 +261,8 @@
       plusBtn.appendChild(plusIcon);
     }
 
-    var todaysEvents = this.events.reduce(function(memo, ev) {
-      if(ev.sc_date.isSame(day, 'day') && ev.sc_date.isSame(day, 'month') ) {
+    var todaysEvents = this.events.reduce(function (memo, ev) {
+      if (ev.sc_date.isSame(day, 'day') && ev.sc_date.isSame(day, 'month')) {
         memo.push(ev);
       }
       return memo;
@@ -272,15 +273,14 @@
     arrow.style.left = el.offsetLeft - el.parentNode.offsetLeft + 11 + 'px';
   }
 
-  Calendar.prototype.renderEvents = function(events, ele) {
+  Calendar.prototype.renderEvents = function (events, ele) {
     //Remove any events in the current details element
     var currentWrapper = ele.querySelector('.events');
     var wrapper = createElement('div', 'events in' + (currentWrapper ? ' new' : ''));
 
-    events.forEach(function(ev) {
-     // if(ev.sc_gb == "001") var s_color = "orange";
+    events.forEach(function (ev) {
+      // if(ev.sc_gb == "001") var s_color = "orange";
       s_color = colorMatch(ev.sc_gb);
-     // console.log(ev);
       var div = createElement('div', 'event');
       var square = createElement('div', 'event-category ' + s_color);
       var span = createElement('span', '', ev.sc_event_name);
@@ -290,7 +290,7 @@
       wrapper.appendChild(div);
     });
 
-    if(!events.length) {
+    if (!events.length) {
       var div = createElement('div', 'event empty');
       var span = createElement('span', '', 'No Events');
 
@@ -298,21 +298,21 @@
       wrapper.appendChild(div);
     }
 
-    if(currentWrapper) {
+    if (currentWrapper) {
       currentWrapper.className = 'events out';
-      currentWrapper.addEventListener('webkitAnimationEnd', function() {
+      currentWrapper.addEventListener('webkitAnimationEnd', function () {
         currentWrapper.parentNode.removeChild(currentWrapper);
         ele.appendChild(wrapper);
       });
-      currentWrapper.addEventListener('oanimationend', function() {
+      currentWrapper.addEventListener('oanimationend', function () {
         currentWrapper.parentNode.removeChild(currentWrapper);
         ele.appendChild(wrapper);
       });
-      currentWrapper.addEventListener('msAnimationEnd', function() {
+      currentWrapper.addEventListener('msAnimationEnd', function () {
         currentWrapper.parentNode.removeChild(currentWrapper);
         ele.appendChild(wrapper);
       });
-      currentWrapper.addEventListener('animationend', function() {
+      currentWrapper.addEventListener('animationend', function () {
         currentWrapper.parentNode.removeChild(currentWrapper);
         ele.appendChild(wrapper);
       });
@@ -321,13 +321,13 @@
     }
   }
 
-  Calendar.prototype.nextMonth = function() {
+  Calendar.prototype.nextMonth = function () {
     this.current.add('months', 1);
     this.next = true;
     this.draw();
   }
 
-  Calendar.prototype.prevMonth = function() {
+  Calendar.prototype.prevMonth = function () {
     this.current.subtract('months', 1);
     this.next = false;
     this.draw();
@@ -337,78 +337,80 @@
 
   function createElement(tagName, className, innerText) {
     var ele = document.createElement(tagName);
-    if(className) {
+    if (className) {
       ele.className = className;
     }
-    if(innerText) {
+    if (innerText) {
       ele.innderText = ele.textContent = innerText;
     }
     return ele;
   }
 
   // DB의 GB값에 맞게 색상을 정한다.
-  function colorMatch(gb){
+  function colorMatch(gb) {
     //001,002,003,004
-    var idx = gb.substring(2,3);
-    console.log(idx);
+    var idx = gb.substring(2, 3);
     var colorArr = ['yellow', 'green', 'orange', 'blue'];
-    return colorArr[(idx-1)*1];
+    return colorArr[(idx - 1) * 1];
   };
 
-
-  function showBigBox(){
-    var dateFm = this.day;
+  var dateFm = "";
+  function showBigBox() {
+    dateFm = this.day
     this.parentNode.className = this.parentNode.className + " active";
     console.dir(this.parentNode);
     $('.overBox').addClass('active');
+    $('.back').toggleClass("on");
   }
 
-  /*cancel = function(){
-    var dateFm = this.day;
-    console.dir(dateFm);
-      $.get('http://jsonip.com/', function (r) {
-				ip = r.ip
-				$.ajax({
-					url: '/guestSubmit',
-					type: 'post',
-					dataType: 'json',
-					data: { ip: ip, message: message },
-					success: function (data) {
-						$('.guestResDiv').prepend('<div>  <span class="icon fa-paw "/>   ' + message
-							+ ' <span style=\'font-size:12px\'> -' + fullDay + ' '
-							+ calTime.moon + ' ' + calTime.time_H + '시</span></div>');
-						$form.find("input[name='guestContent']").val("");
-					}
-				});
-			});
-  }*/
+  scInsert = function () {
 
-  $('.overBox .close').click(function(){
+    //이벤트이름
+    var eventRegId = $('#sc_name').val();
+    var eventNm = $('#sc_content').val();
+    //이벤트날짜
+    var eventDate = dateFm.format('YYYY-MM-DD');
+    //해당월
+    var month = dateFm.format('MM');
+
+    $.ajax({
+      url: '/schedule/insertSchedule',
+      type: 'post',
+      dataType: 'json',
+      data: { eventNm: eventNm, eventDate: eventDate, eventRegId: eventRegId, eventNm: eventNm, month: month },
+      success: function (data1) {
+        var data;
+        $.get('/schedule/selectSchedule?month=' + month, function (db_data) {
+          $('#sc_name').val("");
+          $('#sc_content').val("");
+          $('.overBox').removeClass("active");
+          $('.back').removeClass("on");
+
+          console.log(dateFm)
+          data = db_data;
+          l.current =   moment(dateFm.format('YYYY-MM-01'));
+          l.events = data
+          l.draw();
+        });
+      }
+    });
+  };
+
+  $('.overBox .close').click(function () {
     $('.overBox').removeClass("active");
+    $('.back').removeClass("on");
   });
 
 
-}();
+} ();
 
-!function() {
-  
-
+!function () {
   //맨처음에는 현재 월에 해당하는 데이터만 싹 불러온다.
   var current_month = moment().month();
   var data;
   current_month = current_month + 1;
   $.get('/schedule/selectSchedule?month=' + current_month, function (db_data) {
-     console.log(db_data);
-     data = db_data;
-     
-
-     var calendar = new Calendar('#calendar', data);
-	});
-  
-
-  function addDate(ev) {
-  }
-
- 
-
-}();
+    data = db_data;
+    var calendar = new Calendar('#calendar', data);
+  });
+} ();

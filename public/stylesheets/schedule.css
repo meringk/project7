@@ -16,6 +16,16 @@ body {
  user-select: none;
 }
 
+.back.on{
+  transition: background-color 700ms ease 0s;
+	opacity: 0;
+  width:100%;
+  height:100%;
+  background-color: #000000;
+	position: fixed;
+	z-index:97799;
+}
+
 #calendar {
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
@@ -147,7 +157,7 @@ body {
   bottom:10%;
   right:10%;
   background:rgb(69,72,78);
-  z-index:9998;
+  z-index:9999999;
   padding:5%;
   text-align:center;
   opacity:0;
@@ -249,9 +259,9 @@ body {
 }
 
 .details.out {
-  -webkit-animation: moveToTopFade .5s ease both;
-  -moz-animation: moveToTopFade .5s ease both;
-  animation: moveToTopFade .5s ease both;
+  -webkit-animation: moveToTopFade .8s ease both;
+  -moz-animation: moveToTopFade .8s ease both;
+  animation: moveToTopFade .8s ease both;
 }
 
 .arrow {
@@ -287,11 +297,10 @@ body {
 }
 
 .details.out .events {
-  -webkit-animation: fadeOutShrink .4s ease both;
-  -moz-animation: fadeOutShink .4s ease both;
-  animation: fadeOutShink .4s ease both;
+  -webkit-animation: fadeOutShrink .3s ease both;
+  -moz-animation: fadeOutShink .3s ease both;
+  animation: fadeOutShink .3s ease both;
 }
-
 .events.out {
   -webkit-animation: fadeOut .3s ease both;
   -moz-animation: fadeOut .3s ease both;
