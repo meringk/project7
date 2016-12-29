@@ -62,18 +62,16 @@
     //  ];
   //$('#footer')[0].innerHTML="";
 
-console.log("##################");
-console.log(this.events);
     this.events.forEach(function(ev) {
       
 
 
-    console.log(ev);
+      console.log(ev);
   //    console.log(Math.random() * (29 - 1) + 1)
   //    console.log(self.current.clone().date(10));
       var ev_date = moment(ev.sc_date);
       ev.sc_date = ev_date;
-    //   $('.inner').append(ev_date.month() + "/"+ev_date.date()+" || ");
+       //$('.inner').append(ev_date.month() + "/"+ev_date.date()+" || ");
     });
     
     
@@ -150,6 +148,7 @@ console.log(this.events);
     var self = this;
     this.getWeek(day);
 
+
     //Outer Day
     var outer = createElement('div', this.getDayClass(day));
 
@@ -172,8 +171,9 @@ console.log(this.events);
     outer.appendChild(number);
     outer.appendChild(events);
     this.week.appendChild(outer);
+    
     if(this.week.previousElementSibling == null ){
-      outer.prepend(name);
+      $(outer).prepend(name);
     }
   }
 
@@ -251,7 +251,7 @@ console.log(this.events);
      
     
       plusIcon.day = day
-      plusIcon.onclick = insertSchedule;
+      plusIcon.onclick = showBigBox;
 
       //Create the event wrapper
       details.appendChild(arrow);
@@ -355,34 +355,18 @@ console.log(this.events);
     return colorArr[(idx-1)*1];
   };
 
-  function insertSchedule(e){
 
-     var pX = e.pageX,
-         pY = e.pageY,
-         oX = parseInt($(this).offset().left),
-         oY = parseInt($(this).offset().top);
-
-
+  function showBigBox(){
     var dateFm = this.day;
-    console.dir(this);
     this.parentNode.className = this.parentNode.className + " active";
     console.dir(this.parentNode);
-    ///$('.overBox').addClass('active');
+    $('.overBox').addClass('active');
+  }
 
-
-      $('.overBox').addClass('active').animate({
-        "width": "70%",
-        "height": "70%"
-      });
-
-
-    //this.addClass('active');
-
- //   $('.overBox').css('display', 'block');
-    
-
-
-    /*  $.get('http://jsonip.com/', function (r) {
+  /*cancel = function(){
+    var dateFm = this.day;
+    console.dir(dateFm);
+      $.get('http://jsonip.com/', function (r) {
 				ip = r.ip
 				$.ajax({
 					url: '/guestSubmit',
@@ -396,14 +380,18 @@ console.log(this.events);
 						$form.find("input[name='guestContent']").val("");
 					}
 				});
-			});*/
-  }
+			});
+  }*/
 
+  $('.overBox .close').click(function(){
+    $('.overBox').removeClass("active");
+  });
 
 
 }();
 
 !function() {
+  
 
   //맨처음에는 현재 월에 해당하는 데이터만 싹 불러온다.
   var current_month = moment().month();
@@ -416,34 +404,6 @@ console.log(this.events);
 
      var calendar = new Calendar('#calendar', data);
 	});
-  /*
-  var data = [
-        { eventName: '홈페이지만든날', calendar: 'Work', color: 'yellow' , date: '2016-12-24'},
-        { eventName: '크리스마스다아앙', calendar: 'Work', color: 'orange', date: '2016-12-25' },
-        { eventName: '아산병원', calendar: 'Work', color: 'blue', date: '2016-12-29' },
-        { eventName: '회사 월조회', calendar: 'Work', color: 'green', date: '2016-12-29' },
-        { eventName: '신정', calendar: 'Work', color: 'blue' , date: '2017-01-01'},
-        { eventName: '여행적금3만원', calendar: 'Work', color: 'green', date: '2017-01-04' },
-        { eventName: '프라임무비팩해지하기', calendar: 'Work', color: 'yellow', date: '2017-01-19' },
-
-    { eventName: 'Dinner w/ Marketing', calendar: 'Work', color: 'orange' },
-
-    { eventName: 'Game vs Portalnd', calendar: 'Sports', color: 'blue' },
-    { eventName: 'Game vs Houston', calendar: 'Sports', color: 'blue' },
-    { eventName: 'Game vs Denver', calendar: 'Sports', color: 'blue' },
-    { eventName: 'Game vs San Degio', calendar: 'Sports', color: 'blue' },
-
-    { eventName: 'School Play', calendar: 'Kids', color: 'yellow' },
-    { eventName: 'Parent/Teacher Conference', calendar: 'Kids', color: 'yellow' },
-    { eventName: 'Pick up from Soccer Practice', calendar: 'Kids', color: 'yellow' },
-    { eventName: 'Ice Cream Night', calendar: 'Kids', color: 'yellow' },
-
-    { eventName: 'Free Tamale Night', calendar: 'Other', color: 'green' },
-    { eventName: 'Bowling Team', calendar: 'Other', color: 'green' },
-    { eventName: 'Teach Kids to Code', calendar: 'Other', color: 'green' },
-    { eventName: 'Startup Weekend', calendar: 'Other', color: 'green'}
-  ];
-*/
   
 
   function addDate(ev) {
