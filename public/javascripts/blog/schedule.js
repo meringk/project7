@@ -157,7 +157,7 @@
       self.openDay(this);
     });
 
-    //Day Name (요일)
+    //Day Name (요일) 
     var name = createElement('div', 'day-name', day.format('ddd'));
 
     //Day Number (일)
