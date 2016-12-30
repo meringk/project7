@@ -37,12 +37,12 @@
 			// Title Bar.
 
 			var nowLocation = location.href;
-			if(s.indexOf('blog') > -1){
-				nowLocation = "<a href='/html/blog/blog.html'>BLOG</a>";
+			if(s.indexOf('blog') > -1 || s.indexOf('study') > -1){
+				nowLocation = " || <a href='/html/blog/blog.html'>BLOGHOME</a> || <a href='/html/study/study.html'>STUDYHOME</a> ";
 			}else{
 				nowLocation = "";
 			}
-
+			
 			$(
 				'<div id="titleBar">' +
 				'<a href="#navPanel" class="toggle"></a>' +

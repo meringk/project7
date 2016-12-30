@@ -24,62 +24,50 @@
 				</div>
 				<div id="blogHead"></div>
 			</header>
-		</div>
-		<div style="height:50px">
-
-
-		</div>
-		<div id="calendar">
-			<div class="back"></div>
-			<div class="overBox">
-				<div class="close"><span class="icon fa-close" style="top:-2px"></span></div>
-				<div class="scTitle">ADD SCHEDULE</div>
-				<div style="margin-top: 15px;">
-					<input type="text" name="sc_name" id="sc_name" placeholder="이름">
-					<input type="text" name="sc_content" id="sc_content" placeholder="내용" style="margin-top:10px">
-				</div>
-				<div>
-					<ul class="actions fit" style="margin-top:20px">
-						<li><a class="button special" href="javascript:scInsert();">저장</a></li>
-						<li><a class="button cancel" id="javascript:scClose();">취소</a></li>
-					</ul>
-				</div>
+			<div style="height:50px">
 			</div>
 
-		</div>
+			<div id="calendar">
+				<div class="back"></div>
+				<div class="overBox">
+					<div class="close"><span class="icon fa-close" style="top:-2px"></span></div>
+					<div class="scTitle">ADD SCHEDULE</div>
+					<div style="margin-top: 15px;">
+						<input type="text" name="sc_name" id="sc_name" placeholder="이름">
+						<input type="text" name="sc_content" id="sc_content" placeholder="내용" style="margin-top:10px">
+					</div>
+					<div>
+						<ul class="actions fit" style="margin-top:20px">
+							<li><a class="button special" href="javascript:scInsert();">저장</a></li>
+							<li><a class="button cancel" id="javascript:scClose();">취소</a></li>
+						</ul>
+					</div>
+				</div>
 
-		<div class="colorBox">
+			</div>
 
-			<span class="colorIdx yellow"></span> <span class="colorInfo">기념일 </span>
-			<span class="colorIdx green"></span> <span class="colorInfo">일정 </span>
-			<span class="colorIdx orange"></span> <span class="colorInfo">손님 </span>
-			<span class="colorIdx blue"></span> <span class="colorInfo">기타 </span>
+			<div class="colorBox">
 
-		</div>
-		<div style="height:50px"></div>
+				<span class="colorIdx yellow"></span> <span class="colorInfo">기념일 </span>
+				<span class="colorIdx green"></span> <span class="colorInfo">일정 </span>
+				<span class="colorIdx orange"></span> <span class="colorInfo">손님 </span>
+				<span class="colorIdx blue"></span> <span class="colorInfo">기타 </span>
 
+			</div>
+			<div style="height:50px"></div>
+		</div><!--End of page-wrapper-->
+		
 		<!-- Footer -->
-		<footer id="footer">
-			<ul class="icons">
-				<li><a href="#" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
-				<li><a href="#" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
-				<li><a href="#" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
-				<li><a href="#" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
-				<li><a href="#" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
-				<li><a href="#" class="icon alt fa-envelope"><span class="label">Email</span></a></li>
-			</ul>
-			<ul class="copyright">
-				<li>&copy; All rights reserved.</li><li>개발자 : 김혜림</li>
-			</ul>
-		</footer>
+		<footer id="footer"></footer>
 
 		<script src="../../javascripts/common/jquery.min.js"></script>
 		<script src="../../javascripts/common/skel.min.js"></script>
 		<script src="../../javascripts/common/jquery.scrolly.min.js"></script>
 		<script src="../../javascripts/common/jquery.dropotron.min.js"></script>
 		<script src="../../javascripts/common/common.ui.js"/></script>
-		<script> $('#headContent').load("../../head.html"); </script>
+		<script> $('#headContent').load("../head.html"); </script>
 		<script> $('#blogHead').load("blog_head.html"); </script>
+		<script> $('#footer').load("../footer.html"); </script>
 		<script src="../../javascripts/common/util.js"></script>
 		<link href='http://fonts.googleapis.com/css?family=Exo+2:400,100' rel='stylesheet' type='text/css'>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>

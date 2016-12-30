@@ -6,8 +6,8 @@
     <script>
         var s = location.href;
         console.log(s);
-        if(s.indexOf('blog') > -1){
-            $('#location')[0].innerHTML="<a href='/html/blog/blog.html'>BLOG</a>";
+        if(s.indexOf('blog') > -1 || s.indexOf('study') > -1 ){
+            $('#location')[0].innerHTML="<a href='/html/blog/blog.html'>BLOG</a>  ||  <a href='/html/study/study.html'>STUDY</a>";
         }
     </script>
     <nav id="nav">
@@ -26,7 +26,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#">STUDY</a>
+                        <a href="/html/study/study.html">STUDY</a>
                         <ul>
                             <li><a href="#">웹프로젝트구축</a></li>
                             <li><a href="#">SERVER</a></li>

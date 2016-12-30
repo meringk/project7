@@ -249,11 +249,13 @@ body {
   position: relative;
   width: 337px;
   height: 75px;
-  border:1px dashed rgba(164, 164, 164, 1);
+ /* border:1px dashed rgba(164, 164, 164, 1);*/
+  border-radius: 4px;
+  background: rgba(125, 79, 87, 0.57);
   margin-top: 5px;
   border-radius: 4px;
   margin-left: 10px;
-      margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .details.in {
