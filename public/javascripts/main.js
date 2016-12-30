@@ -30,8 +30,8 @@ $(document).ready(function () {
 
 		// Get some values from elements on the page:
 		var $form = $(this),
-			message = $form.find("input[name='guestContent']").val(),
 			ip = "";
+			message = $form.find("input[name='guestContent']").val();
 		var date = new Date();
 		var d = date.getDate(),
 			m = date.getMonth(),
@@ -47,21 +47,20 @@ $(document).ready(function () {
 		if (message == "") {
 			alert("한마디 적어주세여");
 		} else {
-			$.get('http://jsonip.com/', function (r) {
-				ip = r.ip
-				$.ajax({
-					url: '/guestSubmit',
-					type: 'post',
-					dataType: 'json',
-					data: { ip: ip, message: message },
-					success: function (data) {
-						$('.guestResDiv').prepend('<div>  <span class="icon fa-paw "/>   ' + message
-							+ ' <span style=\'font-size:12px\'> -' + fullDay + ' '
-							+ calTime.moon + ' ' + calTime.time_H + '시</span></div>');
-						$form.find("input[name='guestContent']").val("");
-					}
-				});
-			});
+
+			$.ajax({
+ 				url: '/guestSubmit',
+ 				type: 'post',
+ 				dataType: 'json',
+ 				data: { ip: '', message: message },
+ 				success: function (data) {
+ 					$('.guestResDiv').prepend('<div>  <span class="icon fa-paw "/>   ' + message
+ 						+ ' <span style=\'font-size:12px\'> -' + fullDay + ' '
+ 						+ calTime.moon + ' ' + calTime.time_H + '시</span></div>');
+ 					$form.find("input[name='guestContent']").val("");
+ 				}
+  			});
+			  
 		};
 	});
 
@@ -185,7 +184,7 @@ $(document).ready(function () {
 						$window
 							.on('scroll._parallax', function () {
 								var pos = parseInt($window.scrollTop()) - parseInt($this.position().top);
-								$this.css('background-position', 'center ' + (pos * -0.7) + 'px');
+								$this.css('background-position', 'center ' + (pos * -0.15) + 'px');
 							});
 					};
 
@@ -218,92 +217,93 @@ $(document).ready(function () {
 		}
 
 		// Spotlights.
-		var $spotlights = $('.spotlight');
+			var $spotlights = $('.spotlight');
 
-		$spotlights
-			._parallax()
-			.each(function () {
+			$spotlights
+				._parallax()
+				.each(function() {
 
-				var $this = $(this),
-					on, off;
+					var $this = $(this),
+						on, off;
 
-				on = function () {
+					on = function() {
 
-					// Use main <img>'s src as this spotlight's background.
-					$this.css('background-image', 'url("' + $this.find('.image.main > img').attr('src') + '")');
+						// Use main <img>'s src as this spotlight's background.
+							$this.css('background-image', 'url("' + $this.find('.image.main > img').attr('src') + '")');
 
-					// Enable transitions (if supported).
-					if (skel.canUse('transition')) {
+						// Enable transitions (if supported).
+							if (skel.canUse('transition')) {
 
-						var top, bottom, mode;
+								var top, bottom, mode;
 
-						// Side-specific scrollex tweaks.
-						if ($this.hasClass('top')) {
+								// Side-specific scrollex tweaks.
+									if ($this.hasClass('top')) {
 
-							mode = 'top';
-							top = '-20%';
-							bottom = 0;
+										mode = 'top';
+										top = '-20%';
+										bottom = 0;
 
-						}
-						else if ($this.hasClass('bottom')) {
+									}
+									else if ($this.hasClass('bottom')) {
 
-							mode = 'bottom-only';
-							top = 0;
-							bottom = '20%';
+										mode = 'bottom-only';
+										top = 0;
+										bottom = '20%';
 
-						}
-						else {
+									}
+									else {
 
-							mode = 'middle';
-							top = 0;
-							bottom = 0;
+										mode = 'middle';
+										top = 0;
+										bottom = 0;
 
-						}
+									}
 
-						// Add scrollex.
-						$this.scrollex({
-							mode: mode,
-							top: top,
-							bottom: bottom,
-							initialize: function (t) { $this.addClass('inactive'); },
-							terminate: function (t) { $this.removeClass('inactive'); },
-							enter: function (t) { $this.removeClass('inactive'); },
+								// Add scrollex.
+									$this.scrollex({
+										mode:		mode,
+										top:		top,
+										bottom:		bottom,
+										initialize:	function(t) { $this.addClass('inactive'); },
+										terminate:	function(t) { $this.removeClass('inactive'); },
+										enter:		function(t) { $this.removeClass('inactive'); },
 
-							// Uncomment the line below to "rewind" when this spotlight scrolls out of view.
+										// Uncomment the line below to "rewind" when this spotlight scrolls out of view.
 
-							//leave:	function(t) { $this.addClass('inactive'); },
+										//leave:	function(t) { $this.addClass('inactive'); },
 
-						});
+									});
 
-					}
+							}
 
-				};
+					};
 
-				off = function () {
+					off = function() {
 
-					// Clear spotlight's background.
-					$this.css('background-image', '');
+						// Clear spotlight's background.
+							$this.css('background-image', '');
 
-					// Disable transitions (if supported).
-					if (skel.canUse('transition')) {
+						// Disable transitions (if supported).
+							if (skel.canUse('transition')) {
 
-						// Remove scrollex.
-						$this.unscrollex();
+								// Remove scrollex.
+									$this.unscrollex();
 
-					}
+							}
 
-				};
+					};
 
-				skel.on('change', function () {
+					skel.on('change', function() {
 
-					if (skel.breakpoint('medium').active)
-						(off)();
-					else
+						if (skel.breakpoint('medium').active)
+							(off)();
+						else
 							(on)();
+
+					});
 
 				});
 
-			});
 
 		// Wrappers.
 		var $wrappers = $('.wrapper');
