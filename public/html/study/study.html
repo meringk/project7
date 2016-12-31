@@ -4,25 +4,27 @@
 		<title>MERING</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="../../stylesheets/main.css" />
 		<link rel="stylesheet" href="../../stylesheets/study.css" />
-		<link rel="stylesheet" href="../../stylesheets/blog.css" />
+		<link rel="stylesheet" href="../../stylesheets/main.css" />
 	</head>
 	<body class="landing">
 		<div id="page-wrapper">
 			<div id="wrapper">
 			<div id="headContent"></div>
-			<div style="height:200px"></div>
-			<nav id="nav-study">
-				<ul>
-					<li><a href="#intro" class="active">Introduction</a></li>
-					<li><a href="#first">First Section</a></li>
-					<li><a href="#second">Second Section</a></li>
-					<li><a href="#cta">Get Started</a></li>
-				</ul>
-			</nav>
+
+			<header id="study_header" >
+				<div class="content">
+					<div class="inner">
+						<h1>STUDY</h1>
+						<p>개발공부</p>
+						<p></p>
+					</div>
+				</div>
+			</header>
+			<div id="studyHead"></div>
+
 			<div id="main">
-			<div style="height:1200px" class="main"></div>
+				<div class="main"></div>
 			</div>
 			<!-- Footer -->
 			<footer id="footer"></footer>
@@ -37,7 +39,7 @@
 		<script src="../../javascripts/common/jquery.dropotron.min.js"></script>
 		<script src="../../javascripts/common/common.ui.js"/></script>
 		<script> $('#headContent').load("../head.html"); </script>
-		<script> $('#blogHead').load("blog_head.html"); </script>
+		<script> $('#studyHead').load("study_head.html"); </script>
 		<script> $('#footer').load("../footer.html"); </script>
 		<script src="../../javascripts/common/util.js"></script>
 		<script src="../../javascripts/study.js"></script>

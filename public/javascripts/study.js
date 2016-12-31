@@ -22,7 +22,7 @@
 
 
         // Nav.
-        var $nav = $('#nav-study');
+        var $nav = $('#studyHead');
         console.log($nav);
         if ($nav.length > 0) {
            

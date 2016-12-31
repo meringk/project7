@@ -1,5 +1,5 @@
 
-/* blog_header, content, nav-study, nav, ul, li 순서*/
+/* study_header, content, studyHead, nav, ul, li 순서*/
 
 
 #page-wrapper{
@@ -10,7 +10,7 @@
 
 /* Header */
 
-	#blog_header {
+	#study_header {
 		display: -moz-flex;
 		display: -webkit-flex;
 		display: -ms-flex;
@@ -35,7 +35,7 @@
 		text-align: center;
 	}
 
-		#blog_header > * {
+		#study_header > * {
 			-moz-transition: opacity 0.325s ease-in-out;
 			-webkit-transition: opacity 0.325s ease-in-out;
 			-ms-transition: opacity 0.325s ease-in-out;
@@ -44,7 +44,7 @@
 			margin-top: 1.5rem;
 		}
 
-			#blog_header > *:before {
+			#study_header > *:before {
 				content: '';
 				display: block;
 				position: absolute;
@@ -55,36 +55,36 @@
 				background: #ffffff;
 			}
 
-		#blog_header > :first-child {
+		#study_header > :first-child {
 			margin-top: 0;
 		}
 
-			#blog_header > :first-child:before {
+			#study_header > :first-child:before {
 				display: none;
 			}
 
 
-		#blog_header h1 {
+		#study_header h1 {
 			font-weight: 600;
 			letter-spacing: 0.5rem;
 			font-size: 2.25rem;
 		}
 
-		#blog_header p {
+		#study_header p {
 			text-transform: uppercase;
 			letter-spacing: 0.2rem;
 			font-size: 0.8rem;
 			line-height: 2;
 		}
 
-		#blog_header .content {
+		#study_header .content {
 			/*border-style: dotted;
 			border-color: #ffffff;
 			border-bottom-width: 1px;*/
 			max-width: 100%;
 		}
 
-			#blog_header .content .inner {
+			#study_header .content .inner {
 				-moz-transition: max-height 0.75s ease, padding 0.75s ease, opacity 0.325s ease-in-out;
 				-webkit-transition: max-height 0.75s ease, padding 0.75s ease, opacity 0.325s ease-in-out;
 				-ms-transition: max-height 0.75s ease, padding 0.75s ease, opacity 0.325s ease-in-out;
@@ -99,35 +99,35 @@
 			}
 
 
-		#blog_header .content .inner > :last-child {
+		#study_header .content .inner > :last-child {
 			margin-bottom: 0;
 		}
 
-		#nav-study.alt {
+		#studyHead.alt {
 			position: fixed;
 			z-index: 10000;
 		}
 
-		#nav-study.alt nav ul li a{
+		#studyHead.alt nav ul li a{
 			font-size: 13px;
 		}
 
 
 		/* Nav */
 
-	#nav-study {
+	#studyHead {
 		-moz-transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
 		-webkit-transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
 		-ms-transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
 		transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
-    width: 64em;
+    	width: 64em;
 		cursor: default;
 		text-align: center;
 		max-width: calc(100%);
 	}
 
 
-		#nav-study ul {
+		#studyHead ul {
 			display: -moz-flex;
 			display: -webkit-flex;
 			display: -ms-flex;
@@ -141,31 +141,31 @@
 			display: inline-flex;
 		}
 
-			#nav-study ul li {
+			#studyHead ul li {
 				padding-left: 0;
 			}
 
-				#nav-study ul li a {
+				#studyHead ul li a {
 					display: block;
 					min-width: 9.5rem;
 					height: 2.75rem;
 					line-height: 2.75rem;
-					padding: 0 1.25rem 0 1.45rem;
+					padding: 0 1rem 0 1rem;
 					text-transform: uppercase;
 					letter-spacing: 0.2rem;
 					font-size: 0.8rem;
 					border-bottom: 0;
 				}
 
-					#nav-study ul li a:hover {
+					#studyHead ul li a:hover {
 						background-color: rgba(255, 255, 255, 0.075);
 					}
 
-					#nav-study ul li a.active {
+					#studyHead ul li a.active {
 						background-color: rgba(255, 255, 255, 0.175);
 					}
 
-		#nav-study.alt {
+		#studyHead.alt {
 			position: fixed;
 			top: 0;
 			padding: 0.5em 1em;
@@ -174,18 +174,18 @@
 			z-index: 10000;
 		}
 
-			#nav-study.alt ul li {
+			#studyHead.alt ul li {
 				margin: 0 0.175em;
 			}
 
-				#nav-study.alt ul li a {
+				#studyHead.alt ul li a {
 					font-size: 0.9em;
 				}
 
 
 		@media screen and (max-width: 736px) {
 
-			#nav-study.alt {
+			#studyHead.alt {
 				top:44px;
 			}
 
@@ -193,18 +193,17 @@
 
 		@media screen and (max-width: 480px) {
 
-			 #nav-study nav ul {
+			 #studyHead nav ul {
                 min-width: 10rem;
                 max-width: 100%;
-				float:left;
 				background-color:#1c1d26;
             }
 
-				#nav-study nav ul li:first-child {
+				#studyHead nav ul li:first-child {
 					border-top: 0;
 				}
 
-				#nav-study nav ul li a {
+				#studyHead nav ul li a {
 					height: 3rem;
 					line-height: 3rem;
 					min-width: 0;
@@ -213,8 +212,16 @@
 	
 		}
 
+
+.main{
+	margin-top: -20px;
+    background-color: #d8d8d8;
+    height: 1200px;
+}
+
+
 /*
-#blog_header {
+#study_header {
 		display: -moz-flex;
 		display: -webkit-flex;
 		display: -ms-flex;
@@ -239,7 +246,7 @@
 		text-align: center;
 	}
 
-		#blog_header > * {
+		#study_header > * {
 			-moz-transition: opacity 0.325s ease-in-out;
 			-webkit-transition: opacity 0.325s ease-in-out;
 			-ms-transition: opacity 0.325s ease-in-out;
@@ -248,7 +255,7 @@
 			margin-top: 1.5rem;
 		}
 
-			#blog_header > *:before {
+			#study_header > *:before {
 				content: '';
 				display: block;
 				position: absolute;
@@ -259,22 +266,22 @@
 				background: #ffffff;
 			}
 
-		#blog_header > :first-child {
+		#study_header > :first-child {
 			margin-top: 0;
 		}
 
-			#blog_header > :first-child:before {
+			#study_header > :first-child:before {
 				display: none;
 			}
 
-		#blog_header .content {
+		#study_header .content {
 			border-style: solid;
 			border-color: #ffffff;
 			border-bottom-width: 1px;
 			max-width: 100%;
 		}
 
-			#blog_header .content .inner {
+			#study_header .content .inner {
 				-moz-transition: max-height 0.75s ease, padding 0.75s ease, opacity 0.325s ease-in-out;
 				-webkit-transition: max-height 0.75s ease, padding 0.75s ease, opacity 0.325s ease-in-out;
 				-ms-transition: max-height 0.75s ease, padding 0.75s ease, opacity 0.325s ease-in-out;
@@ -288,34 +295,34 @@
 				overflow: hidden;
 			}
 
-				#blog_header .content .inner > :last-child {
+				#study_header .content .inner > :last-child {
 					margin-bottom: 0;
 				}
 
 
-            #blog_header .content .inner h1{
+            #study_header .content .inner h1{
                 font-weight: 600;
                 letter-spacing: 0.5rem;
                 font-size: 2.25rem;
             }
 
-			#blog_header .content p {
+			#study_header .content p {
 				text-transform: uppercase;
 				letter-spacing: 0.2rem;
 				font-size: 0.8rem;
 				line-height: 2;
 			}
 
-			#nav-study.alt {
+			#studyHead.alt {
 				position: fixed;
 				z-index: 10000;
 			}
 
-			#nav-study.alt nav ul li a{
+			#studyHead.alt nav ul li a{
 				font-size: 10px;
 			}
 
-		#blog_header nav ul {
+		#study_header nav ul {
 			display: -moz-flex;
 			display: -webkit-flex;
 			display: -ms-flex;
@@ -328,16 +335,16 @@
 			background-color:#1c1d26;
 		}
 
-			#blog_header nav ul li {
+			#study_header nav ul li {
 				padding-left: 0;
 				border-left: solid 1px #ffffff;
 			}
 
-				#blog_header nav ul li:first-child {
+				#study_header nav ul li:first-child {
 					border-left: 0;
 				}
 
-				#blog_header nav ul li a {
+				#study_header nav ul li a {
 					display: block;
 					min-width: 7.5rem;
 					height: 2.75rem;
@@ -349,15 +356,15 @@
 					border-bottom: 0;
 				}
 
-					#blog_header nav ul li a:hover {
+					#study_header nav ul li a:hover {
 						background-color: rgba(255, 255, 255, 0.075);
 					}
 
-					#blog_header nav ul li a:active {
+					#study_header nav ul li a:active {
 						background-color: rgba(255, 255, 255, 0.175);
 					}
 
-		#blog_header nav.use-middle:after {
+		#study_header nav.use-middle:after {
 			content: '';
 			display: block;
 			position: absolute;
@@ -368,11 +375,11 @@
 			background: #ffffff;
 		}
 
-		#blog_header nav.use-middle ul li.is-middle {
+		#study_header nav.use-middle ul li.is-middle {
 			border-left: 0;
 		}
 
-		body.is-article-visible #blog_header {
+		body.is-article-visible #study_header {
 			-moz-transform: scale(0.95);
 			-webkit-transform: scale(0.95);
 			-ms-transform: scale(0.95);
@@ -384,18 +391,18 @@
 			opacity: 0;
 		}
 
-		body.is-loading #blog_header {
+		body.is-loading #study_header {
 			-moz-filter: blur(0.125rem);
 			-webkit-filter: blur(0.125rem);
 			-ms-filter: blur(0.125rem);
 			filter: blur(0.125rem);
 		}
 
-			body.is-loading #blog_header > * {
+			body.is-loading #study_header > * {
 				opacity: 0;
 			}
 
-			body.is-loading #blog_header .content .inner {
+			body.is-loading #study_header .content .inner {
 				max-height: 0;
 				padding-top: 0;
 				padding-bottom: 0;
@@ -404,7 +411,7 @@
 
 		@media screen and (max-width: 980px) {
 
-			#blog_header .content p br {
+			#study_header .content p br {
 				display: none;
 			}
 
@@ -412,24 +419,24 @@
 
 		@media screen and (max-width: 736px) {
 
-			#blog_header > * {
+			#study_header > * {
 				margin-top: 2rem;
 			}
 
-				#blog_header > *:before {
+				#study_header > *:before {
 					top: calc(-2rem - 1px);
 					height: calc(2rem + 1px);
 					    left: calc(50%);
 				}
 
 
-			#blog_header .content .inner {
+			#study_header .content .inner {
 				padding: 2.5rem 2.5rem 0.5rem 2.5rem;
 			}
 
             
 
-			#blog_header .content p {
+			#study_header .content p {
 				line-height: 1.875;
                 
 			}
@@ -438,29 +445,29 @@
 
 		@media screen and (max-width: 480px) {
 
-            #blog_header .content .inner {
+            #study_header .content .inner {
                 padding: 2.5rem 2.5rem 0.5rem 2.5rem;
             }
 
-            #blog_header nav ul {
+            #study_header nav ul {
                 min-width: 10rem;
                 max-width: 100%;
 				float:left;
 				background-color:#1c1d26;
             }
 
-				#blog_header nav ul li:first-child {
+				#study_header nav ul li:first-child {
 					border-top: 0;
 				}
 
-				#blog_header nav ul li a {
+				#study_header nav ul li a {
 					height: 3rem;
 					line-height: 3rem;
 					min-width: 0;
 					width: 100%;
 				}
 
-			#blog_header nav.use-middle:after {
+			#study_header nav.use-middle:after {
 				display: none;
 			}
         }
