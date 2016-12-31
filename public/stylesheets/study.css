@@ -146,6 +146,7 @@
 			}
 
 				#studyHead ul li a {
+					color:white;
 					display: block;
 					min-width: 9.5rem;
 					height: 2.75rem;
@@ -213,11 +214,11 @@
 		}
 
 
-.main{
-	margin-top: -20px;
-    background-color: #d8d8d8;
-    height: 1200px;
-}
+		.main{
+			margin-top: -20px;
+			background-color: #d8d8d8;
+			height: 1200px;
+		}
 
 
 /*
