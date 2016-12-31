@@ -1,32 +1,24 @@
 (function ($) {
 
-    skel.breakpoints({
-        xlarge: '(max-width: 1680px)',
-        large: '(max-width: 1280px)',
-        medium: '(max-width: 980px)',
-        small: '(max-width: 736px)',
-        xsmall: '(max-width: 480px)',
-        xxsmall: '(max-width: 360px)'
-    });
-
     $(function () {
 
         var $window = $(window),
             $body = $('body'),
             $main = $('#main');
-		// Fix: Placeholder polyfill.
-			$('form').placeholder();
 
-		// Prioritize "important" elements on medium.
-       
+      // Fix: Placeholder polyfill.
+        $('form').placeholder();
 
+
+        console.log($('.blog-head'))
+        $('.blog-head > ').removeClass("active");
 
         // Nav.
-        var $nav = $('#nav-study');
+        var $nav = $('#blogHead');
         console.log($nav);
+
         if ($nav.length > 0) {
            
-
             // Shrink effect.
             $main
                 .scrollex({

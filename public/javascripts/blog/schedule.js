@@ -1,5 +1,6 @@
 !function () {
 
+
   var today = moment();
 
   var l = "";
@@ -35,10 +36,10 @@
 
       this.title = createElement('h1');
 
-      var right = createElement('div', 'right');
+      var right = createElement('div', 'scRight');
       right.addEventListener('click', function () { self.nextMonth(); });
 
-      var left = createElement('div', 'left');
+      var left = createElement('div', 'scLeft');
       left.addEventListener('click', function () { self.prevMonth(); });
 
       //Append the Elements

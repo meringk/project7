@@ -1,5 +1,5 @@
 
-/* blog_header, content, blogHead, nav, ul, li 순서*/
+/* blog_header, content, nav-study, nav, ul, li 순서*/
 
 
 #page-wrapper{
@@ -103,19 +103,19 @@
 			margin-bottom: 0;
 		}
 
-		#blogHead.alt {
+		#nav-study.alt {
 			position: fixed;
 			z-index: 10000;
 		}
 
-		#blogHead.alt nav ul li a{
+		#nav-study.alt nav ul li a{
 			font-size: 13px;
 		}
 
 
 		/* Nav */
 
-	#blogHead {
+	#nav-study {
 		-moz-transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
 		-webkit-transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
 		-ms-transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
@@ -127,7 +127,7 @@
 	}
 
 
-		#blogHead ul {
+		#nav-study ul {
 			display: -moz-flex;
 			display: -webkit-flex;
 			display: -ms-flex;
@@ -141,11 +141,11 @@
 			display: inline-flex;
 		}
 
-			#blogHead ul li {
+			#nav-study ul li {
 				padding-left: 0;
 			}
 
-				#blogHead ul li a {
+				#nav-study ul li a {
 					display: block;
 					min-width: 9.5rem;
 					height: 2.75rem;
@@ -157,15 +157,15 @@
 					border-bottom: 0;
 				}
 
-					#blogHead ul li a:hover {
+					#nav-study ul li a:hover {
 						background-color: rgba(255, 255, 255, 0.075);
 					}
 
-					#blogHead ul li a.active {
+					#nav-study ul li a.active {
 						background-color: rgba(255, 255, 255, 0.175);
 					}
 
-		#blogHead.alt {
+		#nav-study.alt {
 			position: fixed;
 			top: 0;
 			padding: 0.5em 1em;
@@ -174,18 +174,18 @@
 			z-index: 10000;
 		}
 
-			#blogHead.alt ul li {
+			#nav-study.alt ul li {
 				margin: 0 0.175em;
 			}
 
-				#blogHead.alt ul li a {
+				#nav-study.alt ul li a {
 					font-size: 0.9em;
 				}
 
 
 		@media screen and (max-width: 736px) {
 
-			#blogHead.alt {
+			#nav-study.alt {
 				top:44px;
 			}
 
@@ -193,18 +193,18 @@
 
 		@media screen and (max-width: 480px) {
 
-			 #blogHead nav ul {
+			 #nav-study nav ul {
                 min-width: 10rem;
                 max-width: 100%;
 				float:left;
 				background-color:#1c1d26;
             }
 
-				#blogHead nav ul li:first-child {
+				#nav-study nav ul li:first-child {
 					border-top: 0;
 				}
 
-				#blogHead nav ul li a {
+				#nav-study nav ul li a {
 					height: 3rem;
 					line-height: 3rem;
 					min-width: 0;
@@ -306,12 +306,12 @@
 				line-height: 2;
 			}
 
-			#blogHead.alt {
+			#nav-study.alt {
 				position: fixed;
 				z-index: 10000;
 			}
 
-			#blogHead.alt nav ul li a{
+			#nav-study.alt nav ul li a{
 				font-size: 10px;
 			}
 
