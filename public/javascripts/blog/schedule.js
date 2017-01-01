@@ -419,6 +419,9 @@
   var current_month = moment().month();
   var data;
   current_month = current_month + 1;
+  if(current_month.toString().length==1){
+    current_month = "0"+current_month;
+  }
   $.get('/schedule/selectSchedule?month=' + current_month, function (db_data) {
     data = db_data;
     var calendar = new Calendar('#calendar', data);
