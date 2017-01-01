@@ -2,12 +2,6 @@
 /* blog_header, content, blogHead, nav, ul, li 순서*/
 
 
-#page-wrapper{
-	max-width: calc(100%);
-    width: 64em;
-    margin: 0 auto;
-}
-
 /* Header */
 
 	#blog_header {
@@ -27,10 +21,10 @@
 		-webkit-transition: -webkit-transform 0.325s ease-in-out, -webkit-filter 0.325s ease-in-out, opacity 0.325s ease-in-out;
 		-ms-transition: -ms-transform 0.325s ease-in-out, -ms-filter 0.325s ease-in-out, opacity 0.325s ease-in-out;
 		transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out, opacity 0.325s ease-in-out;
-		background-image: -moz-radial-gradient(rgba(0, 0, 0, 0.25) 25%, transparent 55%);
+		/*background-image: -moz-radial-gradient(rgba(0, 0, 0, 0.25) 25%, transparent 55%);
 		background-image: -webkit-radial-gradient(rgba(0, 0, 0, 0.25) 25%, transparent 55%);
 		background-image: -ms-radial-gradient(rgba(0, 0, 0, 0.25) 25%, transparent 55%);
-		background-image: radial-gradient(rgba(0, 0, 0, 0.25) 25%, transparent 55%);
+		background-image: radial-gradient(rgba(0, 0, 0, 0.25) 25%, transparent 55%);*/
 		max-width: 100%;
 		text-align: center;
 	}
@@ -74,7 +68,7 @@
 				-webkit-transition-delay: 0.25s;
 				-ms-transition-delay: 0.25s;
 				transition-delay: 0.25s;
-				padding: 4.5rem 3rem 1rem;
+				padding: 5.5rem 3rem 1rem;
 				max-height: 40rem;
 				overflow: hidden;
 			}
@@ -101,7 +95,7 @@
 		-webkit-transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
 		-ms-transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
 		transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
-    	width: 64em;
+    	width: 70em;
 		cursor: default;
 		text-align: center;
 		max-width: calc(100%);
@@ -136,6 +130,7 @@
 					letter-spacing: 0.2rem;
 					font-size: 0.8rem;
 					border-bottom: 0;
+					font-weight:bold;
 				}
 
 					#blogHead ul li a:hover {
@@ -191,6 +186,13 @@
 					width: 100%;
 				}
 	
+		}
+
+
+		#main{
+			margin-top: -20px;
+   			background-color: rgb(28, 29, 39);
+    		border-radius: 15px 15px 0px 0px;
 		}
 
 /*

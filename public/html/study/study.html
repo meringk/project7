@@ -8,13 +8,14 @@
 		<link rel="stylesheet" href="../../stylesheets/main.css" />
 	</head>
 	<body class="landing">
-		<div id="page-wrapper">
+		<div id="page-wrapper-subMain">
 			<div id="wrapper">
 			<div id="headContent"></div>
 
 			<header id="study_header" >
 				<div class="content">
 					<div class="inner">
+						<span class="icon major fa-book"></span>
 						<h1>STUDY</h1>
 						<p>개발공부</p>
 						<p></p>
@@ -35,12 +36,17 @@
 		<script src="../../javascripts/common/jquery.min.js"></script>
 		<script src="../../javascripts/common/jquery.scrollex.min.js"></script>
 		<script src="../../javascripts/common/skel.min.js"></script>
+		<script>	
+			;(function($){
+				$('#headContent').load("../head.html"); 
+			})(jQuery);		
+		</script>
+		<script> $('#studyHead').load("study_head.html"); </script>
+		<script> $('#footer').load("../footer.html"); </script>
+		
 		<script src="../../javascripts/common/jquery.scrolly.min.js"></script>
 		<script src="../../javascripts/common/jquery.dropotron.min.js"></script>
 		<script src="../../javascripts/common/common.ui.js"/></script>
-		<script> $('#headContent').load("../head.html"); </script>
-		<script> $('#studyHead').load("study_head.html"); </script>
-		<script> $('#footer').load("../footer.html"); </script>
 		<script src="../../javascripts/common/util.js"></script>
 		<script src="../../javascripts/study.js"></script>
 		<script src="../../javascripts/blog/blog.js"></script>

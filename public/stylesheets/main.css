@@ -2021,6 +2021,7 @@
 
 	body.landing {
 		text-decoration: none;
+		background-image: url(images/overlay.png), linear-gradient(45deg, #8c595e 15%, #0b0813 85%);
 	}
 
 		body.landing:before {
@@ -2421,7 +2422,7 @@
 			}
 
 		.icon.major {
-			background: #272833;
+			background: #5d6077;
 			border-radius: 100%;
 			cursor: default;
 			display: inline-block;
@@ -3266,6 +3267,12 @@
 		padding-top: 3.5em;
 	}
 
+	#page-wrapper-subMain{
+		max-width: calc(100%);
+		width: 70em;
+		margin: 0 auto;
+	}
+
 	#header {
 		background: rgba(39, 40, 51, 0.965);
 		box-shadow: 0 0 0.25em 0 rgba(0, 0, 0, 0.25);
@@ -3331,6 +3338,9 @@
 					}
 
 	body.landing #page-wrapper {
+		padding-top: 0;
+	}
+	body.landing #page-wrapper-subMain {
 		padding-top: 0;
 	}
 
@@ -3746,6 +3756,18 @@
 				padding-bottom: 1px;
 				padding-top: 44px !important;
 			}
+			#page-wrapper-subMain {
+				-moz-backface-visibility: hidden;
+				-webkit-backface-visibility: hidden;
+				-ms-backface-visibility: hidden;
+				backface-visibility: hidden;
+				-moz-transition: -moz-transform 0.5s ease;
+				-webkit-transition: -webkit-transform 0.5s ease;
+				-ms-transition: -ms-transform 0.5s ease;
+				transition: transform 0.5s ease;
+				padding-bottom: 1px;
+				padding-top: 44px !important;
+			}
 
 			#titleBar {
 				-moz-backface-visibility: hidden;
@@ -3891,6 +3913,13 @@
 					}
 
 			body.navPanel-visible #page-wrapper {
+				-moz-transform: translateX(275px);
+				-webkit-transform: translateX(275px);
+				-ms-transform: translateX(275px);
+				transform: translateX(275px);
+			}
+
+			body.navPanel-visible #page-wrapper-subMain {
 				-moz-transform: translateX(275px);
 				-webkit-transform: translateX(275px);
 				-ms-transform: translateX(275px);

@@ -2,12 +2,6 @@
 /* study_header, content, studyHead, nav, ul, li 순서*/
 
 
-#page-wrapper{
-	max-width: calc(100%);
-    width: 64em;
-    margin: 0 auto;
-}
-
 /* Header */
 
 	#study_header {
@@ -27,11 +21,11 @@
 		-webkit-transition: -webkit-transform 0.325s ease-in-out, -webkit-filter 0.325s ease-in-out, opacity 0.325s ease-in-out;
 		-ms-transition: -ms-transform 0.325s ease-in-out, -ms-filter 0.325s ease-in-out, opacity 0.325s ease-in-out;
 		transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out, opacity 0.325s ease-in-out;
-		background-image: -moz-radial-gradient(rgba(0, 0, 0, 0.25) 25%, transparent 55%);
+		/*background-image: -moz-radial-gradient(rgba(0, 0, 0, 0.25) 25%, transparent 55%);
 		background-image: -webkit-radial-gradient(rgba(0, 0, 0, 0.25) 25%, transparent 55%);
 		background-image: -ms-radial-gradient(rgba(0, 0, 0, 0.25) 25%, transparent 55%);
 		background-image: radial-gradient(rgba(0, 0, 0, 0.25) 25%, transparent 55%);
-		max-width: 100%;
+		max-width: 100%;*/
 		text-align: center;
 	}
 
@@ -93,7 +87,7 @@
 				-webkit-transition-delay: 0.25s;
 				-ms-transition-delay: 0.25s;
 				transition-delay: 0.25s;
-				padding: 4.5rem 3rem 1rem;
+				padding: 5.5rem 3rem 1rem;
 				max-height: 40rem;
 				overflow: hidden;
 			}
@@ -120,7 +114,7 @@
 		-webkit-transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
 		-ms-transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
 		transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
-    	width: 64em;
+    	width: 70em;
 		cursor: default;
 		text-align: center;
 		max-width: calc(100%);
@@ -216,7 +210,7 @@
 
 		.main{
 			margin-top: -20px;
-			background-color: #d8d8d8;
+			background-color: white;
 			height: 1200px;
 		}
 

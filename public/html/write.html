@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2003-2016, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.md or http://ckeditor.com/license
+-->
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CKEditor Sample</title>
+	<script src="../ckeditor/ckeditor.js"></script>
+	<script src="../ckeditor/samples/js/sample.js"></script>
+	<script src="../../javascripts/write.js"></script>
+	<link rel="stylesheet" href="../stylesheets/write.css" />
+</head>
+<body id="main">
+
+<main>
+
+	<h1 class="header-a-logo grid-width-30">
+		글쓰기
+		<br>
+	</h1>
+	<div class="select-wrapper">
+		<select name="category" id="category" class="category">
+			<option value="">CATEGORY</option>
+			<option value="001001">여행</option>
+			<option value="001002">음식</option>
+			<option value="001003">일상</option>
+			<option value="002001">PROJECT</option>
+			<option value="002002">SERVER</option>
+			<option value="002003">DATABASE</option>
+			<option value="002004">FRONT</option>
+		</select>
+	</div>
+	<br>
+
+	<div class="title-div">
+		<input class="title" id="title" type="text" placeholder="TITLE">
+	</div>
+
+	<br />
+	<div class="adjoined-bottom">
+		<div class="grid-container">
+			<div class="grid-width-100">
+				<div id="editor">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="height:10px"></div>
+	<div >
+		<span><a class="button special" href="javascript:writeSubmit();" >글작성</a></span>
+		<span><a class="button"  href="javascript:goHistory();" >취소</a></span>
+	</div>
+
+</main>
+
+
+
+<script src="../../javascripts/common/jquery.min.js"></script>
+<script>
+	initSample();
+</script>
+
+</body>
+</html>

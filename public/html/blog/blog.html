@@ -8,16 +8,17 @@
 		<link rel="stylesheet" href="../../stylesheets/blog.css" />
 	</head>
 	<body class="landing">
-		<div id="page-wrapper">
+		<div id="page-wrapper-subMain">
 			<div id="headContent"></div>
 			<header id="blog_header" >
 				<div class="content">
 					<div class="inner">
+						<span class="icon major fa-user-circle"></span>
 						<h1>B L O G</h1>
 						<p></p>
 						<p>THE COPYRIGHT OF ALL THE PICTURES UPLOADED BY 'MERINGK' IS ON ME.<!--]--><br />
 							IF YOU WANT TO HAVE PICTURES, DO NOT TAKE IT SECRETLY.<br>
-		</p>
+					</p>
 					</div>
 				</div>
 			</header>
@@ -32,15 +33,21 @@
 		</div>
 
 		<script src="../../javascripts/common/jquery.min.js"></script>
+		<script>	
+			;(function($){
+				$('#headContent').load("../head.html"); 
+			})(jQuery);		
+		</script>
 		<script src="../../javascripts/common/skel.min.js"></script>
+		<script src="../../javascripts/common/jquery.scrollex.min.js"></script>
 		<script src="../../javascripts/common/jquery.scrolly.min.js"></script>
 		<script src="../../javascripts/common/jquery.dropotron.min.js"></script>
+		
+		<script src="../../javascripts/common/util.js"></script>
 		<script src="../../javascripts/common/common.ui.js"/></script>
-		<script> $('#headContent').load("../head.html"); </script>
 		<script> $('#blogHead').load("blog_head.html"); </script>
 		<script> $('#footer').load("../footer.html"); </script>
-		<script src="../../javascripts/common/util.js"></script>
-		
+		<script src="../../javascripts/blog/blog.js"></script>
 	</body>
 
 	

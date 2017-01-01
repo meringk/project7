@@ -37,16 +37,18 @@
 			// Title Bar.
 
 			var nowLocation = location.href;
-			if(s.indexOf('blog') > -1 || s.indexOf('study') > -1){
-				nowLocation = " || <a href='/html/blog/blog.html'>BLOGHOME</a> || <a href='/html/study/study.html'>STUDYHOME</a> ";
+			 
+			var s=nowLocation;
+			if( s.indexOf('blog') > -1 || s.indexOf('study') > -1 ){
+				nowLocation = "<a href='/index.html'>MERING</a> || <a href='/html/blog/blog.html'>BLOGHOME</a> || <a href='/html/study/study.html'>STUDYHOME</a> ";
 			}else{
-				nowLocation = "";
+				nowLocation = "<a href='/index.html'>MERING</a>";
 			}
 			
 			$(
 				'<div id="titleBar">' +
 				'<a href="#navPanel" class="toggle"></a>' +
-				'<span class="title">' + $('#logo').html() +' ' + nowLocation + '</span>'  + 
+				'<span class="title">' +  nowLocation + '</span>'  + 
 				'</div>'
 			).appendTo($body);
 
