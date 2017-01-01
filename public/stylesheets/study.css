@@ -211,8 +211,45 @@
 		.main{
 			margin-top: -20px;
 			background-color: white;
-			height: 1200px;
+
 		}
+
+		.main-list{
+			color:black;
+			padding: 180px 80px;
+			font-weight:  normal;
+		}
+
+		.study_cont_title{
+			font-weight: 300;
+			font-size: 2em;
+			line-height: 1.5em;
+			text-align: center;
+		}
+
+		.study_cont_title:after{
+			background: #e44c65;
+			content: '';
+			display: inline-block;
+			height: 0.2em;
+			max-width: 20em;
+			width: 100%;
+		}
+
+		.study_cont_content{
+		    padding: 40px 20px;
+		}
+
+		.study_cont_content input[type="checkbox"]{
+			opacity: 1;
+		}
+
+		.study_cont_content hr{
+			    border: 1px solid #dadada;
+		}
+
+
+
 
 
 /*

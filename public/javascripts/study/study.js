@@ -1,3 +1,61 @@
+$(document).ready(function () {
+   
+    var categoryCode = $('.categoryCode').val();
+    console.log(categoryCode);
+
+    categoryCode= "" + categoryCode.toString();
+
+    $.ajax({
+        url: '/study/selectStudyList',
+        type: 'post',
+        dataType: 'json',
+        data: $('#dataForm').serialize(),
+        success: function (data) {
+            console.log(data);
+            for (var i = 0; i < data.length; i++) {
+				// var date = (data[i].cont_regdate).split('T')[0]
+				// 	, time = (data[i].cont_regdate).split('T')[1]
+				// 	, time_H = (time.split(':')[0]) * 1 
+				// 	, calTime = calTimeFnc(time_H);
+
+				$('.main-list').append(
+                    '<div  class="study-list">'
+                    + '<div class="study-title"><span class="icon fa-bookmark-o"/>  '
+                    + '<a class="a-study-title" href="javascript:viewPage('
+                    + data[i].cont_num 
+                    +')">'
+                    + data[i].cont_title
+                    + '</a>'
+                    + '</div>'
+					// + '<div class="study-list-time"> <span style=\'font-size:12px\'>   -' + date
+					// + ' ' + calTime.moon + ' ' + calTime.time_H + '시</span></div>'
+                    + '</div>');
+			}
+        }
+    });
+
+
+    viewPage = function(cont_num){
+        console.log(categoryCode, cont_num);
+        $.ajax({
+            url: '/study/selectStudyContent',
+            type: 'post',
+            dataType: 'json',
+            data: {categoryCode : categoryCode, cont_num : cont_num},
+            success: function (data) {
+                console.log(data);
+                $('.main-list')[0].innerHTML="";
+                $('.main-list').append(
+                    '<div class="study_cont_title">' + data[0].cont_title + '<br/></div>'
+                    +'<div class="study_cont_content">' + data[0].cont_content + '<br/></div>'
+
+                );
+            }
+        });
+    };
+});
+
+
 (function ($) {
 
     skel.breakpoints({
@@ -16,10 +74,6 @@
             $main = $('#main');
 		// Fix: Placeholder polyfill.
 			$('form').placeholder();
-
-		// Prioritize "important" elements on medium.
-       
-
 
         // Nav.
         var $nav = $('#studyHead');

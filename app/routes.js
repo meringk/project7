@@ -1,6 +1,7 @@
 var member = require('./test/controller/member_controller'),
     main = require('./main/controller/main_controller'),
     schedule = require('./blog/controller/schedule_controller'),
+    study = require('./study/controller/study_controller'),
     write = require('./write/controller/write_controller');
 
 module.exports = function(app){
@@ -13,6 +14,7 @@ module.exports = function(app){
         app.use('/member', member);
         app.use('/', main);
         app.use('/schedule',schedule);
+        app.use('/study',study);
         app.use('/write',write);
     }
 }

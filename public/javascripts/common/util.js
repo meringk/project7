@@ -1,5 +1,27 @@
 (function($) {
 
+	 calTimeFnc = function(time_H) {
+
+		var moon = ""
+			, time = {}
+			, moonArr = ['오전', '오후']
+			, timeArr = ['한', '두', '세', '네', '다섯', '여섯', '일곱', '여덟', '아홉', '열', '열한', '열두'];
+
+		moon = moonArr[0];
+		if (time_H.toString().length == 2) moon = moonArr[1];
+		if (time_H == 10 || time_H == 11) moon = moonArr[0];
+
+		if(time_H>24) time_H = time_H -24;
+		if (time_H > 12) time_H = time_H - 12;
+
+		time_H == 0 ? time_H = timeArr[11] : time_H = timeArr[time_H - 1];
+
+		time.time_H = time_H;
+		time.moon = moon;
+		return time;
+	}
+
+
 	/**
 	 * Generate an indented list of links from a nav. Meant for use with panel().
 	 * @return {jQuery} jQuery object.
