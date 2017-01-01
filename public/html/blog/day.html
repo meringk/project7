@@ -23,11 +23,15 @@
 			<div id="blogHead"></div>
 			<div id="main">
 				<div style="height:80px"></div>
+				<div class="main-list"></div>
+				<div class="main-content"></div>
 			</div>
 
 			<!-- Footer -->
 			<footer id="footer"></footer>
-			
+			<form id="dataForm">
+				<input type="hidden" value="001003" name="categoryCode" class="categoryCode"/>
+			</form>
 
 		</div>
 
@@ -38,6 +42,7 @@
 			})(jQuery);		
 		</script>
 		<script src="../../javascripts/common/skel.min.js"></script>
+		<script src="../../javascripts/common/jquery.scrollex.min.js"></script>
 		<script src="../../javascripts/common/jquery.scrolly.min.js"></script>
 		<script src="../../javascripts/common/jquery.dropotron.min.js"></script>
 		<script src="../../javascripts/common/common.ui.js"/></script>
@@ -45,7 +50,7 @@
 		<script> $('#blogHead').load("blog_head.html"); </script>
 		<script> $('#footer').load("../footer.html"); </script>
 		<script src="../../javascripts/common/util.js"></script>
-		
+		<script src="../../javascripts/blog/blog.js"></script>
 	</body>
 
 	

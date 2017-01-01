@@ -194,6 +194,40 @@
    			background-color: rgb(28, 29, 39);
 		}
 
+		.main-list{
+			color:white;
+			padding: 180px 80px;
+			font-weight:  normal;
+		}
+
+		.blog_cont_title{
+			font-weight: 300;
+			font-size: 2em;
+			line-height: 1.5em;
+			text-align: center;
+		}
+
+		.blog_cont_title:after{
+			background: #e44c65;
+			content: '';
+			display: inline-block;
+			height: 0.2em;
+			max-width: 20em;
+			width: 100%;
+		}
+
+		.blog_cont_content{
+		    padding: 40px 20px;
+		}
+
+		.blog_cont_content input[type="checkbox"]{
+			opacity: 1;
+		}
+
+		.blog_cont_content hr{
+			border: 1px solid #dadada;
+		}
+
 /*
 #blog_header {
 		display: -moz-flex;
