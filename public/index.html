@@ -196,12 +196,16 @@
 	
 
 		<script src="javascripts/common/jquery.min.js"></script>
+		<script>	
+			;(function($){
+				$('#headContent').load("html/head.html"); 
+			})(jQuery);		
+		</script>
 		<script src="javascripts/common/skel.min.js"></script>
 		<script src="javascripts/common/jquery.scrolly.min.js"></script>
 		<script src="javascripts/common/jquery.dropotron.min.js"></script>
 		<script src="javascripts/common/jquery.scrollex.min.js"></script>
 		<script src="javascripts/common/common.ui.js"></script>
-		<script> $('#headContent').load("html/head.html"); </script>
 		<script src="javascripts/main.js"></script>
 		<script src="javascripts/common/util.js"></script>
 
