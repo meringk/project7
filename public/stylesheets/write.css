@@ -40,7 +40,7 @@ textarea {
     height: 3em;
     font-weight: 100;
     line-height: 1.75em;
-        padding: 0 1em;
+    padding: 0 1em;
 }
 
 select{
@@ -121,7 +121,7 @@ select:focus::-ms-value {
     text-align: center;
     text-decoration: none;
     white-space: nowrap;
-    width:48%;
+    width:47%;
     margin: 5px;
 }
 
