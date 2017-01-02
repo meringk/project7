@@ -34,7 +34,6 @@ $(document).ready(function () {
     viewPage = function(cont_num){
         console.log(categoryCode, cont_num);
         location.href="/html/study/study_view.html?categoryCode="+categoryCode+"&cont_num="+cont_num;
-        
     };
 });
 

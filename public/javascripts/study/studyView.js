@@ -39,9 +39,4 @@ $(document).ready(function () {
         location.href="/html/write.html?categoryCode="+categoryCode+"&cont_num="+cont_num;
     };
 
-
-
-
-
-
 });

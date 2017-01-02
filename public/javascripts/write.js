@@ -1,10 +1,36 @@
 
 
+$(document).ready(function () {
+    $('#modifySubmit').css("display","none");
+    var locationParam = location.search;
+
+    console.log(locationParam);
 
 
+    if(locationParam != ""){
+        categoryCode = locationParam.split('=')[1].substring(0, 6);
+        cont_num = locationParam.split('=')[2];
 
-
-
+        //수정이라고 글씨 바꿔줌
+        $('.header-a-logo')[0].innerHTML="글 수정"+"<br>"
+        //버튼CSS바꾸어줌
+        $('#modifySubmit').css("display","block");
+        $('#writeSubmit').css("display","none");
+    
+        console.log(categoryCode, cont_num);
+        $.ajax({
+            url: '/study/selectStudyContent',
+            type: 'post',
+            dataType: 'json',
+            data: { categoryCode: categoryCode, cont_num: cont_num },
+            success: function (data) {
+                console.log(data);
+                CKEDITOR.instances.editor.setData(data[0].cont_content);
+                $('#title').val(data[0].cont_title);
+            }
+        });
+    }
+});
 
 
 
@@ -45,7 +71,6 @@ writeSubmit = function () {
                     $('#title').val("");
                     if (confirm("해당카테고리로 가시겠습니까?")){
                         location.href="/html/"+categoryFolder+"/"+categoryName+".html";
-
                     }else{
                         $('#category').val("");
                     }
@@ -63,6 +88,7 @@ contentView = function(){
 
 modifySubmit = function(){
     //수정하기
+    alert("준비중");
 }
 
 

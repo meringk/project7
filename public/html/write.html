@@ -8,9 +8,7 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 	<meta charset="utf-8">
 	<title>MERING</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<script src="../ckeditor/ckeditor.js"></script>
-	<script src="../ckeditor/samples/js/sample.js"></script>
-	<script src="../../javascripts/write.js"></script>
+
 	<link rel="stylesheet" href="../stylesheets/write.css" />
 </head>
 <body id="main">
@@ -18,8 +16,7 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 <main>
 
 	<h1 class="header-a-logo grid-width-30">
-		글쓰기
-		<br>
+		글 등록
 	</h1>
 	<div class="select-wrapper">
 		<select name="category" id="category" class="category">
@@ -51,7 +48,8 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 	</div>
 	<div style="height:10px"></div>
 	<div class="button-div">
-		<a class="button special" href="javascript:writeSubmit();" >글작성</a>
+		<a class="button special" href="javascript:writeSubmit();" id="writeSubmit">글작성</a>
+		<a class="button special" href="javascript:modifySubmit();" id="modifySubmit">글수정</a>
 		<a class="button"  href="javascript:goHistory();" >취소</a>
 	</div>
 
@@ -60,6 +58,9 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 
 
 <script src="../../javascripts/common/jquery.min.js"></script>
+<script src="../ckeditor/ckeditor.js"></script>
+<script src="../ckeditor/samples/js/sample.js"></script>
+<script src="../../javascripts/write.js"></script>
 <script>
 	initSample();
 </script>
