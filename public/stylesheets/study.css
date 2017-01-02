@@ -214,9 +214,15 @@
 
 		}
 
+		.main-upper-div{
+			padding-top: 37px;
+			text-align: center;
+			color:black;
+		}
+
 		.main-list{
 			color:black;
-			padding: 180px 80px;
+			padding: 140px 80px;
 			font-weight:  normal;
 		}
 

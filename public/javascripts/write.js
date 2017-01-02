@@ -1,5 +1,15 @@
-writeSubmit = function () {
 
+
+
+
+
+
+
+
+
+
+writeSubmit = function () {
+    //저장하기
     var title = $('#title').val(),
         content = CKEDITOR.instances.editor.getData(),
         category = $('#category').val();
@@ -43,10 +53,17 @@ writeSubmit = function () {
             });
             
         }
-        
     }
-
 };
+
+
+contentView = function(){
+    // 수정할 글 불러오기
+}
+
+modifySubmit = function(){
+    //수정하기
+}
 
 
 goHistory = function(){

@@ -32,24 +32,8 @@ $(document).ready(function () {
             }
         });
         viewPage = function (cont_num) {
-            console.log("33??")
             console.log(categoryCode, cont_num);
-            cont_num = cont_num*1;
-            $.ajax({
-                url: '/blog/selectBlogContent',
-                type: 'post',
-                dataType: 'json',
-                data: { categoryCode: categoryCode, cont_num: cont_num },
-                success: function (data) {
-                    console.log(data);
-                    $('.main-list')[0].innerHTML = "";
-                    $('.main-list').append(
-                        '<div class="blog_cont_title">' + data[0].cont_title + '<br/></div>'
-                        + '<div class="blog_cont_content">' + data[0].cont_content + '<br/></div>'
-
-                    );
-                }
-            });
+            location.href="/html/blog/blog_view.html?categoryCode="+categoryCode+"&cont_num="+cont_num;
         };
     }
 });

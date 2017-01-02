@@ -188,15 +188,20 @@
 	
 		}
 
-
 		#main{
 			margin-top: -20px;
    			background-color: rgb(28, 29, 39);
 		}
 
+		.main-upper-div{
+			padding-top: 37px;
+			text-align: center;
+			color:white;
+		}
+
 		.main-list{
 			color:white;
-			padding: 180px 80px;
+			padding: 140px 80px;
 			font-weight:  normal;
 		}
 
