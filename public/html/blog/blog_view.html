@@ -46,30 +46,6 @@
 		<script> $('#footer').load("../footer.html"); </script>
 		<script src="../../javascripts/common/util.js"></script>
 		<script src="../../javascripts/blog/blog.js"></script>
+		<script src="../../javascripts/blog/blogView.js"></script>
 	</body>
-
-	<script>
-            var locationParam = location.search;
-            categoryCode  = locationParam.split('=')[1].substring(0,6);
-            cont_num  = locationParam.split('=')[2];
-            $.ajax({
-                url: '/blog/selectBlogContent',
-                type: 'post',
-                dataType: 'json',
-                data: { categoryCode: categoryCode, cont_num: cont_num },
-                success: function (data) {
-                    console.log(data);
-                    $('.main-list')[0].innerHTML = "";
-                    $('.main-list').append(
-                        '<div class="blog_cont_title">' + data[0].cont_title + '<br/></div>'
-                        + '<div class="main-upper-div">'
-                        + '<a> 수정 </a> /'
-                        + '<a> 삭제 </a>'
-                        + '</div>'
-                        + '<div class="blog_cont_content">' + data[0].cont_content + '<br/></div>'
-
-                    );
-                }
-            });
-        </script>
 </html>

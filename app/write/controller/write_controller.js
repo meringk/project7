@@ -31,6 +31,35 @@ router.post('/studyWrite', function(req, res){
     });
 });
 
+//study 글 수정하기
+router.post('/studyModify', function(req, res){
+  var writeParam = req.body;
+  console.log(writeParam);
+
+  writeService.updateStudyModify(writeParam)
+    .then(function(data){
+        res.json(data);
+    })
+    .catch(function(error){
+        res.send(error);
+    });
+});
+
+
+//blog 글 수정하기
+router.post('/blogModify', function(req, res){
+  var writeParam = req.body;
+  console.log(writeParam);
+
+  writeService.updateBlogModify(writeParam)
+    .then(function(data){
+        res.json(data);
+    })
+    .catch(function(error){
+        res.send(error);
+    });
+});
+
 
 
 module.exports = router;

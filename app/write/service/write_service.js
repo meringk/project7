@@ -1,7 +1,10 @@
 var db = require('../../lib/pgDb.js');
 var writeService = {
     insertBlogWrite: insertBlogWrite,
-    insertStudyWrite: insertStudyWrite
+    insertStudyWrite: insertStudyWrite,
+    updateStudyModify: updateStudyModify,
+    updateBlogModify:updateBlogModify
+
 }
 
 //Blog 글등록
@@ -18,7 +21,7 @@ function insertBlogWrite(param) {
                 reject(error);
             });
     });
-}
+};
 
 //Study 글등록
 function insertStudyWrite(param) {
@@ -34,7 +37,34 @@ function insertStudyWrite(param) {
                 reject(error);
             });
     });
-}
+};
+
+function updateStudyModify(param){
+    return new Promise(function (resolve, reject) {
+        var query = "update tb_study_board set cont_category=$1, cont_title=$2, cont_content=$3 where cont_category=$4 and cont_num = $5";
+        db.query(query, [param.category, param.title, param.content, param.categoryCode, param.cont_num])
+            .then(function (data) {
+                resolve(data);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    });
+};
+
+
+function updateBlogModify(param){
+    return new Promise(function (resolve, reject) {
+        var query = "update tb_blog_board set cont_category=$1, cont_title=$2, cont_content=$3 where cont_category=$4 and cont_num = $5";
+        db.query(query, [param.category, param.title, param.content, param.categoryCode, param.cont_num])
+            .then(function (data) {
+                resolve(data);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    });
+};
 
 
 module.exports = writeService;

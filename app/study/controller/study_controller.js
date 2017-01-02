@@ -20,7 +20,6 @@ router.post('/selectStudyList', function (req, res) {
 
 // 글 상세정보 가져오기
 router.post('/selectStudyContent', function (req, res) {
-    console.log("PARAM");
     var param = req.body;
     console.log(param)
     studyService.selectStudyContent(param)
@@ -32,9 +31,6 @@ router.post('/selectStudyContent', function (req, res) {
             res.json(err);
         });
 });
-
-
-
 
 
 module.exports = router;
