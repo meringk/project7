@@ -16,7 +16,7 @@ $(document).ready(function () {
         //버튼CSS바꾸어줌
         $('#modifySubmit').css("display","block");
         $('#writeSubmit').css("display","none");
-    
+        $('#category').val(categoryCode);
         console.log(categoryCode, cont_num);
         $.ajax({
             url: '/study/selectStudyContent',
@@ -27,6 +27,7 @@ $(document).ready(function () {
                 console.log(data);
                 CKEDITOR.instances.editor.setData(data[0].cont_content);
                 $('#title').val(data[0].cont_title);
+                
             }
         });
     }
