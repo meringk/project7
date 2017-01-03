@@ -6,6 +6,7 @@ var studyService = require('../service/study_service.js');
 
 // 글 리스트 불러오기
 router.post('/selectStudyList', function (req, res) {
+    console.log(req.session);
     var param = req.body;
     studyService.selectStudyList(param)
         .then(function (data) {
