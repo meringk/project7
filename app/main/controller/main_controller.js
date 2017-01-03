@@ -1,11 +1,28 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../../lib/pgDb.js');
+var seApp = require('../../lib/session.js');
 var mainService = require('../service/main_service.js');
 
 var g_idx = 0;
+
+
+//seApp.use(seApp({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
+
+// var app = express()
+router.set('trust proxy', 1) // trust first proxy
+router.use(seApp({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
+
+
+
+
+
 //방명록리스트
 router.get('/guestList', function(req, res){
+   
+    console.log("=======SESSION=========");
+    console.log(req.session);
+
      mainService.selectGuestBookList()
         .then(function (data){
             console.log(data);
