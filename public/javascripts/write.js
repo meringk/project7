@@ -25,7 +25,7 @@ $(document).ready(function () {
 
         // 해당 글 뿌리기
         $.ajax({
-            url: '/'+categoryFolder+'/select'+CcategoryFolder+'Content',
+            url: '/' + categoryFolder + '/select' + CcategoryFolder + 'Content',
             type: 'post',
             dataType: 'json',
             data: { categoryCode: categoryCode, cont_num: cont_num },
@@ -65,7 +65,7 @@ $(document).ready(function () {
                 url: '/write/' + categoryFolder + 'Modify',
                 type: 'post',
                 dataType: 'json',
-                data: { title: title, content: content, category: category, cont_num: cont_num , categoryCode : categoryCode },
+                data: { title: title, content: content, category: category, cont_num: cont_num, categoryCode: categoryCode },
                 success: function (data) {
                     //해당 글로 이동
                     location.href = "/html/" + categoryFolder + "/" + categoryFolder + "_view.html?categoryCode=" + category + "&cont_num=" + cont_num;
@@ -75,6 +75,11 @@ $(document).ready(function () {
     }
 
 });
+
+//파일업로드
+fileUpload = function () {
+    window.open("/html/fileUpload.html", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
+};
 
 
 

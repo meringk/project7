@@ -1,29 +1,22 @@
 var express = require('express');
-
-    var session = require('express-session');
 var router = express.Router();
 var db = require('../../lib/pgDb.js');
 var mainService = require('../service/main_service.js');
+var session = require('express-session');
 
 var g_idx = 0;
 
-
 router.use(session({
-    secret: 'secretMMMMMMRRRRRRRRMMMMMMEEEEEE',
-    resave: false,
+    secret:'secrett',
+    resave:false,
     saveUninitialized: false
 }));
-
-
 //방명록리스트
 router.get('/guestList', function(req, res){
-   
-    console.log("=======SESSION=========");
     req.session.user_id = 1234,
     req.session.name = 'meringk'
 
-    console.log(req.session);
-     mainService.selectGuestBookList()
+    mainService.selectGuestBookList()
         .then(function (data){
             console.log(data);
             //console.log(Object.keys(data).length);
@@ -40,7 +33,6 @@ router.get('/guestList', function(req, res){
 
 //방명록리스트더보기
 router.get('/guestListMore', function(req, res){
-     console.log(req.session);
      g_idx = (req.url).split('=')[1];
      mainService.selectGuestBookListMore(g_idx)
         .then(function (data){

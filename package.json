@@ -6,6 +6,8 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "aws": "0.0.3-2",
+    "aws-sdk": "^2.7.20",
     "body-parser": "~1.15.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
@@ -13,6 +15,7 @@
     "express-session": "^1.14.2",
     "jade": "~1.11.0",
     "morgan": "~1.7.0",
+    "multer": "^1.2.1",
     "pg-promise": "^5.5.0",
     "serve-favicon": "~2.3.0"
   }
