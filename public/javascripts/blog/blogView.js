@@ -23,8 +23,8 @@ $(document).ready(function () {
             $('.main-list').append(
                 '<div class="blog_cont_title">' + data[0].cont_title + '<br/></div>'
                     + '<div class="main-upper-div">'
-                    + '<a href="javascript:modify()"> 수정 </a> /'
-                    + '<a> 삭제 </a>'
+                   // + '<a href="javascript:modify()"> 수정 </a> /'
+                   // + '<a> 삭제 </a>'
                     + '</div>'
                     + '<div class="blog_cont_content">' + data[0].cont_content + '<br/></div>'
             );

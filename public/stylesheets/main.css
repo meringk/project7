@@ -1595,8 +1595,8 @@
 		}
 
 	strong, b {
-		color: #ffffff;
-		font-weight: 300;
+		color: black;
+		font-weight: bold;
 	}
 
 	em, i {
