@@ -1,12 +1,21 @@
 var express = require('express');
-var aws = require('aws-sdk');
+const aws = require('aws-sdk');
 var path = require('path');
+var fs = require('fs');
 var multer  = require('multer')
 var router = express.Router();
 var db = require('../../lib/pgDb.js');
 var writeService = require('../service/write_service.js');
 
-aws.config.loadFromPath(path.resolve(__dirname,'../../resources/awsConfig.json'));
+//aws.config.loadFromPath(path.resolve(__dirname,'../../resources/awsConfig.json'));
+//aws.config.update();
+
+aws.config.update({
+    secretAccessKey: 'Y39xlV8zQp6gMOUdJh+2vDLt0DpAlcvkxwwzVeJhyr306XQZXCfWg8FwxjmzLUbSQa3TBN91Qt0Fb2rP',
+    accessKeyId: 'AKIAJKAKLAXZSXJ54PTA',
+    region: 'ap-northeast-2'
+});
+
 const s3 = new aws.S3();
 
 router.use(multer({
@@ -16,22 +25,23 @@ router.use(multer({
 router.post('/upload', function(req,res){
 
     var file = req.files[0];
+    console.log(file);
     var params = {
             Bucket: 'mering',
             ACL: 'public-read', 
             Key:file.originalname,
             ContentType: file.mimetype,
-            Body: JSON.stringify(file),
+            Body: fs.createReadStream(file.path),
             StorageClass: 'REDUCED_REDUNDANCY'
      };
     s3.upload(params, (err, data) => {
         if(err){
+            console.log("errooorrr");
             console.log(err);
             return res.end();
         }
     });
 });
-
 
 
 //blog 글저장하기
