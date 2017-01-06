@@ -8,15 +8,10 @@ var router = express.Router();
 var db = require('../../lib/pgDb.js');
 var writeService = require('../service/write_service.js');
 
-//aws.config.loadFromPath(path.resolve(__dirname,'../../resources/awsConfig.json'));
-//aws.config.update();
+aws.config.loadFromPath(path.resolve(__dirname,'../../resources/awsConfig.json'));
+aws.config.update();
 
 router.use(bodyParser.json({limit:'1024kb'}))
-aws.config.update({
-    secretAccessKey: 'hfodrhD0pGa9pYK72Q67TbEDQLkoPVF+YmkINQTj',
-    accessKeyId: 'AKIAIKKJIRR2Q3QV2GWA',
-    region: 'ap-northeast-2'
-});
 
 const s3 = new aws.S3();
 
