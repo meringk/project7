@@ -37,8 +37,18 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 	</div>
 
 	<div class="file">
-		<a class="button" href="javascript:fileUpload();" >사진첨부</a>
-	</div>
+            <form method="post" id="FILE_FORM" enctype="multipart/form-data">
+				<div class="file_div">
+					<input type="file" name="FILE_TAG" id="FILE_TAG">
+					<div class="ex_filename">파일선택</div> 
+				</div>
+				<div>
+                <a class="buttonFile" href="javascript:uploadFile();">이미지추가</a>
+				</div>
+            </form>
+        </div>
+        <div class="preview">
+    </div>
 
 	<br />
 	<div class="adjoined-bottom">

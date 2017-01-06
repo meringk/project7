@@ -141,3 +141,61 @@ select:focus::-ms-value {
 .button.special:active {
     background-color: #e13652;
 }
+
+
+.previewImg{
+    width:300px;
+    height:300px;
+}
+
+.file_div{
+    height: 50px;
+}
+.file .ex_filename {
+    position:absolute;
+    display: inline-block; 
+    padding: .5em .75em; 
+    color: #999;
+    font-size: inherit; 
+    line-height: normal; vertical-align: middle; 
+    background-color: #fdfdfd; 
+    cursor: pointer; 
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2; 
+    border-radius: .25em;
+    width: 80px;
+    padding-top: 25px;
+} 
+.file input[type="file"] {
+    position: absolute; 
+        width: 60px;
+    height: 60px; 
+    padding: 0; 
+    margin: -1px; 
+    overflow: hidden; 
+}
+/*
+.file .buttonFile {
+    position:absolute;
+    display: inline-block; 
+    padding: .5em .75em; 
+    color: #999;
+    font-size: inherit; 
+    line-height: normal; vertical-align: middle; 
+    background-color: #fdfdfd; 
+    cursor: pointer; 
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2; 
+    border-radius: .25em;
+} 
+
+.file input[type="file"] {
+    position: absolute; 
+    width: 60px;
+    height: 60px; 
+    padding: 0; 
+    margin: -1px; 
+    overflow: hidden; 
+    border: 0; 
+}*/
+

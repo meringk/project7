@@ -74,6 +74,43 @@ $(document).ready(function () {
         }
     }
 
+
+    imgUpload = function(){
+        console.log(this);
+    }
+
+
+    uploadFile =  function(){
+        var form = $('FILE_FORM')[0];
+        var formData = new FormData(form);
+        formData.append("fileObj", $("#FILE_TAG")[0].files[0]);
+
+        var date = new Date();
+        var d = date.getDate(),
+            h = date.getHours(),
+            s = date.getSeconds();
+        console.log(d+""+h+""+s);
+        var folderNm = d+""+h+""+s
+
+        formData.append("folder",folderNm);
+
+        $.ajax({
+            url: '/write/upload',
+                processData: false,
+                contentType: false,
+                data: formData,
+                type: 'POST',
+                success: function(data){
+                    console.log(data);
+                    CKEDITOR.instances.editor.insertHtml('<div><img src=' + data.Location
+                        + ' class="previewImg">');
+                    // $('.preview').prepend('<div><img src=' + data.Location
+                    //     + ' class="previewImg">'
+                    //     + '</div>' );
+                }
+        });
+    }
+
 });
 
 //파일업로드

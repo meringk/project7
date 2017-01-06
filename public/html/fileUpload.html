@@ -12,9 +12,10 @@
 
     <main>
         <div class="file">
-            <form action="/write/upload" method="post" , enctype="multipart/form-data">
-                <input type="file" name="file">
-                <input type="submit" name="uploadSubmit">
+
+            <form method="post" id="FILE_FORM" enctype="multipart/form-data">
+                <input type="file" name="FILE_TAG">
+                <a class="button" href="javascript:uploadFile();">전송</a>
             </form>
         </div>
     </main>

@@ -2,7 +2,8 @@ var express = require('express');
 const aws = require('aws-sdk');
 var path = require('path');
 var fs = require('fs');
-var multer  = require('multer')
+var multer  = require('multer');
+var bodyParser = require('body-parser');
 var router = express.Router();
 var db = require('../../lib/pgDb.js');
 var writeService = require('../service/write_service.js');
@@ -10,9 +11,10 @@ var writeService = require('../service/write_service.js');
 //aws.config.loadFromPath(path.resolve(__dirname,'../../resources/awsConfig.json'));
 //aws.config.update();
 
+router.use(bodyParser.json({limit:'1024kb'}))
 aws.config.update({
-    secretAccessKey: 'Y39xlV8zQp6gMOUdJh+2vDLt0DpAlcvkxwwzVeJhyr306XQZXCfWg8FwxjmzLUbSQa3TBN91Qt0Fb2rP',
-    accessKeyId: 'AKIAJKAKLAXZSXJ54PTA',
+    secretAccessKey: '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',
+    accessKeyId: 'AKIAIKKJIRR2Q3QV2GWA',
     region: 'ap-northeast-2'
 });
 
@@ -23,22 +25,23 @@ router.use(multer({
 }).any());
 
 router.post('/upload', function(req,res){
-
     var file = req.files[0];
-    console.log(file);
+
     var params = {
             Bucket: 'mering',
             ACL: 'public-read', 
-            Key:file.originalname,
+            Key: req.body.folder +'/'+ file.originalname,
             ContentType: file.mimetype,
             Body: fs.createReadStream(file.path),
             StorageClass: 'REDUCED_REDUNDANCY'
      };
     s3.upload(params, (err, data) => {
         if(err){
-            console.log("errooorrr");
             console.log(err);
             return res.end();
+        }else{
+            console.log('성공');
+            res.json(data);
         }
     });
 });  
