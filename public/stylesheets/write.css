@@ -5,6 +5,13 @@ main{
     padding:60px
 }
 
+a {
+
+    border-bottom: dotted 1px;
+		color: #e44c65;
+		text-decoration: none;
+}
+
 .header-a-logo:after{
     background: #e44c65;
     content: '';
@@ -148,54 +155,52 @@ select:focus::-ms-value {
     height:300px;
 }
 
-.file_div{
-    height: 50px;
+.file{
+    position: relative;
+    margin-top: 18px;
 }
-.file .ex_filename {
-    position:absolute;
-    display: inline-block; 
-    padding: .5em .75em; 
+
+.file_div{
+    position: relative;
+    float:left;
+    overflow: hidden;
     color: #999;
     font-size: inherit; 
-    line-height: normal; vertical-align: middle; 
+    vertical-align: middle; 
     background-color: #fdfdfd; 
     cursor: pointer; 
     border: 1px solid #ebebeb;
     border-bottom-color: #e2e2e2; 
     border-radius: .25em;
     width: 80px;
-    padding-top: 25px;
-} 
-.file input[type="file"] {
-    position: absolute; 
-        width: 60px;
-    height: 60px; 
-    padding: 0; 
-    margin: -1px; 
-    overflow: hidden; 
-}
-/*
-.file .buttonFile {
-    position:absolute;
-    display: inline-block; 
     padding: .5em .75em; 
+}
+
+.buttonFile{
+   position: relative;
+    overflow: hidden;
     color: #999;
     font-size: inherit; 
-    line-height: normal; vertical-align: middle; 
+    vertical-align: middle; 
     background-color: #fdfdfd; 
     cursor: pointer; 
     border: 1px solid #ebebeb;
     border-bottom-color: #e2e2e2; 
     border-radius: .25em;
-} 
+    width: 80px;
+    padding: .5em .75em; 
+    left: 10px;
+}
 
 .file input[type="file"] {
-    position: absolute; 
-    width: 60px;
-    height: 60px; 
-    padding: 0; 
-    margin: -1px; 
-    overflow: hidden; 
-    border: 0; 
-}*/
+   position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
 

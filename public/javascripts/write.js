@@ -80,6 +80,26 @@ $(document).ready(function () {
     }
 
 
+    $('#fileUpload')[0].onchange = function () {
+        alert("ㄸㄷㄷ");
+                console.log(this);
+        $('.preview').innerHTML = this.value;
+    };
+
+
+
+
+$('#fileUpload').on('change', function() {
+     console.log(this);
+         ///// Your code
+});
+$(document).on("change", "#fileUpload", function(){
+     //Do something
+     console.log(this);
+});
+
+
+
     uploadFile =  function(){
         var form = $('FILE_FORM')[0];
         var formData = new FormData(form);
