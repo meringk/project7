@@ -79,24 +79,11 @@ $(document).ready(function () {
         console.log(this);
     }
 
-
-    $('#fileUpload')[0].onchange = function () {
-        alert("ㄸㄷㄷ");
-                console.log(this);
-        $('.preview').innerHTML = this.value;
-    };
-
-
-
-
-$('#fileUpload').on('change', function() {
-     console.log(this);
-         ///// Your code
-});
-$(document).on("change", "#fileUpload", function(){
-     //Do something
-     console.log(this);
-});
+    $('#FILE_TAG').on('change', function() {
+        console.log(this.value);
+            ///// Your code
+            $('.preview')[0].innerHTML = this.value;
+    });
 
 
 
