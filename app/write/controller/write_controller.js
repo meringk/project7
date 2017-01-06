@@ -1,17 +1,14 @@
-var express = require('express');
+var express = require('express'),
+    path = require('path'),
+    multer = require('multer'),
+    multerS3 = require('multer-s3')
+    router = express.Router();
+
 const AWS = require('aws-sdk');
-var path = require('path');
-var fs = require('fs');
-var multer = require('multer');
-var router = express.Router();
 var db = require('../../lib/pgDb.js');
 var writeService = require('../service/write_service.js');
-var multerS3 = require('multer-s3')
-console.log(__dirname)
+
 AWS.config.loadFromPath(path.resolve(__dirname, '../../resources/awsConfig.json'));
-// router.use(multer({
-//     dest:__dirname+'/uploads/'
-// }).any());
 
 const s3 = new AWS.S3();
 
@@ -34,8 +31,8 @@ let storage = multerS3({
         cb(null, path1);
     }
 });
-var upload = multer({ storage: storage });
 
+var upload = multer({ storage: storage });
 
 router.use(multer({
     storage: storage
