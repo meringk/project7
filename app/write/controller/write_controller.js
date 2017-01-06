@@ -1,5 +1,5 @@
 var express = require('express');
-const aws = require('aws-sdk');
+const AWS = require('aws-sdk');
 var path = require('path');
 var fs = require('fs');
 var multer  = require('multer');
@@ -8,12 +8,12 @@ var router = express.Router();
 var db = require('../../lib/pgDb.js');
 var writeService = require('../service/write_service.js');
 
-aws.config.loadFromPath(path.resolve(__dirname,'../../resources/awsConfig.json'));
-aws.config.update();
+console.log(__dirname)
+AWS.config.loadFromPath(path.resolve(__dirname,'../../resources/awsConfig.json'));
 
 router.use(bodyParser.json({limit:'1024kb'}))
 
-const s3 = new aws.S3();
+const s3 = new AWS.S3();
 
 router.use(multer({
     dest:__dirname+'/uploads/'
