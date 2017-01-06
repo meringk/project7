@@ -16,6 +16,7 @@
     "jade": "~1.11.0",
     "morgan": "~1.7.0",
     "multer": "^1.2.1",
+    "multer-s3": "^2.5.0",
     "pg-promise": "^5.5.0",
     "serve-favicon": "~2.3.0"
   }

@@ -84,23 +84,10 @@ $(document).ready(function () {
             ///// Your code
             $('.preview')[0].innerHTML = this.value;
     });
-
-
-
     uploadFile =  function(){
         var form = $('FILE_FORM')[0];
         var formData = new FormData(form);
         formData.append("fileObj", $("#FILE_TAG")[0].files[0]);
-
-        var date = new Date();
-        var d = date.getDate(),
-            h = date.getHours(),
-            s = date.getSeconds();
-        console.log(d+""+h+""+s);
-        var folderNm = d+""+h+""+s
-
-        formData.append("folder",folderNm);
-
         $.ajax({
             url: '/write/upload',
                 processData: false,
@@ -109,7 +96,7 @@ $(document).ready(function () {
                 type: 'POST',
                 success: function(data){
                     console.log(data);
-                    CKEDITOR.instances.editor.insertHtml('<div><img src=' + data.Location
+                    CKEDITOR.instances.editor.insertHtml('<div><img src=' + data[0].location
                         + ' class="previewImg">');
                     // $('.preview').prepend('<div><img src=' + data.Location
                     //     + ' class="previewImg">'
