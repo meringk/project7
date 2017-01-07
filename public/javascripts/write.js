@@ -97,7 +97,7 @@ $(document).ready(function () {
                 success: function(data){
                     console.log(data);
                     CKEDITOR.instances.editor.insertHtml('<div><img src=' + data[0].location
-                        + ' class="previewImg">');
+                        + ' class="previewImg" style="width:300px">');
                     // $('.preview').prepend('<div><img src=' + data.Location
                     //     + ' class="previewImg">'
                     //     + '</div>' );

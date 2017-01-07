@@ -177,37 +177,6 @@
 					font-size: 0.9em;
 				}
 
-
-		@media screen and (max-width: 736px) {
-
-			#studyHead.alt {
-				top:44px;
-			}
-
-		}
-
-		@media screen and (max-width: 480px) {
-
-			 #studyHead nav ul {
-                min-width: 10rem;
-                max-width: 100%;
-				background-color:#1c1d26;
-            }
-
-				#studyHead nav ul li:first-child {
-					border-top: 0;
-				}
-
-				#studyHead nav ul li a {
-					height: 3rem;
-					line-height: 3rem;
-					min-width: 0;
-					width: 100%;
-				}
-	
-		}
-
-
 		.main{
 			margin-top: -20px;
 			background-color: white;
@@ -255,6 +224,45 @@
 		}
 
 
+		@media screen and (max-width: 736px) {
+
+			#studyHead.alt {
+				top:44px;
+			}
+
+		}
+
+		@media screen and (max-width: 480px) {
+
+			 #studyHead nav ul {
+                min-width: 10rem;
+                max-width: 100%;
+				background-color:#1c1d26;
+            }
+
+				#studyHead nav ul li:first-child {
+					border-top: 0;
+				}
+
+				#studyHead nav ul li a {
+					height: 3rem;
+					line-height: 3rem;
+					min-width: 0;
+					width: 100%;
+				}
+
+				.main-list{
+					padding: 140px 3px;
+				}
+
+				.previewImg{
+					width:330px
+				}
+	
+		}
+
+
+	
 
 
 

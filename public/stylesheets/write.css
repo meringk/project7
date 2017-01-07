@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,300,100italic,300italic");
 
 main{
-    padding:60px
+    padding:7px
 }
 
 a {
@@ -147,12 +147,6 @@ select:focus::-ms-value {
 
 .button.special:active {
     background-color: #e13652;
-}
-
-
-.previewImg{
-    width:300px;
-    height:300px;
 }
 
 .file{
