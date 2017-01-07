@@ -83,27 +83,25 @@ $(document).ready(function () {
         console.log(this.value);
             ///// Your code
             $('.preview')[0].innerHTML = this.value;
+            var form = $('FILE_FORM')[0];
+            var formData = new FormData(form);
+            formData.append("fileObj", $("#FILE_TAG")[0].files[0]);
+            $.ajax({
+                url: '/write/upload',
+                    processData: false,
+                    contentType: false,
+                    data: formData,
+                    type: 'POST',
+                    success: function(data){
+                        console.log(data);
+                        CKEDITOR.instances.editor.insertHtml('<div><img src=' + data[0].location
+                            + ' class="previewImg" style="width:300px">');
+                        // $('.preview').prepend('<div><img src=' + data.Location
+                        //     + ' class="previewImg">'
+                        //     + '</div>' );
+                    }
+            });
     });
-    uploadFile =  function(){
-        var form = $('FILE_FORM')[0];
-        var formData = new FormData(form);
-        formData.append("fileObj", $("#FILE_TAG")[0].files[0]);
-        $.ajax({
-            url: '/write/upload',
-                processData: false,
-                contentType: false,
-                data: formData,
-                type: 'POST',
-                success: function(data){
-                    console.log(data);
-                    CKEDITOR.instances.editor.insertHtml('<div><img src=' + data[0].location
-                        + ' class="previewImg" style="width:300px">');
-                    // $('.preview').prepend('<div><img src=' + data.Location
-                    //     + ' class="previewImg">'
-                    //     + '</div>' );
-                }
-        });
-    }
 
 });
 

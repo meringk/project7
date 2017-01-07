@@ -156,7 +156,6 @@ select:focus::-ms-value {
 
 .file_div{
     position: relative;
-    float:left;
     overflow: hidden;
     color: #999;
     font-size: inherit; 
