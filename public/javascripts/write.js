@@ -2,10 +2,12 @@
 
 $(document).ready(function () {
     $('#modifySubmit').css("display", "none");
+
+
+    // 수정할 글 불러오기
     var locationParam = location.search;
     var categoryCode = "";
     var cont_num = "";
-    console.log(locationParam);
 
     if (locationParam != "") {
         categoryCode = locationParam.split('=')[1].substring(0, 6);
@@ -45,6 +47,7 @@ $(document).ready(function () {
         $('#category').val(categoryCode);
     }
 
+
     modifySubmit = function () {
         var title = $('#title').val(),
             content = CKEDITOR.instances.editor.getData(),
@@ -52,6 +55,7 @@ $(document).ready(function () {
 
         var categoryGb = category.substring(0, 3);
         categoryFolder = "";
+
 
         if (categoryGb == "001") {
             categoryFolder = "blog"
@@ -74,33 +78,42 @@ $(document).ready(function () {
         }
     }
 
-
-    imgUpload = function(){
-        console.log(this);
-    }
-
-    $('#FILE_TAG').on('change', function() {
-        console.log(this.value);
-            ///// Your code
-            $('.preview')[0].innerHTML = this.value;
-            var form = $('FILE_FORM')[0];
-            var formData = new FormData(form);
-            formData.append("fileObj", $("#FILE_TAG")[0].files[0]);
+    $('#FILE_TAG').on('change', function () {
+        console.log((this.value).split('\\')[2]);
+        ///// Your code
+        $('.preview')[0].innerHTML = (this.value).split('\\')[2];
+        var form = $('FILE_FORM')[0];
+        var formData = new FormData(form);
+        formData.append("fileObj", $("#FILE_TAG")[0].files[0]);
+        var fileSize = ($('#FILE_TAG')[0].files[0].size / 1024 / 1024).toFixed(2);
+        console.log(fileSize + "MB");
+        var filter = "win16|win32|win64|mac";
+        var imageSize="305";
+        alert(navigator.platform.toLowerCase());
+        if (navigator.platform) {
+            alert(navigator.platform.toLowerCase().indexOf(filter));
+            if (navigator.platform.toLowerCase().indexOf(filter) < 0) {
+                alert("ㅇㅇ")
+                imageSize="1190";
+            }
+        }
+        if (fileSize > 0.25) {
+            alert("파일크기(" + fileSize + "MB)가 너무크다. 0.25MB이하로 올려주세요..");
+        } else {
             $.ajax({
                 url: '/write/upload',
-                    processData: false,
-                    contentType: false,
-                    data: formData,
-                    type: 'POST',
-                    success: function(data){
-                        console.log(data);
-                        CKEDITOR.instances.editor.insertHtml('<div><img src=' + data[0].location
-                            + ' class="previewImg" style="width:300px">');
-                        // $('.preview').prepend('<div><img src=' + data.Location
-                        //     + ' class="previewImg">'
-                        //     + '</div>' );
-                    }
+                processData: false,
+                contentType: false,
+                data: formData,
+                type: 'POST',
+                success: function (data) {
+                    console.log(data);
+                    
+                    CKEDITOR.instances.editor.insertHtml('<div><img src=' + data[0].location
+                        + ' class="previewImg"  style="max-width:'+imageSize+'px;">');
+                }
             });
+        }
     });
 
 });
@@ -109,8 +122,6 @@ $(document).ready(function () {
 fileUpload = function () {
     window.open("/html/fileUpload.html", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
 };
-
-
 
 writeSubmit = function () {
     //저장하기
@@ -134,6 +145,8 @@ writeSubmit = function () {
         alert("글 제목이 필요합니다.");
     } else if (content.length == 0) {
         alert("글 내용이 필요합니다.");
+    } else if (category == "") {
+        alert("CATEGORY를 설정해 주세요.")
     } else {
         if (confirm("글 등록 하시겠습니까 ?")) {
             $.ajax({
@@ -158,9 +171,6 @@ writeSubmit = function () {
 };
 
 
-contentView = function () {
-    // 수정할 글 불러오기
-}
 
 
 

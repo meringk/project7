@@ -18,7 +18,6 @@ let storage = multerS3({
     acl: 'public-read',
     storageClass: 'REDUCED_REDUNDANCY',
     metadata: function (req, file, cb) {
-        
         cb(null, { fieldName: file.fieldname });
     },
     key: function (req, file, cb) {
