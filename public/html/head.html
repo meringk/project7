@@ -30,7 +30,7 @@
                 </li>
             </ul>
         </li>
-        <li><a href="javascript:signup();" class="button special">SIGN UP</a></li>
+        <li id="login_li"><a href="javascript:signup();" class="button special">SIGN UP</a></li>
     </ul>
 </nav>
 </header>
@@ -74,18 +74,18 @@
 <span class="fa fa-arrow-left">
         </a>
 <h2>LOGIN</h2>
-<input type="text" placeholder="ID">
-<input type="password" placeholder="Password">
+<input type="text" name="loginId" id="loginId" placeholder="ID">
+<input type="password" name="loginPasswd" id="loginPasswd" placeholder="Password">
 <button class="btn_login" onclick="login()">LOGIN</button>
 </div>
 
 <div class="cont_form_sign_up">
     <a href="#" onclick="ocultar_login_sign_up()"><span class="fa fa-arrow-left"></span></a>
 <h2>SIGN UP</h2>
-<input type="text" placeholder="ID">
-<input type="text" placeholder="UserName">
-<input type="password" placeholder="Password">
-<input type="password" placeholder="Confirm Password">
+<input type="text" name="id" id="id" class="id"placeholder="ID">
+<input type="text" name="userName" id="userName" placeholder="UserName">
+<input type="password" name="passwd" id="passwd" placeholder="Password">
+<input type="password" name="passwd_confirm" id="passwd_confirm" placeholder="Confirm Password">
 <button class="btn_sign_up" onclick="sign_up()">SIGN UP</button>
 </div>
 

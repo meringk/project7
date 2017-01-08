@@ -2,7 +2,40 @@ var db = require('../../lib/pgDb.js');
 var mainService = {
     insertGuestSubmit: insertGuestSubmit,
     selectGuestBookList:selectGuestBookList,
-    selectGuestBookListMore:selectGuestBookListMore
+    selectGuestBookListMore:selectGuestBookListMore,
+    join: join,
+    login:login
+}
+
+function login(param){
+    return new Promise(function (resolve, reject) {
+        var query = 'select * from tb_member where m_userid = $1 AND m_passwd = $2';
+        db.query(query, [param.id, param.passwd])
+            .then(function (data) {      
+                console.log(data);    
+                console.log("---------------");
+                console.log(data[0].m_userid)
+                resolve({
+                    m_userid: data[0].m_userid,
+                    m_username: data[0].m_name
+                });
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    });
+}
+function join(param){
+    return new Promise(function (resolve, reject) {
+        var query = 'insert into tb_member values($1, $2, $3, now())';
+        db.query(query, [param.id, param.passwd, param.name])
+            .then(function (data) {
+                resolve(data);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    });
 }
 
 //방명록조회

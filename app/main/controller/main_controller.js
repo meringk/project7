@@ -11,10 +11,41 @@ router.use(session({
     resave:false,
     saveUninitialized: false
 }));
+
+router.get('/loginSession', function(req, res){
+    console.log(req.session)
+    res.json(req.session);
+});
+
+router.post('/login', function(req, res){
+    var param = req.body;
+    mainService.login(param)
+        .then(function (data){
+            req.session.user_id = data.m_userid;
+            req.session.name    = data.m_username;
+            res.json(data);
+        })
+        .catch(function (err){
+            res.json(err);
+        });
+})
+
+router.post('/join', function(req, res){
+    var param = req.body;
+    mainService.join(param)
+        .then(function (data){
+            res.json(data);
+        })
+        .catch(function (err){
+            res.json(err);
+        });
+})
+
+
+
 //방명록리스트
 router.get('/guestList', function(req, res){
-    req.session.user_id = 1234,
-    req.session.name = 'meringk'
+    console.log(req.session.user_id);
 
     mainService.selectGuestBookList()
         .then(function (data){
@@ -34,6 +65,7 @@ router.get('/guestList', function(req, res){
 //방명록리스트더보기
 router.get('/guestListMore', function(req, res){
      g_idx = (req.url).split('=')[1];
+         console.log(req.session)
      mainService.selectGuestBookListMore(g_idx)
         .then(function (data){
             res.json(data);

@@ -10,7 +10,7 @@
         height: 25px;
         position: absolute;
         z-index: 9999;
-    background: #989898;
+        background: #989898;
         cursor: pointer;
         text-align: center;
         right: 2%;
@@ -43,7 +43,7 @@
 
     .join{
         text-align:center;
-            margin-top: -8px;
+        margin-top: -8px;
     }
 
 .cont_login {
@@ -346,7 +346,7 @@ background text
     margin-top: 20px;
     width: 240px;
     border: none;
-    color: #757575;
+    color: white;
     background: rgba(0, 0, 0, 0.22);
 }
 
@@ -364,7 +364,7 @@ background text
     width: 240px;
     border: none;
     text-align: left;
-    color: #757575;
+    color: white;
     background: rgba(0, 0, 0, 0.22);
 }
 

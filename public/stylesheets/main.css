@@ -3786,18 +3786,18 @@
 				top: 0;
 				width: 100%;
 				z-index: 10001;
+				text-align: center;
 				background: #272833;
 				box-shadow: 0 0.125em 0.125em 0 rgba(0, 0, 0, 0.125);
 			}
 
 				#titleBar .title {
 					color: #ffffff;
-					display: block;
 					font-weight: 300;
 					height: 44px;
 					line-height: 44px;
-					text-align: center;
-					padding-left:48px;
+					
+					padding-left:75px;
 				}
 
 					#titleBar .title a {

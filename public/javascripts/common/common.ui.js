@@ -37,21 +37,30 @@
 			// Title Bar.
 
 			var nowLocation = location.href;
-			 
-			var s=nowLocation;
-			if( s.indexOf('blog') > -1 || s.indexOf('study') > -1 ){
-				nowLocation = "<a href='/index.html'>MERING</a> || <a href='/html/blog/blog.html'>BLOGHOME</a> || <a href='/html/study/study.html'>STUDYHOME</a> ";
-			}else{
-				nowLocation = "<a href='/index.html'>MERING</a>";
-			}
-			
-			$(
-				'<div id="titleBar">' +
-				'<a href="#navPanel" class="toggle"></a>' +
-				'<span class="title">' +  nowLocation + '</span>'  + 
-				'</div>'
-			).appendTo($body);
 
+			var s = nowLocation;
+			if (s.indexOf('blog') > -1 || s.indexOf('study') > -1) {
+				nowLocation = "<a href='/index.html'><span class='fa fa-home' ></span></a>"
+							+ " || <a href='/html/blog/blog.html'><span class='fa icon fa fa-user-circle' ></span></a> "
+							+ " || <a href='/html/study/study.html'><span class='fa icon fa fa-book' ></span></a> ";
+			} else {
+				nowLocation = "<a href='/index.html'><span class='fa fa-home' ></span></a>";
+			}
+
+			$.get('/loginSession', function (data) {
+				if (data.name != null) {
+					nowLocation += '<span style="font-size: 13px;">   ' + data.name + '님 하이</span>'
+				}
+
+				$(
+					'<div id="titleBar">' +
+					'<a href="#navPanel" class="toggle"></a>' +
+					'<span class="title">' + nowLocation + '</span>' +
+					'</div>'
+				).appendTo($body);
+			});
+
+			console.dir($('#nav'));
 			// Navigation Panel.
 			$(
 				'<div id="navPanel">' +
@@ -79,7 +88,7 @@
 			});
 
 
-			
+
 			// Fix: Remove navPanel transitions on WP<10 (poor/buggy performance).
 			if (skel.vars.os == 'wp' && skel.vars.osVersion < 10)
 				$('#titleBar, #navPanel, #page-wrapper')

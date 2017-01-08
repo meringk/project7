@@ -1,11 +1,109 @@
+$.get('/loginSession', function (data) {
+    $('#login_li > a').css("display", "block");
+    console.log(data);
+    if ( data.name != null) {
+        $('#login_li').append(data.name + "님 하이");
+        $('#login_li').text(data.name+ "님 하이");
+    }
+});
 
+login = function () {
+    var loginId = $('.cont_forms').find("input[name='loginId']").val();
+    var loginPasswd = $('.cont_forms').find("input[name='loginPasswd']").val();
 
-login = function(){
-    alert("login");
+    $.ajax({
+        url: '/login',
+        type: 'post',
+        dataType: 'json',
+        data: { id: loginId, passwd: loginPasswd },
+        success: function (data) {
+            $('#login_li > a').css("display", "none");
+            $('#login_li').append(data.m_username + "님 하이");
+            $('#login_li').text(data.name+ "님 하이");
+            $('.cont_login .close').click();
+        }
+    });
 }
 
-sign_up = function(){
-    alert("sign_up");
+sign_up = function () {
+    var id = $('.cont_form_sign_up').find("input[name='id']").val();
+    var userName = $('.cont_form_sign_up').find("input[name='userName']").val();
+    var passwd = $('.cont_form_sign_up').find("input[name='passwd']").val();
+    var passwd_confirm = $('.cont_form_sign_up').find("input[name='passwd_confirm']").val();
+    var param = {};
+    var validation = false;
+
+    param = {
+        id: id,
+        userName: userName,
+        passwd: passwd,
+        passwd_confirm: passwd_confirm
+    }
+
+    joinNoneCss(param);
+    validation = Joinvalidation(param);
+
+    if (validation) {
+        if (passwd_confirm != passwd) {
+            $('.cont_form_sign_up').find("input[name='passwd_confirm']").val("");
+            emptyJoinCss($('#passwd_confirm'), "비밀번호가 일치하지않습니다.");
+        } else {
+            $.ajax({
+                url: '/join',
+                type: 'post',
+                dataType: 'json',
+                data: { id: id, name: name, passwd: passwd },
+                success: function (data) {
+
+                    alert("가입성공");
+                    ocultar_login_sign_up();
+                }
+            });
+        }
+    }
+}
+
+function Joinvalidation(param) {
+    var chk = true;
+    if (param.id == "") {
+        emptyJoinCss($('#id'), "ID입력바랍니다.");
+        chk = false;
+    } else if (param.userName == "") {
+        emptyJoinCss($('#userName'), "이름입력바랍니다.");
+        chk = false;
+    } else if (param.passwd == "") {
+        emptyJoinCss($('#passwd'), "비밀번호입력바랍니다.");
+        chk = false;
+    } else if (param.passwd_confirm == "") {
+        emptyJoinCss($('#passwd_confirm'), "비밀번호입력바랍니다.");
+        chk = false;
+    } else {
+        return chk;
+    }
+}
+function joinNoneCss(param) {
+    if (param.id != "") {
+        joinCss($('#id'));
+    }
+    if (param.userName != "") {
+        joinCss($('#userName'));
+    }
+    if (param.passwd != "") {
+        joinCss($('#passwd'));
+    }
+    if (param.passwd_confirm != "") {
+        joinCss($('#passwd_confirm'));
+    }
+};
+
+function emptyJoinCss(param, msg) {
+    param.css('border', '1px dotted #ec6161');
+    param[0].placeholder = msg;
+    param.focus();
+}
+
+function joinCss(param) {
+    param.css('border', 'none');
 }
 
 function cambiar_login() {
@@ -27,6 +125,7 @@ function cambiar_sign_up(at) {
 }
 
 function ocultar_login_sign_up() {
+
     document.querySelector('.cont_forms').className = "cont_forms";
 
     $('.cont_form_sign_up').css("opacity", 0);
@@ -59,4 +158,14 @@ $('.cont_login .close').click(function () {
     $('.cont_form_login').css("display", "none");
     $('.cont_form_sign_up').css("opacity", 0);
     $('.cont_form_sign_up').css("display", "none");
+    $('#id').css('border', 'none');
+    $('#userName').css('border', 'none');
+    $('#passwd').css('border', 'none');
+    $('#passwd_confirm').css('border', 'none');
+    $('.cont_form_sign_up').find("input[name='id']").val("");
+    $('.cont_form_sign_up').find("input[name='userName']").val("");
+    $('.cont_form_sign_up').find("input[name='passwd']").val("");
+    $('.cont_form_sign_up').find("input[name='passwd_confirm']").val("");
+    $('.cont_forms').find("input[name='loginId']").val("");
+    $('.cont_forms').find("input[name='loginPasswd']").val("");
 });
