@@ -60,21 +60,6 @@ $(document).ready(function () {
  					$form.find("input[name='guestContent']").val("");
  				}
   			});
-			  
-			
-			$.ajax({
-				url: '/guestSubmit',
-				type: 'post',
-				dataType: 'json',
-				data: { ip: '', message: message },
-				success: function (data) {
-					$('.guestResDiv').prepend('<div>  <span class="icon fa-paw "/>   ' + message
-						+ ' <span style=\'font-size:12px\'> -' + fullDay + ' '
-						+ calTime.moon + ' ' + calTime.time_H + '시</span></div>');
-					$form.find("input[name='guestContent']").val("");
-				}
-			});
-		
 		};
 	});
 
