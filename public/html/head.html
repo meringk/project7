@@ -1,47 +1,94 @@
-
 <!-- Header -->
 <header id="header">
     <h1 id="logo"><a href="/index.html">MERING</a></h1>
     <div id="location" style="text-align:center"></div>
-
-    <nav id="nav">
-        <ul>
-            <li><a href="/index.html">Home</a></li>
-            <li>
-                <a href="#">Category</a>
-                <ul>
-                    <li>
-                        <a href="/html/blog/blog.html">BLOG</a>
-                        <ul>
-                            <li><a href="/html/blog/schedule.html">일정</a></li>
-                            <li><a href="/html/blog/trip.html">여행</a></li>
-                            <li><a href="/html/blog/food.html">음식</a></li>
-                            <li><a href="/html/blog/day.html">일상</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="/html/study/study.html">STUDY</a>
-                        <ul>
-                            <li><a href="/html/study/project.html">웹프로젝트구축</a></li>
-                            <li><a href="/html/study/server.html">SERVER</a></li>
-                            <li><a href="/html/study/database.html">DB</a></li>
-                            <li><a href="/html/study/front.html">FRONT</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li><a href="/html/write.html">WRITE</a></li>
-            <li><a href="#" class="button special">Sign Up</a></li>
-        </ul>
-    </nav>
-     <script>
-        var s = location.href;
-        if(s.indexOf('blog') > -1 || s.indexOf('study') > -1 ){
-            $('#location')[0].innerHTML="<a href='/html/blog/blog.html'>BLOG</a>  ||  <a href='/html/study/study.html'>STUDY</a>";
-        }
-    </script>
+<nav id="nav">
+    <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/html/write.html">WRITE</a></li>
+        <li>
+            <a href="#">Category</a>
+            <ul>
+                <li>
+                    <a href="/html/blog/blog.html">BLOG</a>
+                    <ul>
+                        <li><a href="/html/blog/schedule.html">일정</a></li>
+                        <li><a href="/html/blog/trip.html">여행</a></li>
+                        <li><a href="/html/blog/food.html">음식</a></li>
+                        <li><a href="/html/blog/day.html">일상</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/html/study/study.html">STUDY</a>
+                    <ul>
+                        <li><a href="/html/study/project.html">웹프로젝트구축</a></li>
+                        <li><a href="/html/study/server.html">SERVER</a></li>
+                        <li><a href="/html/study/database.html">DB</a></li>
+                        <li><a href="/html/study/front.html">FRONT</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><a href="javascript:signup();" class="button special">Sign Up</a></li>
+    </ul>
+</nav>
 </header>
-   
+
+<div class="cont_login">
+
+    <div class="close">
+        <span class="icon fa-close" style="top: -2px;"></span>
+    </div>
+<div class="cont_info_log_sign_up">
+    <div class="col_md_login">
+        <div class="cont_ba_opcitiy">
+
+            <h2>LOGIN</h2>
+            <p>로그인하면 <br>더 많은 자료를<br> 볼 수 있습니다.</p>
+            <button class="btn_login" onclick="cambiar_login()">LOGIN</button>
+</div>
+</div>
+<div class="col_md_sign_up">
+    <div class="cont_ba_opcitiy">
+        <h2>SIGN UP</h2>
+        <p>후딱가입하기 <br> ID, 이름, 비번 <br>끝</p>
+        <button class="btn_sign_up" onclick="cambiar_sign_up()">SIGN UP</button>
+</div>
+</div>
+</div>
 
 
+<div class="cont_back_info">
+    <div class="cont_img_back_grey">
+        <img src="images/main/pic05.jpg" alt="">
+    </div>
 
+</div>
+<div class="cont_forms">
+    <div class="cont_img_back_">
+        <img src="images/main/pic05.jpg" alt="">
+    </div>
+    <div class="cont_form_login">
+        <a href="#" onclick="ocultar_login_sign_up()">
+<span class="fa fa-arrow-left">
+        </a>
+<h2>LOGIN</h2>
+<input type="text" placeholder="ID">
+<input type="password" placeholder="Password">
+<button class="btn_login" onclick="login()">LOGIN</button>
+</div>
+
+<div class="cont_form_sign_up">
+    <a href="#" onclick="ocultar_login_sign_up()"><span class="fa fa-arrow-left"></span></a>
+<h2>SIGN UP</h2>
+<input type="text" placeholder="ID">
+<input type="text" placeholder="UserName">
+<input type="password" placeholder="Password">
+<input type="password" placeholder="Confirm Password">
+<button class="btn_sign_up" onclick="sign_up()">SIGN UP</button>
+</div>
+
+</div>
+
+<script src="../javascripts/head.js"></script>
+<link rel="stylesheet" href="../stylesheets/head.css" />
