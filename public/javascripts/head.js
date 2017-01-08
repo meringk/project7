@@ -1,6 +1,5 @@
 $.get('/loginSession', function (data) {
     $('#login_li > a').css("display", "block");
-    console.log(data);
     if ( data.name != null) {
         $('#login_li').append(data.name + "님 하이");
         $('#login_li').text(data.name+ "님 하이");
@@ -20,6 +19,8 @@ login = function () {
             $('#login_li > a').css("display", "none");
             $('#login_li').append(data.m_username + "님 하이");
             $('#login_li').text(data.m_username+ "님 하이");
+            $('#titleBar').append(data.m_username + "님 하이");
+            $('#navPanel > nav')[0].lastElementChild.remove()
             $('.cont_login .close').click();
         }
     });

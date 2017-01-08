@@ -60,7 +60,6 @@
 				).appendTo($body);
 			});
 
-			console.dir($('#nav'));
 			// Navigation Panel.
 			$(
 				'<div id="navPanel">' +
