@@ -19,7 +19,7 @@ login = function () {
         success: function (data) {
             $('#login_li > a').css("display", "none");
             $('#login_li').append(data.m_username + "님 하이");
-            $('#login_li').text(data.name+ "님 하이");
+            $('#login_li').text(data.m_username+ "님 하이");
             $('.cont_login .close').click();
         }
     });
