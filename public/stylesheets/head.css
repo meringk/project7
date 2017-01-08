@@ -256,9 +256,7 @@ background text
 .cont_forms_active_sign_up {
     z-index: 99999;
 }
-.cont_forms_active_login {
-    z-index: 99999;
-}
+
 
 
 
@@ -325,7 +323,7 @@ background text
 }
 
 .cont_forms_active_login {
-    z-index: 2;  
+    z-index: 99999;  
 }
 .cont_form_sign_up {
     position: absolute;
@@ -391,19 +389,29 @@ background text
     .col_md_login{
         float: none;
     }
-
     .cont_forms_active_sign_up {
         left:0px;
     }
-
+    .cont_form_login input{
+        width:222px;
+    }
+    .cont_ba_opcitiy {
+        width:70%;
+        left:45px;
+    }
     .cont_ba_opcitiy > p{
         display:none;
     }
-
     .cont_ba_opcitiy{
         margin-top:20px
     }
     .cont_back_info{
         width:320px;
+    }
+    .btn_login{
+        width:222px;
+    }
+    .btn_sign_up{
+        width:222px;
     }
 }
