@@ -172,7 +172,7 @@ body {
   -webkit-transform:scale(1);
 }
 
-.close{
+.overBox .close{
   width:25px;
   height:25px;
   position:absolute;
@@ -180,6 +180,7 @@ body {
   background:#e44c65;
   cursor:pointer;
   right:5%;
+  top:18px;
 }
 
 .scTitle{

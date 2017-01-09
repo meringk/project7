@@ -21,8 +21,8 @@ router.post('/login', function(req, res){
     var param = req.body;
     mainService.login(param)
         .then(function (data){
-            req.session.user_id = data.m_userid;
-            req.session.name    = data.m_username;
+            req.session.m_userid    = data.m_userid;
+            req.session.m_username  = data.m_username;
             res.json(data);
         })
         .catch(function (err){

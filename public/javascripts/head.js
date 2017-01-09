@@ -1,8 +1,15 @@
+
+var USER_ID = "";
+var USER_NAME = "";
 $.get('/loginSession', function (data) {
     $('#login_li > a').css("display", "block");
-    if ( data.name != null) {
-        $('#login_li').append(data.name + "님 하이");
-        $('#login_li').text(data.name+ "님 하이");
+        console.log(data);
+    if ( data.m_username != null) {
+        USER_ID = data.m_userid;
+        USER_NAME = data.m_username;
+
+        $('#login_li').append(data.m_username + "님 하이");
+        $('#login_li').text(data.m_username+ "님 하이");
     }
 });
 
@@ -20,12 +27,24 @@ login = function () {
             $('#login_li').append(data.m_username + "님 하이");
             $('#login_li').text(data.m_username+ "님 하이");
             $('#titleBar').append(data.m_username + "님 하이");
-            $('#navPanel > nav')[0].lastElementChild.remove()
+            $('#navPanel > nav')[0].lastElementChild.remove();
+            $('#navPanel > nav').append("<a href=javascript:logout();>로그아웃</a>");
+
+            console.log(data);
+            USER_ID = data.m_userid;
+            USER_NAME = data.m_username;
             $('.cont_login .close').click();
         }
     });
 }
+logout = function(){
+    console.log("로그아웃");
+    $('#navPanel > nav')[0].lastElementChild.remove();
+    $('#navPanel > nav').append("<a href='javascript:signup();' class='link depth-0'>SIGN UP</a>");
+    // $.get('/logoutSession', function (data) {
 
+    // });
+};
 sign_up = function () {
     var id = $('.cont_form_sign_up').find("input[name='id']").val();
     var userName = $('.cont_form_sign_up').find("input[name='userName']").val();

@@ -1,6 +1,15 @@
 
+var USER_ID = "";
 
 $(document).ready(function () {
+
+    $.get('/loginSession', function (data) {
+        if ( data.m_username != null) {
+            USER_ID = data.m_userid;
+            USER_NAME = data.m_username;
+        }
+    });
+
     $('#modifySubmit').css("display", "none");
 
 
@@ -85,21 +94,28 @@ $(document).ready(function () {
         var form = $('FILE_FORM')[0];
         var formData = new FormData(form);
         formData.append("fileObj", $("#FILE_TAG")[0].files[0]);
+        formData.append("folder" , "0000000000000000000");
         var fileSize = ($('#FILE_TAG')[0].files[0].size / 1024 / 1024).toFixed(2);
         console.log(fileSize + "MB");
         var filter = "win16|win32|win64|mac";
         var imageSize="305";
-        alert(navigator.platform.toLowerCase());
         if (navigator.platform) {
-            alert(navigator.platform.toLowerCase().indexOf(filter));
             if (navigator.platform.toLowerCase().indexOf(filter) < 0) {
-                alert("ㅇㅇ")
                 imageSize="1190";
             }
         }
+
         if (fileSize > 0.25) {
-            alert("파일크기(" + fileSize + "MB)가 너무크다. 0.25MB이하로 올려주세요..");
+            if(USER_ID=="admin"){
+                uploadAjax();
+            }else{
+                alert("파일크기(" + fileSize + "MB)가 너무큽니다. 0.25MB이하로 올려주세요..");
+            }
         } else {
+            uploadAjax();
+        }
+
+        function uploadAjax(){
             $.ajax({
                 url: '/write/upload',
                 processData: false,
@@ -108,7 +124,6 @@ $(document).ready(function () {
                 type: 'POST',
                 success: function (data) {
                     console.log(data);
-                    
                     CKEDITOR.instances.editor.insertHtml('<div><img src=' + data[0].location
                         + ' class="previewImg"  style="max-width:'+imageSize+'px;">');
                 }

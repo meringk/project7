@@ -18,14 +18,14 @@ let storage = multerS3({
     acl: 'public-read',
     storageClass: 'REDUCED_REDUNDANCY',
     metadata: function (req, file, cb) {
-        cb(null, { fieldName: file.fieldname });
+        cb(null, Object.assign({}, req.body));
     },
     key: function (req, file, cb) {
         var date = new Date();
         var d = date.getDate(),
-            h = date.getHours(),
-            s = date.getSeconds();
-        var folderNm = d+""+h+""+s
+            h = date.getHours();
+            // s = date.getSeconds();
+        var folderNm = d+""+h;
         let path1 = folderNm + '/' + file.originalname;
         cb(null, path1);
     }
@@ -38,7 +38,6 @@ router.use(multer({
 }).any());
 
 router.post('/upload', upload.single('FILE_TAG'), function (req, res) {
-
     res.send(req.files);
 });
 
