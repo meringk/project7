@@ -72,19 +72,25 @@ $(document).ready(function () {
             categoryFolder = "study"
         }
 
-        //수정하기
-        if (confirm("수정 하시겠습니까 ?")) {
-            $.ajax({
-                url: '/write/' + categoryFolder + 'Modify',
-                type: 'post',
-                dataType: 'json',
-                data: { title: title, content: content, category: category, cont_num: cont_num, categoryCode: categoryCode },
-                success: function (data) {
-                    //해당 글로 이동
-                    location.href = "/html/" + categoryFolder + "/" + categoryFolder + "_view.html?categoryCode=" + category + "&cont_num=" + cont_num;
-                }
-            });
-        }
+
+        if(USER_ID=="admin"){
+                //수정하기
+            if (confirm("수정 하시겠습니까 ?")) {
+                $.ajax({
+                    url: '/write/' + categoryFolder + 'Modify',
+                    type: 'post',
+                    dataType: 'json',
+                    data: { title: title, content: content, category: category, cont_num: cont_num, categoryCode: categoryCode },
+                    success: function (data) {
+                        //해당 글로 이동
+                        location.href = "/html/" + categoryFolder + "/" + categoryFolder + "_view.html?categoryCode=" + category + "&cont_num=" + cont_num;
+                    }
+                });
+            }
+       }else{
+           alert("관리자만 수정 할 수 있습니다.");
+       }
+        
     }
 
     $('#FILE_TAG').on('change', function () {
