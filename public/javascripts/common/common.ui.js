@@ -49,7 +49,7 @@
 
 			$.get('/loginSession', function (data) {
 				if (data.m_username != null) {
-					nowLocation += '<span style="font-size: 13px;">   ' + data.m_username + '님 하이</span>'
+					nowLocation += '<span style="font-size: 13px;"> ' + data.m_username + '님 하이</span>'
 				}
 
 				$(

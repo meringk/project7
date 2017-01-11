@@ -5,6 +5,18 @@
         margin-top: 10px;
     }
 
+    .login_li{
+        color: rgb(60, 126, 158);
+    }
+    
+    .small{
+        padding: 0.3em 1em;
+        display: inline;
+        height: 33px;
+        line-height: 5em;
+        margin-left: 10px;
+    }
+
     .close{
         width: 25px;
         height: 25px;

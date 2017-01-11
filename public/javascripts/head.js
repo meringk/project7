@@ -12,7 +12,7 @@ $(function () {
             USER_NAME = data.m_username;
             // $('#login_li').append(data.m_username + "님 하이");
             $('#login_li').text(data.m_username + "님 하이");
-            $('nav > ul').append("<a href=javascript:logout();>로그아웃</a>");
+            $('#header > nav > ul').append("<a href=javascript:logout(); class='button small'>로그아웃</a>");
         }
     });
 
@@ -161,10 +161,10 @@ function ocultar_login_sign_up() {
 }
 
 
-var s = location.href;
-if (s.indexOf('blog') > -1 || s.indexOf('study') > -1) {
-    $('#location')[0].innerHTML = "<a href='/html/blog/blog.html'>BLOG</a>  ||  <a href='/html/study/study.html'>STUDY</a>";
-}
+// var s = location.href;
+// if (s.indexOf('blog') > -1 || s.indexOf('study') > -1) {
+//     $('#location')[0].innerHTML = "<a href='/html/blog/blog.html'>BLOG</a>  ||  <a href='/html/study/study.html'>STUDY</a>";
+// }
 
 signup = function () {
     $('.cont_login').css("display", "block");
