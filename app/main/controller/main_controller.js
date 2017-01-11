@@ -17,6 +17,20 @@ router.get('/loginSession', function(req, res){
     res.json(req.session);
 });
 
+router.get('/logoutSession', function(req, res){
+    console.log(req.session);
+    req.session.destroy(function(err) {
+    // session updated
+        if(err) {
+            console.log(err);
+        }else{
+            res.redirect('/');
+        }
+    });
+});
+
+
+
 router.post('/login', function(req, res){
     var param = req.body;
     mainService.login(param)
