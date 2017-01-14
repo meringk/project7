@@ -7,7 +7,7 @@ var studyService = {
 // 글 리스트 조회
 function selectStudyList(param) {
     return new Promise(function (resolve, reject) {
-        var query = "select cont_num, cont_title, cont_regdate, cont_category FROM tb_study_board where cont_category = $1";
+        var query = "select cont_num, cont_title, cont_regdate, cont_category FROM tb_study_board where cont_category = $1  order by 1";
         console.log(query);
         db.query(query, [param.categoryCode])
             .then(function (data) {

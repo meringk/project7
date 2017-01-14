@@ -16,7 +16,7 @@ let storage = multerS3({
     s3: s3,
     bucket: 'mering',
     acl: 'public-read',
-    storageClass: 'REDUCED_REDUNDANCY',
+    storageClass: 'STANDARD',
     metadata: function (req, file, cb) {
         cb(null, Object.assign({}, req.body));
     },

@@ -161,10 +161,10 @@ function ocultar_login_sign_up() {
 }
 
 
-var s = location.href;
-if (s.indexOf('blog') > -1 || s.indexOf('study') > -1) {
-    $('#location')[0].innerHTML = "<a href='/html/blog/blog.html'>BLOG</a>  ||  <a href='/html/study/study.html'>STUDY</a>";
-}
+// var s = location.href;
+// if (s.indexOf('blog') > -1 || s.indexOf('study') > -1) {
+//     $('#location')[0].innerHTML = "<a href='/html/blog/blog.html'>BLOG</a>  ||  <a href='/html/study/study.html'>STUDY</a>";
+// }
 
 signup = function () {
     $('.cont_login').css("display", "block");
