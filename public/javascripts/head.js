@@ -12,7 +12,7 @@ $(function () {
             USER_NAME = data.m_username;
             // $('#login_li').append(data.m_username + "님 하이");
             $('#login_li').text(data.m_username + "님 하이");
-            $('nav > ul').append("<a href=javascript:logout();>로그아웃</a>");
+            $('#header > nav > ul').append("<a href=javascript:logout(); class='button small'>로그아웃</a>");
         }
     });
 
